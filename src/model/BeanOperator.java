@@ -3,6 +3,7 @@ package model;
 import java.util.Objects;
 
 public class BeanOperator {
+    public static BeanOperator currentLoginUser=null;
     private Integer opId;
     private String opName;
     private Integer opLevel;
