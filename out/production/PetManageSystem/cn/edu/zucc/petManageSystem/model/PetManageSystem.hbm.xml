@@ -1,0 +1,104 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+<hibernate-mapping package="cn.edu.zucc.PetManageSystem.model">
+    <!-- 标识一个类的xml映射,name为类名,table为表名 -->  
+    <class name="BeanPublisher" table="BeanPublisher">  
+        <!-- 主键的设置,generator标识主键生成方式,因为native便于数据库的移植所以.嘿嘿!你懂的 -->  
+        <id name="pubid" type="string">
+            <column name="pubid"/>
+            <generator class="assigned"/>
+        </id>
+        <!-- 这里配了该类一个属性街道名称 name属性字段,column,数据库对应列 -->  
+        <property name="publisherName" type="string" column="publisherName" />  
+        <!-- 这里同上,写法不同而已 -->  
+        <property name="address" type="string">  
+            <column name="address" />  
+        </property>
+        <set name="books" lazy="true">
+            <key column="pubid"/>
+            <one-to-many class="BeanBook"/>
+        </set>
+    </class>
+
+
+    <class name="BeanBook" table="BeanBook">
+        <id name="barcode" type="string">
+            <column name="barcode"/>
+            <generator class="assigned"/>
+        </id>
+        <!-- 这里配了该类一个属性街道名称 name属性字段,column,数据库对应列 -->
+        <property name="bookname" type="string" column="bookname" />
+        <!--<property name="pubid" type="string" column="pubid" />-->
+        <property name="price" type="double" column="price" />
+        <property name="state" type="string" column="state" />
+        <many-to-one name="publisher" column="pubid"/>
+        <!--<many-to-one name="publisher" column="pubid" lazy="false"/>-->
+
+    </class>
+
+
+    <class name="BeanBookLendRecord" table="BeanBookLendRecord">
+        <id name="id" type="int">
+            <column name="id"/>
+            <generator class="assigned"/>
+        </id>
+        <!-- 这里配了该类一个属性街道名称 name属性字段,column,数据库对应列 -->
+        <property name="readerid" type="string" column="readerid" />
+        <property name="bookBarcode" type="string" column="bookBarcode" />
+        <property name="lendDate" type="date" column="lendDate" />
+        <property name="returnDate" type="date" column="returnDate" />
+        <property name="lendOperUserid" type="string" column="lendOperUserid" />
+        <property name="returnOperUserid" type="string" column="returnOperUserid" />
+        <property name="penalSum" type="double" column="penalSum" />
+    </class>
+
+
+    <class name="BeanReader" table="BeanReader">
+        <id name="readerid" type="string">
+            <column name="readerid"/>
+            <generator class="assigned"/>
+        </id>
+        <!-- 这里配了该类一个属性街道名称 name属性字段,column,数据库对应列 -->
+        <property name="readerName" type="string" column="readerName" />
+        <!--<property name="readerTypeId" type="int" column="readerTypeId" />-->
+        <property name="lendBookLimitted" type="int" column="lendBookLimitted" />
+        <property name="createDate" type="date" column="createDate" />
+        <property name="creatorUserId" type="string" column="creatorUserId" />
+        <property name="removeDate" type="date" column="removeDate" />
+        <property name="removerUserId" type="string" column="removerUserId" />
+        <property name="stopDate" type="date" column="stopDate" />
+        <property name="stopUserId" type="string" column="stopUserId" />
+        <many-to-one name="beanReaderType" column="readerTypeId"/>
+    </class>
+
+    <class name="BeanReaderType" table="BeanReaderType">
+        <!-- 主键的设置,generator标识主键生成方式,因为native便于数据库的移植所以.嘿嘿!你懂的 -->
+        <id name="readerTypeId" type="int">
+            <column name="readerTypeId"/>
+            <generator class="assigned"/>
+        </id>
+        <!-- 这里配了该类一个属性街道名称 name属性字段,column,数据库对应列 -->
+        <property name="readerTypeName" type="string" column="readerTypeName" />
+        <property name="lendBookLimitted" type="int" column="lendBookLimitted" />
+        <set name="readers">
+            <key column="readerTypeId"/>
+            <one-to-many class="BeanReader"/>
+        </set>
+    </class>
+
+
+    <class name="BeanSystemUser" table="BeanSystemUser">
+        <!-- 主键的设置,generator标识主键生成方式,因为native便于数据库的移植所以.嘿嘿!你懂的 -->
+        <id name="userid" type="string">
+            <column name="userid"/>
+            <generator class="assigned"/>
+        </id>
+        <!-- 这里配了该类一个属性街道名称 name属性字段,column,数据库对应列 -->
+        <property name="username" type="string" column="username" />
+        <property name="pwd" type="string" column="pwd" />
+        <property name="usertype" type="string" column="usertype" />
+        <property name="createDate" type="date" column="createDate" />
+        <property name="removeDate" type="date" column="removeDate" />
+
+    </class>
+
+</hibernate-mapping>  
