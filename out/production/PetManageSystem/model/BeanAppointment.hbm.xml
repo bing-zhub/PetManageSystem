@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.BeanAppointment" table="appointment" schema="PetManageSystem">
+        <id name="appId">
+            <column name="app_id" sql-type="int(11)"/>
+        </id>
+        <property name="appPet">
+            <column name="app_pet" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="appDate">
+            <column name="app_date" sql-type="date" not-null="true"/>
+        </property>
+        <property name="appDoneDate">
+            <column name="app_done_date" sql-type="date" not-null="true"/>
+        </property>
+        <property name="appState">
+            <column name="app_state" sql-type="varchar(1024)" length="1024" not-null="true"/>
+        </property>
+        <property name="appUser">
+            <column name="app_user" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="appServ">
+            <column name="app_serv" sql-type="int(11)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

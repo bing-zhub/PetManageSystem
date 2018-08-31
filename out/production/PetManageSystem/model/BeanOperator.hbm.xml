@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.BeanOperator" table="operator" schema="PetManageSystem">
+        <id name="opId">
+            <column name="op_id" sql-type="int(11)"/>
+        </id>
+        <property name="opName">
+            <column name="op_name" sql-type="varchar(1024)" length="1024" not-null="true"/>
+        </property>
+        <property name="opLevel">
+            <column name="op_level" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="opPwd">
+            <column name="op_pwd" sql-type="varchar(1024)" length="1024" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

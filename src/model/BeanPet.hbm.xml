@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.BeanPet" table="pet" schema="PetManageSystem">
+        <id name="petId">
+            <column name="pet_id" sql-type="int(11)"/>
+        </id>
+        <property name="petNikename">
+            <column name="pet_nikename" sql-type="varchar(1024)" length="1024" not-null="true"/>
+        </property>
+        <property name="petAlias">
+            <column name="pet_alias" sql-type="varchar(1024)" length="1024" not-null="true"/>
+        </property>
+        <property name="petOwner">
+            <column name="pet_owner" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="petImg">
+            <column name="pet_img" sql-type="longblob" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.BeanMyOrder" table="myOrder" schema="PetManageSystem">
+        <id name="orderId">
+            <column name="order_id" sql-type="int(11)"/>
+        </id>
+        <property name="orderProd">
+            <column name="order_prod" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="orderUser">
+            <column name="order_user" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="orderNum">
+            <column name="order_num" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="orderPrice">
+            <column name="order_price" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="orderState">
+            <column name="order_state" sql-type="varchar(1024)" length="1024" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
