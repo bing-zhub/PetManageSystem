@@ -9,8 +9,8 @@
             <column name="app_id" sql-type="int(11)"/>
             <generator class="native" />
         </id>
-        <property name="appPet">
-            <column name="app_pet" sql-type="int(11)" not-null="true"/>
+        <property name="petId">
+            <column name="pet_id" sql-type="int(11)" not-null="true"/>
         </property>
         <property name="appDate">
             <column name="app_date" sql-type="date" not-null="true"/>
@@ -21,8 +21,8 @@
         <property name="appState">
             <column name="app_state" sql-type="varchar(1024)" length="1024" not-null="true"/>
         </property>
-        <property name="appUser">
-            <column name="app_user" sql-type="int(11)" not-null="true"/>
+        <property name="userId">
+            <column name="user_id" sql-type="int(11)" not-null="true"/>
         </property>
         <property name="appServ">
             <column name="app_serv" sql-type="int(11)" not-null="true"/>

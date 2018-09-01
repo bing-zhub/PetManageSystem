@@ -2,14 +2,16 @@ package ui;
 
 
 import com.sun.deploy.panel.JavaPanel;
+import control.AppointmentController;
+import model.BeanAppointment;
 import model.BeanOperator;
+import util.BaseException;
+import util.PetManageSystemUtil;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,6 +86,7 @@ public class FrmMain extends JFrame implements ActionListener {
     //login and register page
     private FrmLogin dlgLogin=null;
 
+
     List<JMenuItem> itemList = new ArrayList<JMenuItem>();
 
 
@@ -93,12 +96,47 @@ public class FrmMain extends JFrame implements ActionListener {
         }
     }
 
+    private Object tblAppointmentTitles[] = BeanAppointment.tableTitles;
+    private Object tblAppointmentData[][];
+    private List<BeanAppointment> allAppintment = null;
+
+    DefaultTableModel tabAppointmentModel=new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            if (column == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    };
+
+    private void reloadAppointmentTable(){
+        try {
+            allAppintment = PetManageSystemUtil.appointmentController.loadAll();
+        } catch (BaseException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "????",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        tblAppointmentData =  new Object[allAppintment.size()][tblAppointmentTitles.length];
+        for(int i=0;i<allAppintment.size();i++){
+            for(int j=0;j<tblAppointmentTitles.length;j++)
+                tblAppointmentData[i][j]=allAppintment.get(i).getCell(j);
+        }
+        tabAppointmentModel.setDataVector(tblAppointmentData,tblAppointmentTitles);
+        this.dataTableAppointment.validate();
+        this.dataTableAppointment.repaint();
+    }
+
+
+    private JTable dataTableAppointment = new JTable(tabAppointmentModel);
+
     public FrmMain(){
 
         this.setExtendedState(Frame.MAXIMIZED_BOTH);
         this.setTitle("宠物服务系统");
         dlgLogin=new FrmLogin(this,"登陆",true);
-        dlgLogin.setVisible(false);
+        dlgLogin.setVisible(true);
 
         this.Appointment.add(add_app);
         this.Appointment.add(del_app);
@@ -213,7 +251,8 @@ public class FrmMain extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == view_app){
             this.getContentPane().removeAll();
-            this.getContentPane().add(new JLabel("hello!!"));
+            this.reloadAppointmentTable();
+            this.getContentPane().add(new JScrollPane(this.dataTableAppointment), BorderLayout.WEST);
             this.setVisible(true);
         }
     }

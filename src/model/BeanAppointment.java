@@ -5,12 +5,24 @@ import java.util.Objects;
 
 public class BeanAppointment {
     private Integer appId;
-    private Integer appPet;
+    private Integer petId;
     private Date appDate;
     private Date appDoneDate;
     private String appState;
-    private Integer appUser;
+    private Integer userId;
     private Integer appServ;
+    public static final String[] tableTitles={"预约ID","预约宠物","预约日期","预约完成时间","状态","预约用户","预约服务"};
+
+    public String getCell(int col){
+        if(col==0) return Integer.toString(this.appId);
+        else if(col==1) return Integer.toString(this.petId);
+        else if(col==2) return appDate.toString();
+        else if(col==3) return appDoneDate.toString();
+        else if(col==4) return appState;
+        else if(col==5) return Integer.toString(userId);
+        else if(col==6) return Integer.toString(appServ);
+        else return "";
+    }
 
     public Integer getAppId() {
         return appId;
@@ -20,12 +32,12 @@ public class BeanAppointment {
         this.appId = appId;
     }
 
-    public Integer getAppPet() {
-        return appPet;
+    public Integer getPetId() {
+        return petId;
     }
 
-    public void setAppPet(Integer appPet) {
-        this.appPet = appPet;
+    public void setPetId(Integer appPet) {
+        this.petId = appPet;
     }
 
     public Date getAppDate() {
@@ -52,12 +64,12 @@ public class BeanAppointment {
         this.appState = appState;
     }
 
-    public Integer getAppUser() {
-        return appUser;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setAppUser(Integer appUser) {
-        this.appUser = appUser;
+    public void setUserId(Integer appUser) {
+        this.userId = appUser;
     }
 
     public Integer getAppServ() {
@@ -74,17 +86,16 @@ public class BeanAppointment {
         if (o == null || getClass() != o.getClass()) return false;
         BeanAppointment that = (BeanAppointment) o;
         return Objects.equals(appId, that.appId) &&
-                Objects.equals(appPet, that.appPet) &&
+                Objects.equals(petId, that.petId) &&
                 Objects.equals(appDate, that.appDate) &&
                 Objects.equals(appDoneDate, that.appDoneDate) &&
                 Objects.equals(appState, that.appState) &&
-                Objects.equals(appUser, that.appUser) &&
+                Objects.equals(userId, that.userId) &&
                 Objects.equals(appServ, that.appServ);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(appId, appPet, appDate, appDoneDate, appState, appUser, appServ);
+        return Objects.hash(appId, petId, appDate, appDoneDate, appState, userId, appServ);
     }
 }
