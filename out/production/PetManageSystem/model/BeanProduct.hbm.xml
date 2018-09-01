@@ -7,6 +7,7 @@
     <class name="model.BeanProduct" table="product" schema="PetManageSystem">
         <id name="prodId">
             <column name="prod_id" sql-type="int(11)"/>
+            <generator class="native" />
         </id>
         <property name="icateD">
             <column name="icate_d" sql-type="int(11)" not-null="true"/>

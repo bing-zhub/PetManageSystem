@@ -7,6 +7,7 @@
     <class name="model.BeanMyOrder" table="myOrder" schema="PetManageSystem">
         <id name="orderId">
             <column name="order_id" sql-type="int(11)"/>
+            <generator class="native" />
         </id>
         <property name="orderProd">
             <column name="order_prod" sql-type="int(11)" not-null="true"/>

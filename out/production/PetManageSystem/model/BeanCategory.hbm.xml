@@ -7,6 +7,7 @@
     <class name="model.BeanCategory" table="category" schema="PetManageSystem">
         <id name="cateId">
             <column name="cate_id" sql-type="int(11)"/>
+            <generator class="native" />
         </id>
         <property name="cateName">
             <column name="cate_name" sql-type="varchar(255)" not-null="true"/>

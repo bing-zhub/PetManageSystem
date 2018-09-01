@@ -10,7 +10,7 @@ import ui.FrmMain;
 
 import static util.HibernateUtil.getSession;
 
-public class Main {
+public class PetManageSystem {
 
     public static void test(final String[] args) throws Exception {
         final Session session = getSession();

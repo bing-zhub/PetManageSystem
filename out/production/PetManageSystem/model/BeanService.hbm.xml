@@ -7,6 +7,7 @@
     <class name="model.BeanService" table="service" schema="PetManageSystem">
         <id name="servId">
             <column name="serv_id" sql-type="int(11)"/>
+            <generator class="native" />
         </id>
         <property name="servName">
             <column name="serv_name" sql-type="varchar(1024)" length="1024" not-null="true"/>

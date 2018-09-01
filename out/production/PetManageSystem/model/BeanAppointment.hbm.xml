@@ -7,6 +7,7 @@
     <class name="model.BeanAppointment" table="appointment" schema="PetManageSystem">
         <id name="appId">
             <column name="app_id" sql-type="int(11)"/>
+            <generator class="native" />
         </id>
         <property name="appPet">
             <column name="app_pet" sql-type="int(11)" not-null="true"/>
