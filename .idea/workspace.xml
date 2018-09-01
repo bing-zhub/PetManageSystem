@@ -86,12 +86,13 @@
       <file leaf-file-name="FrmMain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ui/FrmMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="189" column="13" lean-forward="true" selection-start-line="189" selection-start-column="13" selection-end-line="189" selection-end-column="13" />
+            <state relative-caret-position="1610">
+              <caret line="184" column="30" lean-forward="true" selection-start-line="184" selection-start-column="30" selection-end-line="184" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6376#6508#0" expanded="true" />
-                <element signature="e#6507#6508#0" expanded="true" />
+                <element signature="e#2932#2943#0" expanded="true" />
+                <element signature="e#6199#6331#0" expanded="true" />
+                <element signature="e#6330#6331#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -391,7 +392,7 @@
       <option name="presentableId" value="Default" />
       <updated>1535701731085</updated>
       <workItem from="1535701732557" duration="158000" />
-      <workItem from="1535701895195" duration="15596000" />
+      <workItem from="1535701895195" duration="16535000" />
     </task>
     <task id="LOCAL-00001" summary="structure ok! login/register ok!">
       <created>1535724217187</created>
@@ -404,7 +405,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15754000" />
+    <option name="totallyTimeSpent" value="16693000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -738,12 +739,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/FrmMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="189" column="13" lean-forward="true" selection-start-line="189" selection-start-column="13" selection-end-line="189" selection-end-column="13" />
+        <state relative-caret-position="1610">
+          <caret line="184" column="30" lean-forward="true" selection-start-line="184" selection-start-column="30" selection-end-line="184" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6376#6508#0" expanded="true" />
-            <element signature="e#6507#6508#0" expanded="true" />
+            <element signature="e#2932#2943#0" expanded="true" />
+            <element signature="e#6199#6331#0" expanded="true" />
+            <element signature="e#6330#6331#0" expanded="true" />
           </folding>
         </state>
       </provider>

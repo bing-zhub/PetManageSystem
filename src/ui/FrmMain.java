@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FrmMain extends JFrame implements ActionListener {
 
@@ -82,6 +84,15 @@ public class FrmMain extends JFrame implements ActionListener {
     //login and register page
     private FrmLogin dlgLogin=null;
 
+    List<JMenuItem> itemList = new ArrayList<JMenuItem>();
+
+
+    public void addListener(java.util.List<JMenuItem> list){
+        for(JMenuItem j : list){
+            j.addActionListener(this);
+        }
+    }
+
     public FrmMain(){
 
         this.setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -90,77 +101,88 @@ public class FrmMain extends JFrame implements ActionListener {
         dlgLogin.setVisible(false);
 
         this.Appointment.add(add_app);
-        this.add_app.addActionListener(this);
         this.Appointment.add(del_app);
-        this.del_app.addActionListener(this);
         this.Appointment.add(mod_app);
-        this.mod_app.addActionListener(this);
         this.Appointment.add(view_app);
-        this.view_app.addActionListener(this);
+
+        itemList.add(add_app);
+        itemList.add(del_app);
+        itemList.add(mod_app);
+        itemList.add(view_app);
+
 
         this.Category.add(add_cate);
-        this.add_cate.addActionListener(this);
         this.Category.add(del_cate);
-        this.del_cate.addActionListener(this);
         this.Category.add(mod_cate);
-        this.mod_cate.addActionListener(this);
         this.Category.add(view_cate);
-        this.view_cate.addActionListener(this);
+
+        itemList.add(add_cate);
+        itemList.add(del_cate);
+        itemList.add(mod_cate);
+        itemList.add(view_cate);
+
 
         this.Order.add(add_order);
-        this.add_order.addActionListener(this);
         this.Order.add(del_order);
-        this.del_order.addActionListener(this);
         this.Order.add(mod_order);
-        this.mod_order.addActionListener(this);
         this.Order.add(view_order);
-        this.view_order.addActionListener(this);
+
+        itemList.add(add_order);
+        itemList.add(del_order);
+        itemList.add(mod_order);
+        itemList.add(view_order);
 
         this.User.add(add_user);
-        this.add_user.addActionListener(this);
         this.User.add(del_user);
-        this.del_user.addActionListener(this);
         this.User.add(mod_user);
-        this.mod_user.addActionListener(this);
         this.User.add(view_user);
-        this.view_user.addActionListener(this);
+
+        itemList.add(add_user);
+        itemList.add(del_user);
+        itemList.add(mod_user);
+        itemList.add(view_user);
 
         this.Operator.add(add_oper);
-        this.add_oper.addActionListener(this);
         this.Operator.add(del_oper);
-        this.del_oper.addActionListener(this);
         this.Operator.add(mod_oper);
-        this.mod_oper.addActionListener(this);
         this.Operator.add(view_oper);
-        this.view_oper.addActionListener(this);
+
+        itemList.add(add_oper);
+        itemList.add(del_oper);
+        itemList.add(mod_oper);
+        itemList.add(view_oper);
 
         this.Pet.add(add_pet);
-        this.add_pet.addActionListener(this);
         this.Pet.add(del_pet);
-        this.del_pet.addActionListener(this);
         this.Pet.add(mod_pet);
-        this.mod_pet.addActionListener(this);
         this.Pet.add(view_pet);
-        this.view_pet.addActionListener(this);
+
+        itemList.add(add_pet);
+        itemList.add(del_pet);
+        itemList.add(mod_pet);
+        itemList.add(view_pet);
 
         this.Product.add(add_prod);
-        this.add_prod.addActionListener(this);
         this.Product.add(del_prod);
-        this.del_prod.addActionListener(this);
         this.Product.add(mod_prod);
-        this.mod_prod.addActionListener(this);
         this.Product.add(view_prod);
-        this.view_prod.addActionListener(this);
+
+        itemList.add(add_prod);
+        itemList.add(del_prod);
+        itemList.add(mod_prod);
+        itemList.add(view_prod);
 
         this.Service.add(add_serv);
-        this.add_serv.addActionListener(this);
         this.Service.add(del_serv);
-        this.del_serv.addActionListener(this);
         this.Service.add(mod_serv);
-        this.mod_serv.addActionListener(this);
         this.Service.add(view_serv);
-        this.view_serv.addActionListener(this);
 
+        itemList.add(add_serv);
+        itemList.add(del_serv);
+        itemList.add(mod_serv);
+        itemList.add(view_serv);
+
+        addListener(itemList);
 
         jMenuBar.add(Appointment);
         jMenuBar.add(Category);
