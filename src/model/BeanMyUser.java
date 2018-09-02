@@ -8,6 +8,16 @@ public class BeanMyUser {
     private Integer userTel;
     private String userEmail;
     private String userContact;
+    public static final String[] tableTitles={"ID","名称","手机号码","电子邮箱","其他联系方式"};
+
+    public String getCell(int col){
+        if(col==0) return this.userId.toString();
+        else if(col==1) return this.userName.toString();
+        else if(col==2) return this.userTel.toString();
+        else if(col==3) return this.userEmail.toString();
+        else if(col==4) return this.userContact.toString();
+        else return "";
+    }
 
     public Integer getUserId() {
         return userId;

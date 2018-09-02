@@ -9,14 +9,11 @@
             <column name="prod_id" sql-type="int(11)"/>
             <generator class="native" />
         </id>
-        <property name="icateD">
-            <column name="icate_d" sql-type="int(11)" not-null="true"/>
-        </property>
         <property name="prodName">
             <column name="prod_name" sql-type="varchar(1024)" length="1024" not-null="true"/>
         </property>
-        <property name="prodCate">
-            <column name="prod_cate" sql-type="int(11)" not-null="true"/>
+        <property name="cateId">
+            <column name="cate_id" sql-type="int(11)" not-null="true"/>
         </property>
         <property name="prodBrand">
             <column name="prod_brand" sql-type="varchar(1024)" length="1024" not-null="true"/>

@@ -3,9 +3,11 @@ package control;
 import model.BeanOperator;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import util.BaseException;
 
-import org.hibernate.Query;
+
+import java.util.List;
 
 import static util.HibernateUtil.getSession;
 
@@ -62,4 +64,14 @@ public class OperatorController {
         return beanOperator1;
     }
 
+    public List<BeanOperator> loadAll() {
+        List<BeanOperator> list = null;
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from BeanOperator ");
+        list = query.list();
+        tx.commit();
+        session.close();
+        return list;
+    }
 }

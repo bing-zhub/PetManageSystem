@@ -6,6 +6,14 @@ public class BeanService {
     private Integer servId;
     private String servName;
     private Integer servPrice;
+    public static final String[] tableTitles={"ID","Ãû³Æ","¼Û¸ñ"};
+
+    public String getCell(int col){
+        if(col==0) return this.servId.toString();
+        else if(col==1) return this.servName.toString();
+        else if(col==2) return this.servPrice.toString();
+        else return "";
+    }
 
     public Integer getServId() {
         return servId;

@@ -141,11 +141,6 @@ public class FrmMain extends JFrame implements ActionListener {
     }
     //查看预约
 
-    //删除预约
-    private BeanAppointment curAppointment = null;
-
-    //删除预约
-
     // 查看类别
     private Object tblCategoryTitles[] = BeanCategory.tableTitles;
     private Object tblCategoryData[][];
@@ -179,6 +174,186 @@ public class FrmMain extends JFrame implements ActionListener {
         this.dataTableCategory.repaint();
     }
     //查看类别
+
+    //查看订单
+    private Object tblOrderTitles[] = BeanMyOrder.tableTitles;
+    private Object tblOrderData[][];
+    private List<BeanMyOrder> allOrder = null;
+    DefaultTableModel tabOrderModel=new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            if (column == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    };
+    private JTable dataTableOrder = new JTable(tabOrderModel);
+
+    private void reloadOrderTable(){
+
+        allOrder = PetManageSystemUtil.orderController.loadAll();
+        tblOrderData =  new Object[allOrder.size()][tblOrderTitles.length];
+        for(int i=0;i<allOrder.size();i++){
+            for(int j=0;j<tblOrderTitles.length;j++)
+                tblOrderData[i][j]=allOrder.get(i).getCell(j);
+        }
+        tabOrderModel.setDataVector(tblOrderData,tblOrderTitles);
+        this.dataTableOrder.validate();
+        this.dataTableOrder.repaint();
+    }
+    //查看订单
+
+    //查看用户
+    private Object tblUserTitles[] = BeanMyUser.tableTitles;
+    private Object tblUserData[][];
+    private List<BeanMyUser> allUser = null;
+    DefaultTableModel tabUserModel=new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            if (column == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    };
+    private JTable dataTableUser = new JTable(tabUserModel);
+
+    private void reloadUserTable(){
+
+        allUser = PetManageSystemUtil.userController.loadAll();
+        tblUserData =  new Object[allUser.size()][tblUserTitles.length];
+        for(int i=0;i<allUser.size();i++){
+            for(int j=0;j<tblUserTitles.length;j++)
+                tblUserData[i][j]=allUser.get(i).getCell(j);
+        }
+        tabUserModel.setDataVector(tblUserData,tblUserTitles);
+        this.dataTableUser.validate();
+        this.dataTableUser.repaint();
+    }
+    //查看用户
+
+    //查看操作人员
+    private Object tblOperatorTitles[] = BeanOperator.tableTitles;
+    private Object tblOperatorData[][];
+    private List<BeanOperator> allOperator = null;
+    DefaultTableModel tabOperatorModel=new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            if (column == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    };
+    private JTable dataTableOperator = new JTable(tabOperatorModel);
+
+    private void reloadOperatorTable(){
+
+        allOperator = PetManageSystemUtil.operatorController.loadAll();
+        tblOperatorData =  new Object[allOperator.size()][tblOperatorTitles.length];
+        for(int i=0;i<allOperator.size();i++){
+            for(int j=0;j<tblOperatorTitles.length;j++)
+                tblOperatorData[i][j]=allOperator.get(i).getCell(j);
+        }
+        tabOperatorModel.setDataVector(tblOperatorData,tblOperatorTitles);
+        this.dataTableOperator.validate();
+        this.dataTableOperator.repaint();
+    }
+    //查看操作人员
+
+    //查看宠物
+    private Object tblPetTitles[] = BeanPet.tableTitles;
+    private Object tblPetData[][];
+    private List<BeanPet> allPet = null;
+    DefaultTableModel tabPetModel=new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            if (column == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    };
+    private JTable dataTablePet = new JTable(tabPetModel);
+
+    private void reloadPetTable(){
+
+        allPet = PetManageSystemUtil.petController.loadAll();
+        tblPetData =  new Object[allPet.size()][tblPetTitles.length];
+        for(int i=0;i<allPet.size();i++){
+            for(int j=0;j<tblPetTitles.length;j++)
+                tblPetData[i][j]=allPet.get(i).getCell(j);
+        }
+        tabPetModel.setDataVector(tblPetData,tblPetTitles);
+        this.dataTablePet.validate();
+        this.dataTablePet.repaint();
+    }
+    //查看宠物
+
+    //查看产品
+    private Object tblProductTitles[] = BeanProduct.tableTitles;
+    private Object tblProductData[][];
+    private List<BeanProduct> allProduct = null;
+    DefaultTableModel tabProductModel=new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            if (column == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    };
+    private JTable dataTableProduct = new JTable(tabProductModel);
+
+    private void reloadProductTable(){
+
+        allProduct = PetManageSystemUtil.productController.loadAll();
+        tblProductData =  new Object[allProduct.size()][tblProductTitles.length];
+        for(int i=0;i<allProduct.size();i++){
+            for(int j=0;j<tblProductTitles.length;j++)
+                tblProductData[i][j]=allProduct.get(i).getCell(j);
+        }
+        tabProductModel.setDataVector(tblProductData,tblProductTitles);
+        this.dataTableProduct.validate();
+        this.dataTableProduct.repaint();
+    }
+    //查看产品
+
+    //查看服务
+    private Object tblServiceTitles[] = BeanService.tableTitles;
+    private Object tblServiceData[][];
+    private List<BeanService> allService = null;
+    DefaultTableModel tabServiceModel=new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            if (column == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    };
+    private JTable dataTableService = new JTable(tabServiceModel);
+
+    private void reloadServiceTable(){
+
+        allService = PetManageSystemUtil.serviceController.loadAll();
+        tblServiceData =  new Object[allService.size()][tblServiceTitles.length];
+        for(int i=0;i<allService.size();i++){
+            for(int j=0;j<tblServiceTitles.length;j++)
+                tblServiceData[i][j]=allService.get(i).getCell(j);
+        }
+        tabServiceModel.setDataVector(tblServiceData,tblServiceTitles);
+        this.dataTableService.validate();
+        this.dataTableService.repaint();
+    }
+    //查看服务
 
 
 
@@ -304,7 +479,7 @@ public class FrmMain extends JFrame implements ActionListener {
         if(e.getSource() == view_app){
             this.getContentPane().removeAll();
             this.reloadAppointmentTable();
-            this.getContentPane().add(new JScrollPane(this.dataTableAppointment), BorderLayout.WEST);
+            this.getContentPane().add(new JScrollPane(this.dataTableAppointment), BorderLayout.CENTER);
             this.setVisible(true);
         } else if(e.getSource() == add_app){
             FrmAddAppointment dlg = new FrmAddAppointment(this,"添加预约",true);
@@ -337,6 +512,36 @@ public class FrmMain extends JFrame implements ActionListener {
             this.getContentPane().removeAll();
             this.reloadCategoryTable();
             this.getContentPane().add(new JScrollPane(this.dataTableCategory), BorderLayout.CENTER);
+            this.setVisible(true);
+        } else if (e.getSource() == view_order){
+            this.getContentPane().removeAll();
+            this.reloadOrderTable();
+            this.getContentPane().add(new JScrollPane(this.dataTableOrder), BorderLayout.CENTER);
+            this.setVisible(true);
+        } else if (e.getSource() == view_user) {
+            this.getContentPane().removeAll();
+            this.reloadUserTable();
+            this.getContentPane().add(new JScrollPane(this.dataTableUser), BorderLayout.CENTER);
+            this.setVisible(true);
+        } else if (e.getSource() == view_oper) {
+            this.getContentPane().removeAll();
+            this.reloadOperatorTable();
+            this.getContentPane().add(new JScrollPane(this.dataTableOperator), BorderLayout.CENTER);
+            this.setVisible(true);
+        } else if (e.getSource() == view_pet) {
+            this.getContentPane().removeAll();
+            this.reloadPetTable();
+            this.getContentPane().add(new JScrollPane(this.dataTablePet), BorderLayout.CENTER);
+            this.setVisible(true);
+        } else if (e.getSource() == view_prod) {
+            this.getContentPane().removeAll();
+            this.reloadProductTable();
+            this.getContentPane().add(new JScrollPane(this.dataTableProduct), BorderLayout.CENTER);
+            this.setVisible(true);
+        } else if (e.getSource() == view_serv) {
+            this.getContentPane().removeAll();
+            this.reloadServiceTable();
+            this.getContentPane().add(new JScrollPane(this.dataTableService), BorderLayout.CENTER);
             this.setVisible(true);
         }
     }

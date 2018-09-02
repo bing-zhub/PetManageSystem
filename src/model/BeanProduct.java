@@ -4,12 +4,22 @@ import java.util.Objects;
 
 public class BeanProduct {
     private Integer prodId;
-    private Integer icateD;
     private String prodName;
-    private Integer prodCate;
+    private Integer cateId;
     private String prodBrand;
     private Integer prodPrice;
     private String prodBarcode;
+    public static final String[] tableTitles={"ID","名称","类别","品牌","价格","条形码"};
+
+    public String getCell(int col){
+        if(col==0) return this.prodId.toString();
+        else if(col==1) return this.prodName.toString();
+        else if(col==2) return this.cateId.toString();
+        else if(col==3) return this.prodBrand.toString();
+        else if(col==4) return this.prodPrice.toString();
+        else if(col==5) return this.prodBarcode.toString();
+        else return "";
+    }
 
     public Integer getProdId() {
         return prodId;
@@ -17,14 +27,6 @@ public class BeanProduct {
 
     public void setProdId(Integer prodId) {
         this.prodId = prodId;
-    }
-
-    public Integer getIcateD() {
-        return icateD;
-    }
-
-    public void setIcateD(Integer icateD) {
-        this.icateD = icateD;
     }
 
     public String getProdName() {
@@ -35,12 +37,12 @@ public class BeanProduct {
         this.prodName = prodName;
     }
 
-    public Integer getProdCate() {
-        return prodCate;
+    public Integer getCateId() {
+        return cateId;
     }
 
-    public void setProdCate(Integer prodCate) {
-        this.prodCate = prodCate;
+    public void setCateId(Integer prodCate) {
+        this.cateId = prodCate;
     }
 
     public String getProdBrand() {
@@ -73,9 +75,8 @@ public class BeanProduct {
         if (o == null || getClass() != o.getClass()) return false;
         BeanProduct that = (BeanProduct) o;
         return Objects.equals(prodId, that.prodId) &&
-                Objects.equals(icateD, that.icateD) &&
                 Objects.equals(prodName, that.prodName) &&
-                Objects.equals(prodCate, that.prodCate) &&
+                Objects.equals(cateId, that.cateId) &&
                 Objects.equals(prodBrand, that.prodBrand) &&
                 Objects.equals(prodPrice, that.prodPrice) &&
                 Objects.equals(prodBarcode, that.prodBarcode);
@@ -84,6 +85,6 @@ public class BeanProduct {
     @Override
     public int hashCode() {
 
-        return Objects.hash(prodId, icateD, prodName, prodCate, prodBrand, prodPrice, prodBarcode);
+        return Objects.hash(prodId, prodName, cateId, prodBrand, prodPrice, prodBarcode);
     }
 }

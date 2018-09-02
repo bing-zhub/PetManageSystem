@@ -45,4 +45,16 @@ public class PetController {
         pet = (BeanPet) query.list().get(0);
         return pet;
     }
+
+    public List<BeanPet> loadAll() {
+        List<BeanPet> list = new ArrayList<BeanPet>();
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        String hql = "from BeanPet";
+        Query query = session.createQuery(hql);
+        list = query.list();
+        tx.commit();
+        session.close();
+        return list;
+    }
 }

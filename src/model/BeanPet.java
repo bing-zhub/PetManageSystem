@@ -9,6 +9,15 @@ public class BeanPet {
     private String petAlias;
     private Integer petOwner;
     private byte[] petImg;
+    public static final String[] tableTitles={"ID","昵称","别名","主人"};
+
+    public String getCell(int col){
+        if(col==0) return this.petId.toString();
+        else if(col==1) return this.petNikename.toString();
+        else if(col==2) return this.petAlias.toString();
+        else if(col==3) return this.petOwner.toString();
+        else return "";
+    }
 
     public Integer getPetId() {
         return petId;
