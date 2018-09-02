@@ -4,9 +4,7 @@ import org.hibernate.Session;
 
 import javax.persistence.metamodel.EntityType;
 
-import java.util.Map;
-
-import ui.FrmMain;
+import view.FrmMain;
 
 import static util.HibernateUtil.getSession;
 

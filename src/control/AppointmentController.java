@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import util.BaseException;
 
+import java.sql.Date;
 import java.util.List;
 
 import static util.HibernateUtil.getSession;
@@ -78,6 +79,16 @@ public class AppointmentController {
         Session session = getSession();
         Transaction tx = session.beginTransaction();
         session.update(objAppointmnet);
+        tx.commit();
+        session.close();
+    }
+
+    public void finishAppointment(BeanAppointment appointment){
+        appointment.setAppDoneDate(new Date(System.currentTimeMillis()));
+        appointment.setAppState("finished");
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        session.update(appointment);
         tx.commit();
         session.close();
     }

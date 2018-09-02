@@ -1,4 +1,4 @@
-package ui;
+package view;
 
 
 import model.*;
@@ -75,6 +75,9 @@ public class FrmMain extends JFrame implements ActionListener {
     private JMenuItem del_oper = new JMenuItem("删除管理员");
     private JMenuItem mod_oper = new JMenuItem("修改管理员");
 
+    //popup menu
+    private JPopupMenu app_popup =  null;
+
 
     //status bar
     private JPanel statusBar = new JPanel();
@@ -140,6 +143,8 @@ public class FrmMain extends JFrame implements ActionListener {
         this.dataTableAppointment.repaint();
     }
     //查看预约
+
+
 
     // 查看类别
     private Object tblCategoryTitles[] = BeanCategory.tableTitles;
@@ -465,6 +470,38 @@ public class FrmMain extends JFrame implements ActionListener {
         statusBar.add(label);
         this.getContentPane().add(statusBar,BorderLayout.SOUTH);
 
+        //预约右键菜单
+        dataTableAppointment.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (e.getButton() == java.awt.event.MouseEvent.BUTTON3) {
+                    //通过点击位置找到点击为表格中的行
+                    int focusedRowIndex = dataTableAppointment.rowAtPoint(e.getPoint());
+                    if (focusedRowIndex == -1) {
+                        return;
+                    }
+                    int id = Integer.parseInt((String) tblAppointmentData[focusedRowIndex][0]);
+
+                    //将表格所选项设为当前右键点击的行
+                    dataTableAppointment.setRowSelectionInterval(focusedRowIndex, focusedRowIndex);
+                    //弹出菜单
+                    JMenuItem delMenItem = new JMenuItem();
+                    delMenItem.setText("  完成预约  ");
+                    delMenItem.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            BeanAppointment beanAppointment = PetManageSystemUtil.appointmentController.findAppointmentById(id);
+                            PetManageSystemUtil.appointmentController.finishAppointment(beanAppointment);
+                            reloadAppointmentTable();
+                        }
+                    });
+                    app_popup = new JPopupMenu();
+                    app_popup.add(delMenItem);
+                    app_popup.show(dataTableAppointment, e.getX(), e.getY());
+                }
+            }
+        });
+
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
@@ -484,7 +521,7 @@ public class FrmMain extends JFrame implements ActionListener {
         } else if(e.getSource() == add_app){
             FrmAddAppointment dlg = new FrmAddAppointment(this,"添加预约",true);
             dlg.setVisible(true);
-            this.reloadAppointmentTable();
+            view_app.doClick();
         } else if (e.getSource() == del_app){
             int i = this.dataTableAppointment.getSelectedRow();
             if(i<0){

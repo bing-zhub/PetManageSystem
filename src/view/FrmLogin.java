@@ -1,4 +1,4 @@
-package ui;
+package view;
 
 import util.BaseException;
 import util.PetManageSystemUtil;
