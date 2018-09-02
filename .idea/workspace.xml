@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7b77731-27ef-432f-9e37-c63ae840d985" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/add/FrmAddCategory.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/add/FrmAddOperator.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/mod/FrmModCategory.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/mod/FrmModOperator.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/PetManageSystem/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/out/production/PetManageSystem/hibernate.cfg.xml" />
-      <change beforePath="$PROJECT_DIR$/src/control/AppointmentController.java" afterPath="$PROJECT_DIR$/src/control/AppointmentController.java" />
-      <change beforePath="$PROJECT_DIR$/src/control/CategoryController.java" afterPath="$PROJECT_DIR$/src/control/CategoryController.java" />
       <change beforePath="$PROJECT_DIR$/src/control/OperatorController.java" afterPath="$PROJECT_DIR$/src/control/OperatorController.java" />
-      <change beforePath="$PROJECT_DIR$/src/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/src/hibernate.cfg.xml" />
-      <change beforePath="$PROJECT_DIR$/src/util/PetManageSystemUtil.java" afterPath="$PROJECT_DIR$/src/util/PetManageSystemUtil.java" />
-      <change beforePath="$PROJECT_DIR$/src/view/FrmAddAppointment.java" afterPath="$PROJECT_DIR$/src/view/add/FrmAddAppointment.java" />
       <change beforePath="$PROJECT_DIR$/src/view/FrmMain.java" afterPath="$PROJECT_DIR$/src/view/FrmMain.java" />
-      <change beforePath="$PROJECT_DIR$/src/view/FrmModAppointment.java" afterPath="$PROJECT_DIR$/src/view/mod/FrmModAppointment.java" />
+      <change beforePath="$PROJECT_DIR$/src/view/mod/FrmModOperator.java" afterPath="$PROJECT_DIR$/src/view/mod/FrmModOperator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,9 +42,10 @@
       <file leaf-file-name="FrmMain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view/FrmMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+            <state relative-caret-position="353">
+              <caret line="612" column="23" lean-forward="true" selection-start-line="612" selection-start-column="23" selection-end-line="612" selection-end-column="23" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#3594#3740#0" expanded="true" />
                 <element signature="e#3739#3740#0" expanded="true" />
                 <element signature="e#5692#5841#0" expanded="true" />
@@ -82,42 +72,39 @@
                 <element signature="class#20543:20912" expanded="false" />
                 <element signature="method#actionPerformed#0;class#20543:20912" expanded="false" />
                 <element signature="e#21175#21176#0" expanded="true" />
-                <element signature="e#21241#24234#0" expanded="true" />
-                <element signature="e#24233#24234#0" expanded="true" />
-                <element signature="e#24271#24403#0" expanded="true" />
-                <element signature="e#24402#24403#0" expanded="true" />
+                <element signature="e#21241#26014#0" expanded="true" />
+                <element signature="e#26013#26014#0" expanded="true" />
+                <element signature="e#26051#26183#0" expanded="true" />
+                <element signature="e#26182#26183#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FrmAddOperator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/add/FrmAddOperator.java">
+      <file leaf-file-name="FrmModOperator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/mod/FrmModOperator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FrmModCategory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/mod/FrmModCategory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="42" column="24" lean-forward="true" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FrmAddAppointment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/add/FrmAddAppointment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1680">
-              <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            <state relative-caret-position="278">
+              <caret line="42" column="43" lean-forward="true" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OperatorController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/control/OperatorController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="133" column="24" lean-forward="true" selection-start-line="133" selection-start-column="24" selection-end-line="133" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#login#0;class#OperatorController#0" expanded="false" />
+                <element signature="method#register#0;class#OperatorController#0" expanded="false" />
+                <element signature="method#loadAll#0;class#OperatorController#0" expanded="false" />
+                <element signature="method#delOperator#0;class#OperatorController#0" expanded="false" />
+                <element signature="method#findOperatorById#0;class#OperatorController#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -213,9 +200,9 @@
         <option value="$PROJECT_DIR$/src/util/PetManageSystemUtil.java" />
         <option value="$PROJECT_DIR$/src/control/CategoryController.java" />
         <option value="$PROJECT_DIR$/src/view/mod/FrmModCategory.java" />
-        <option value="$PROJECT_DIR$/src/view/mod/FrmModOperator.java" />
-        <option value="$PROJECT_DIR$/src/control/OperatorController.java" />
         <option value="$PROJECT_DIR$/src/view/add/FrmAddOperator.java" />
+        <option value="$PROJECT_DIR$/src/control/OperatorController.java" />
+        <option value="$PROJECT_DIR$/src/view/mod/FrmModOperator.java" />
         <option value="$PROJECT_DIR$/src/view/FrmMain.java" />
       </list>
     </option>
@@ -553,7 +540,7 @@
       <workItem from="1535701732557" duration="158000" />
       <workItem from="1535701895195" duration="32349000" />
       <workItem from="1535809461570" duration="11581000" />
-      <workItem from="1535855658082" duration="11985000" />
+      <workItem from="1535855658082" duration="13559000" />
     </task>
     <task id="LOCAL-00001" summary="structure ok! login/register ok!">
       <created>1535724217187</created>
@@ -573,7 +560,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56073000" />
+    <option name="totallyTimeSpent" value="57647000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -979,31 +966,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/mod/FrmModOperator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/OperatorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="105" column="35" lean-forward="true" selection-start-line="105" selection-start-column="35" selection-end-line="105" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#login#0;class#OperatorController#0" expanded="false" />
-            <element signature="method#register#0;class#OperatorController#0" expanded="false" />
-            <element signature="method#loadAll#0;class#OperatorController#0" expanded="false" />
-            <element signature="method#delOperator#0;class#OperatorController#0" expanded="false" />
-            <element signature="method#findOperatorById#0;class#OperatorController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/add/FrmAddAppointment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1680">
@@ -1030,11 +992,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/OperatorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="133" column="24" lean-forward="true" selection-start-line="133" selection-start-column="24" selection-end-line="133" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#login#0;class#OperatorController#0" expanded="false" />
+            <element signature="method#register#0;class#OperatorController#0" expanded="false" />
+            <element signature="method#loadAll#0;class#OperatorController#0" expanded="false" />
+            <element signature="method#delOperator#0;class#OperatorController#0" expanded="false" />
+            <element signature="method#findOperatorById#0;class#OperatorController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/mod/FrmModOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="42" column="43" lean-forward="true" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/FrmMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        <state relative-caret-position="353">
+          <caret line="612" column="23" lean-forward="true" selection-start-line="612" selection-start-column="23" selection-end-line="612" selection-end-column="23" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#3594#3740#0" expanded="true" />
             <element signature="e#3739#3740#0" expanded="true" />
             <element signature="e#5692#5841#0" expanded="true" />
@@ -1061,10 +1049,10 @@
             <element signature="class#20543:20912" expanded="false" />
             <element signature="method#actionPerformed#0;class#20543:20912" expanded="false" />
             <element signature="e#21175#21176#0" expanded="true" />
-            <element signature="e#21241#24234#0" expanded="true" />
-            <element signature="e#24233#24234#0" expanded="true" />
-            <element signature="e#24271#24403#0" expanded="true" />
-            <element signature="e#24402#24403#0" expanded="true" />
+            <element signature="e#21241#26014#0" expanded="true" />
+            <element signature="e#26013#26014#0" expanded="true" />
+            <element signature="e#26051#26183#0" expanded="true" />
+            <element signature="e#26182#26183#0" expanded="true" />
           </folding>
         </state>
       </provider>

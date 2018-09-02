@@ -608,12 +608,45 @@ public class FrmMain extends JFrame implements ActionListener {
                             FrmModOperator dlg = new FrmModOperator(FrmMain.this,"修改管理员",true, id);
                             dlg.setVisible(true);
                             reloadCategoryTable();
+                            view_oper.doClick();
+                        }
+                    });
+
+                    JMenuItem levUpMenItem = new JMenuItem();
+                    levUpMenItem.setText("  升级  ");
+                    levUpMenItem.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            try{
+                                PetManageSystemUtil.operatorController.levOperator(PetManageSystemUtil.operatorController.findOperatorById(id),1);
+                                reloadOperatorTable();
+                            }catch (BaseException e1){
+                                JOptionPane.showMessageDialog(null, e1.getMessage(), "错误",JOptionPane.ERROR_MESSAGE);
+                                return;
+                            }
+                        }
+                    });
+
+                    JMenuItem levDoMenItem = new JMenuItem();
+                    levDoMenItem.setText("  降级  ");
+                    levDoMenItem.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            try{
+                                PetManageSystemUtil.operatorController.levOperator(PetManageSystemUtil.operatorController.findOperatorById(id),-1);
+                                reloadOperatorTable();
+                            }catch (BaseException e1){
+                                JOptionPane.showMessageDialog(null, "最低为1级", "错误",JOptionPane.ERROR_MESSAGE);
+                                return;
+                            }
                         }
                     });
 
                     app_popup = new JPopupMenu();
                     app_popup.add(delMenItem);
                     app_popup.add(modMenItem);
+                    app_popup.add(levDoMenItem);
+                    app_popup.add(levUpMenItem);
                     app_popup.show(dataTableOperator, e.getX(), e.getY());
                 }
             }

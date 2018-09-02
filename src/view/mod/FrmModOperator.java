@@ -61,7 +61,7 @@ public class FrmModOperator extends JDialog implements ActionListener{
             this.setVisible(false);
             return;
         }else if(e.getSource() == this.btnOk){
-            if(editConfirmPassword.getPassword() != editPassword.getPassword()){
+            if(!editConfirmPassword.getText().equals(editPassword.getText())){
                 JOptionPane.showMessageDialog(null,"两次密码输入不一致","错误",JOptionPane.ERROR_MESSAGE);
             }
             objOperator.setOpPwd(editPassword.getText());

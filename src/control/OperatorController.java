@@ -119,4 +119,18 @@ public class OperatorController {
             System.out.println(e.getMessage());
         }
     }
+
+    public void levOperator(BeanOperator operator,int i) throws BaseException{
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        int j = operator.getOpLevel()+i;
+        operator.setOpLevel(j);
+        if(j==0)
+            throw new BaseException("ื๎ตอฮช1");
+        else
+            session.update(operator);
+
+        tx.commit();
+        session.close();
+    }
 }
