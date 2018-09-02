@@ -1,6 +1,11 @@
 package util;
 
 import control.*;
+import model.BeanCategory;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import static util.HibernateUtil.getSession;
 
 public class PetManageSystemUtil {
     public static AppointmentController appointmentController = new AppointmentController();
@@ -11,4 +16,13 @@ public class PetManageSystemUtil {
     public static ProductController productController = new ProductController();
     public static ServiceController serviceController = new ServiceController();
     public static UserController userController = new UserController();
+
+
+    public static void update(Object o) {
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        session.update(o);
+        tx.commit();
+        session.close();
+    }
 }

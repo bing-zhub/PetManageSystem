@@ -34,4 +34,41 @@ public class CategoryController {
             e.printStackTrace();
         }
     }
+
+    public void add(BeanCategory cate) throws BaseException{
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from BeanCategory b where b.cateName = :name");
+        query.setParameter("name", cate.getCateName());
+        if(query.list().size()!=0)
+            throw new BaseException("该分类名已存在");
+        else
+            session.save(cate);
+        tx.commit();
+        session.close();
+    }
+
+    public void delCategory(int id){
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("delete BeanCategory b where b.cateId = :id");
+        query.setParameter("id", id);
+        query.executeUpdate();
+        tx.commit();
+        session.close();
+    }
+
+    public BeanCategory findCategoryById(int id) {
+        BeanCategory category = null;
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from BeanCategory b where b.cateId = :id");
+        query.setParameter("id", id);
+        category = (BeanCategory) query.list().get(0);
+        tx.commit();
+        session.close();
+        return category;
+    }
+
+
 }

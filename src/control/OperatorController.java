@@ -74,4 +74,49 @@ public class OperatorController {
         session.close();
         return list;
     }
+
+    public void delOperator(int id) {
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("delete BeanOperator b where b.opId = :id");
+        query.setParameter("id",id);
+        query.executeUpdate();
+        tx.commit();
+        session.close();
+    }
+
+    public BeanOperator findOperatorById(int id) {
+        BeanOperator operator = null;
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from BeanOperator b where b.opId = :id");
+        query.setParameter("id", id );
+        operator = (BeanOperator) query.list().get(0);
+        return operator;
+    }
+
+    public void addOperator(BeanOperator operator) throws BaseException{
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from BeanOperator b where b.opName = :name");
+        query.setParameter("name", operator.getOpName());
+        if(query.list().size()!=0)
+            throw new BaseException("用户名已被占用");
+        else
+            session.save(operator);
+        tx.commit();
+        session.close();
+    }
+
+    public static void main(String[] args) {
+        try{
+            BeanOperator b = new BeanOperator();
+            b.setOpLevel(1);
+            b.setOpPwd("12345678");
+            b.setOpName("amdin");
+            new OperatorController().addOperator(b);
+        }catch (BaseException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

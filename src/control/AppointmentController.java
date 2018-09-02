@@ -52,18 +52,6 @@ public class AppointmentController {
         session.close();
     }
 
-    public static void main(String[] args) {
-        try{
-            AppointmentController appointmentController = new AppointmentController();
-            for(BeanAppointment b : appointmentController.loadAll()){
-                System.out.println(b.getAppId());
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
-
 
     public BeanAppointment findAppointmentById(int id) {
         BeanAppointment appointment = null;
@@ -75,21 +63,26 @@ public class AppointmentController {
         return appointment;
     }
 
-    public void update(BeanAppointment objAppointmnet) {
-        Session session = getSession();
-        Transaction tx = session.beginTransaction();
-        session.update(objAppointmnet);
-        tx.commit();
-        session.close();
-    }
 
     public void finishAppointment(BeanAppointment appointment){
         appointment.setAppDoneDate(new Date(System.currentTimeMillis()));
-        appointment.setAppState("finished");
+        appointment.setAppState("Finished");
         Session session = getSession();
         Transaction tx = session.beginTransaction();
         session.update(appointment);
         tx.commit();
         session.close();
+    }
+
+    public static void main(String[] args) {
+        try{
+            AppointmentController appointmentController = new AppointmentController();
+            for(BeanAppointment b : appointmentController.loadAll()){
+                System.out.println(b.getAppId());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }

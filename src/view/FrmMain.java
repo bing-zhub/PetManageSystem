@@ -4,6 +4,12 @@ package view;
 import model.*;
 import util.BaseException;
 import util.PetManageSystemUtil;
+import view.add.FrmAddAppointment;
+import view.add.FrmAddCategory;
+import view.add.FrmAddOperator;
+import view.mod.FrmModAppointment;
+import view.mod.FrmModCategory;
+import view.mod.FrmModOperator;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -30,53 +36,54 @@ public class FrmMain extends JFrame implements ActionListener {
     //appiontment
     private JMenuItem view_app = new JMenuItem("查看预约");
     private JMenuItem add_app = new JMenuItem("添加预约");
-    private JMenuItem del_app = new JMenuItem("删除预约");
-    private JMenuItem mod_app = new JMenuItem("修改预约");
+//    private JMenuItem del_app = new JMenuItem("删除预约");
+//    private JMenuItem mod_app = new JMenuItem("修改预约");
 
     //category
     private JMenuItem view_cate = new JMenuItem("查看分类");
     private JMenuItem add_cate = new JMenuItem("添加分类");
-    private JMenuItem del_cate = new JMenuItem("删除分类");
-    private JMenuItem mod_cate = new JMenuItem("修改分类");
+//    private JMenuItem del_cate = new JMenuItem("删除分类");
+//    private JMenuItem mod_cate = new JMenuItem("修改分类");
 
     //order
     private JMenuItem view_order = new JMenuItem("查看订单");
     private JMenuItem add_order = new JMenuItem("添加订单");
-    private JMenuItem del_order = new JMenuItem("删除订单");
-    private JMenuItem mod_order = new JMenuItem("修改订单");
+//    private JMenuItem del_order = new JMenuItem("删除订单");
+//    private JMenuItem mod_order = new JMenuItem("修改订单");
 
     //user
     private JMenuItem view_user = new JMenuItem("查看用户");
     private JMenuItem add_user = new JMenuItem("添加用户");
-    private JMenuItem del_user = new JMenuItem("删除用户");
-    private JMenuItem mod_user = new JMenuItem("修改用户");
+//    private JMenuItem del_user = new JMenuItem("删除用户");
+//    private JMenuItem mod_user = new JMenuItem("修改用户");
 
     //pet
     private JMenuItem view_pet = new JMenuItem("查看宠物");
     private JMenuItem add_pet = new JMenuItem("添加宠物");
-    private JMenuItem del_pet = new JMenuItem("删除宠物");
-    private JMenuItem mod_pet = new JMenuItem("修改宠物");
+//    private JMenuItem del_pet = new JMenuItem("删除宠物");
+//    private JMenuItem mod_pet = new JMenuItem("修改宠物");
 
     //product
     private JMenuItem view_prod = new JMenuItem("查看产品");
     private JMenuItem add_prod = new JMenuItem("添加产品");
-    private JMenuItem del_prod = new JMenuItem("删除产品");
-    private JMenuItem mod_prod = new JMenuItem("修改产品");
+//    private JMenuItem del_prod = new JMenuItem("删除产品");
+//    private JMenuItem mod_prod = new JMenuItem("修改产品");
 
     //service
     private JMenuItem view_serv = new JMenuItem("查看服务");
     private JMenuItem add_serv = new JMenuItem("添加服务");
-    private JMenuItem del_serv = new JMenuItem("删除服务");
-    private JMenuItem mod_serv = new JMenuItem("修改服务");
+//    private JMenuItem del_serv = new JMenuItem("删除服务");
+//    private JMenuItem mod_serv = new JMenuItem("修改服务");
 
     //operator
     private JMenuItem view_oper = new JMenuItem("查看管理员");
     private JMenuItem add_oper = new JMenuItem("添加管理员");
-    private JMenuItem del_oper = new JMenuItem("删除管理员");
-    private JMenuItem mod_oper = new JMenuItem("修改管理员");
+//    private JMenuItem del_oper = new JMenuItem("删除管理员");
+//    private JMenuItem mod_oper = new JMenuItem("修改管理员");
 
     //popup menu
     private JPopupMenu app_popup =  null;
+    private JPopupMenu vate_popup = null;
 
 
     //status bar
@@ -103,11 +110,7 @@ public class FrmMain extends JFrame implements ActionListener {
     DefaultTableModel tabAppointmentModel=new DefaultTableModel(){
         @Override
         public boolean isCellEditable(int row, int column) {
-            if (column == 1) {
-                return true;
-            } else {
-                return false;
-            }
+             return false;
         }
     };
     private JTable dataTableAppointment = new JTable(tabAppointmentModel);
@@ -153,11 +156,7 @@ public class FrmMain extends JFrame implements ActionListener {
     DefaultTableModel tabCategoryModel=new DefaultTableModel(){
         @Override
         public boolean isCellEditable(int row, int column) {
-            if (column == 1) {
-                return true;
-            } else {
                 return false;
-            }
         }
     };
     private JTable dataTableCategory = new JTable(tabCategoryModel);
@@ -187,11 +186,7 @@ public class FrmMain extends JFrame implements ActionListener {
     DefaultTableModel tabOrderModel=new DefaultTableModel(){
         @Override
         public boolean isCellEditable(int row, int column) {
-            if (column == 1) {
-                return true;
-            } else {
                 return false;
-            }
         }
     };
     private JTable dataTableOrder = new JTable(tabOrderModel);
@@ -217,11 +212,7 @@ public class FrmMain extends JFrame implements ActionListener {
     DefaultTableModel tabUserModel=new DefaultTableModel(){
         @Override
         public boolean isCellEditable(int row, int column) {
-            if (column == 1) {
-                return true;
-            } else {
                 return false;
-            }
         }
     };
     private JTable dataTableUser = new JTable(tabUserModel);
@@ -247,11 +238,7 @@ public class FrmMain extends JFrame implements ActionListener {
     DefaultTableModel tabOperatorModel=new DefaultTableModel(){
         @Override
         public boolean isCellEditable(int row, int column) {
-            if (column == 1) {
-                return true;
-            } else {
                 return false;
-            }
         }
     };
     private JTable dataTableOperator = new JTable(tabOperatorModel);
@@ -277,11 +264,7 @@ public class FrmMain extends JFrame implements ActionListener {
     DefaultTableModel tabPetModel=new DefaultTableModel(){
         @Override
         public boolean isCellEditable(int row, int column) {
-            if (column == 1) {
-                return true;
-            } else {
                 return false;
-            }
         }
     };
     private JTable dataTablePet = new JTable(tabPetModel);
@@ -307,11 +290,7 @@ public class FrmMain extends JFrame implements ActionListener {
     DefaultTableModel tabProductModel=new DefaultTableModel(){
         @Override
         public boolean isCellEditable(int row, int column) {
-            if (column == 1) {
-                return true;
-            } else {
                 return false;
-            }
         }
     };
     private JTable dataTableProduct = new JTable(tabProductModel);
@@ -337,11 +316,7 @@ public class FrmMain extends JFrame implements ActionListener {
     DefaultTableModel tabServiceModel=new DefaultTableModel(){
         @Override
         public boolean isCellEditable(int row, int column) {
-            if (column == 1) {
-                return true;
-            } else {
                 return false;
-            }
         }
     };
     private JTable dataTableService = new JTable(tabServiceModel);
@@ -370,85 +345,85 @@ public class FrmMain extends JFrame implements ActionListener {
         dlgLogin.setVisible(false);
 
         this.Appointment.add(add_app);
-        this.Appointment.add(del_app);
-        this.Appointment.add(mod_app);
+//        this.Appointment.add(del_app);
+//        this.Appointment.add(mod_app);
         this.Appointment.add(view_app);
 
         itemList.add(add_app);
-        itemList.add(del_app);
-        itemList.add(mod_app);
+//        itemList.add(del_app);
+//        itemList.add(mod_app);
         itemList.add(view_app);
 
 
         this.Category.add(add_cate);
-        this.Category.add(del_cate);
-        this.Category.add(mod_cate);
+//        this.Category.add(del_cate);
+//        this.Category.add(mod_cate);
         this.Category.add(view_cate);
 
         itemList.add(add_cate);
-        itemList.add(del_cate);
-        itemList.add(mod_cate);
+//        itemList.add(del_cate);
+//        itemList.add(mod_cate);
         itemList.add(view_cate);
 
 
         this.Order.add(add_order);
-        this.Order.add(del_order);
-        this.Order.add(mod_order);
+//        this.Order.add(del_order);
+//        this.Order.add(mod_order);
         this.Order.add(view_order);
 
         itemList.add(add_order);
-        itemList.add(del_order);
-        itemList.add(mod_order);
+//        itemList.add(del_order);
+//        itemList.add(mod_order);
         itemList.add(view_order);
 
         this.User.add(add_user);
-        this.User.add(del_user);
-        this.User.add(mod_user);
+//        this.User.add(del_user);
+//        this.User.add(mod_user);
         this.User.add(view_user);
 
         itemList.add(add_user);
-        itemList.add(del_user);
-        itemList.add(mod_user);
+//        itemList.add(del_user);
+//        itemList.add(mod_user);
         itemList.add(view_user);
 
         this.Operator.add(add_oper);
-        this.Operator.add(del_oper);
-        this.Operator.add(mod_oper);
+//        this.Operator.add(del_oper);
+//        this.Operator.add(mod_oper);
         this.Operator.add(view_oper);
 
         itemList.add(add_oper);
-        itemList.add(del_oper);
-        itemList.add(mod_oper);
+//        itemList.add(del_oper);
+//        itemList.add(mod_oper);
         itemList.add(view_oper);
 
         this.Pet.add(add_pet);
-        this.Pet.add(del_pet);
-        this.Pet.add(mod_pet);
+//        this.Pet.add(del_pet);
+//        this.Pet.add(mod_pet);
         this.Pet.add(view_pet);
 
         itemList.add(add_pet);
-        itemList.add(del_pet);
-        itemList.add(mod_pet);
+//        itemList.add(del_pet);
+//        itemList.add(mod_pet);
         itemList.add(view_pet);
 
         this.Product.add(add_prod);
-        this.Product.add(del_prod);
-        this.Product.add(mod_prod);
+//        this.Product.add(del_prod);
+//        this.Product.add(mod_prod);
         this.Product.add(view_prod);
 
         itemList.add(add_prod);
-        itemList.add(del_prod);
-        itemList.add(mod_prod);
+//        itemList.add(del_prod);
+//        itemList.add(mod_prod);
         itemList.add(view_prod);
 
         this.Service.add(add_serv);
-        this.Service.add(del_serv);
-        this.Service.add(mod_serv);
+//        this.Service.add(del_serv);
+//        this.Service.add(mod_serv);
         this.Service.add(view_serv);
 
         itemList.add(add_serv);
-        itemList.add(del_serv);
-        itemList.add(mod_serv);
+//        itemList.add(del_serv);
+//        itemList.add(mod_serv);
         itemList.add(view_serv);
 
         addListener(itemList);
@@ -479,6 +454,7 @@ public class FrmMain extends JFrame implements ActionListener {
                     //通过点击位置找到点击为表格中的行
                     int focusedRowIndex = dataTableAppointment.rowAtPoint(e.getPoint());
                     if (focusedRowIndex == -1) {
+                        JOptionPane.showMessageDialog(null, "未选中任何对象", "错误",JOptionPane.ERROR_MESSAGE);
                         return;
                     }
                     int id = Integer.parseInt((String) tblAppointmentData[focusedRowIndex][0]);
@@ -486,21 +462,164 @@ public class FrmMain extends JFrame implements ActionListener {
                     //将表格所选项设为当前右键点击的行
                     dataTableAppointment.setRowSelectionInterval(focusedRowIndex, focusedRowIndex);
                     //弹出菜单
-                    JMenuItem delMenItem = new JMenuItem();
-                    delMenItem.setText("  完成预约  ");
-                    delMenItem.addActionListener(new java.awt.event.ActionListener() {
+                    JMenuItem finishItem = new JMenuItem();
+                    finishItem.setText("  完成预约  ");
+                    finishItem.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                             BeanAppointment beanAppointment = PetManageSystemUtil.appointmentController.findAppointmentById(id);
                             PetManageSystemUtil.appointmentController.finishAppointment(beanAppointment);
                             reloadAppointmentTable();
                         }
                     });
+
+                    JMenuItem delMenItem = new JMenuItem();
+                    delMenItem.setText("  删除预约  ");
+                    delMenItem.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            int option = JOptionPane.showConfirmDialog(null, "是否要删除预约"+id, "取消", JOptionPane.YES_NO_OPTION);
+                            if(option == 0 ){
+                                PetManageSystemUtil.appointmentController.delAppointment(id);
+                                reloadAppointmentTable();
+                            } else
+                                return;
+                        }
+                    });
+
+                    JMenuItem modMenItem = new JMenuItem();
+                    modMenItem.setText("  修改预约  ");
+                    modMenItem.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            FrmModAppointment dlg = new FrmModAppointment(FrmMain.this,"修改预约",true, id);
+                            dlg.setVisible(true);
+                            reloadAppointmentTable();
+                        }
+                    });
                     app_popup = new JPopupMenu();
+                    app_popup.add(finishItem);
                     app_popup.add(delMenItem);
+                    app_popup.add(modMenItem);
                     app_popup.show(dataTableAppointment, e.getX(), e.getY());
                 }
             }
         });
+
+        //分类右键菜单
+        dataTableCategory.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (e.getButton() == java.awt.event.MouseEvent.BUTTON3) {
+                    //通过点击位置找到点击为表格中的行
+                    int focusedRowIndex = dataTableCategory.rowAtPoint(e.getPoint());
+                    if (focusedRowIndex == -1) {
+                        JOptionPane.showMessageDialog(null, "未选中任何对象", "错误",JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    int id = Integer.parseInt((String) tblCategoryData[focusedRowIndex][0]);
+
+                    //将表格所选项设为当前右键点击的行
+                    dataTableCategory.setRowSelectionInterval(focusedRowIndex, focusedRowIndex);
+                    //弹出菜单
+
+                    JMenuItem delMenItem = new JMenuItem();
+                    delMenItem.setText("  删除分类  ");
+                    delMenItem.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            int option = JOptionPane.showConfirmDialog(null, "是否要删除分类"+id+"?", "取消", JOptionPane.YES_NO_OPTION);
+                            if(option == 0 ){
+                                try{
+                                    PetManageSystemUtil.categoryController.delCategory(id);
+                                }catch (Exception e){
+                                    JOptionPane.showMessageDialog(null, "目前不可删除, 有产品或服务属于此类别", "错误",JOptionPane.ERROR_MESSAGE);
+                                    return;
+                                }
+                                reloadCategoryTable();
+                            } else
+                                return;
+                        }
+                    });
+
+                    JMenuItem modMenItem = new JMenuItem();
+                    modMenItem.setText("  修改分类  ");
+                    modMenItem.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            FrmModCategory dlg = new FrmModCategory(FrmMain.this,"修改分类",true, id);
+                            dlg.setVisible(true);
+                            reloadCategoryTable();
+                        }
+                    });
+
+                    app_popup = new JPopupMenu();
+                    app_popup.add(delMenItem);
+                    app_popup.add(modMenItem);
+                    app_popup.show(dataTableCategory, e.getX(), e.getY());
+                }
+            }
+        });
+
+        //操作员右键菜单
+        dataTableOperator.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (e.getButton() == java.awt.event.MouseEvent.BUTTON3) {
+                    //通过点击位置找到点击为表格中的行
+                    int focusedRowIndex = dataTableOperator.rowAtPoint(e.getPoint());
+                    if (focusedRowIndex == -1) {
+                        JOptionPane.showMessageDialog(null, "未选中任何对象", "错误",JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    int id = Integer.parseInt((String) tblOperatorData[focusedRowIndex][0]);
+
+                    //将表格所选项设为当前右键点击的行
+                    dataTableOperator.setRowSelectionInterval(focusedRowIndex, focusedRowIndex);
+                    //弹出菜单
+
+                    JMenuItem delMenItem = new JMenuItem();
+                    delMenItem.setText("  删除管理员  ");
+                    delMenItem.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            int option = JOptionPane.showConfirmDialog(null, "是否要删除管理员"+id+"?", "取消", JOptionPane.YES_NO_OPTION);
+                            if(option == 0 ){
+                                try{
+//                                    if(BeanOperator.currentLoginUser.getOpId() == id){
+//                                        JOptionPane.showMessageDialog(null, "目前不可删除, 此管理员正处于活跃状态", "错误",JOptionPane.ERROR_MESSAGE);
+//                                        return;
+//                                    }else{
+                                        PetManageSystemUtil.operatorController.delOperator(id);
+//                                    }
+                                }catch (Exception e){
+                                    JOptionPane.showMessageDialog(null, "目前不可删除, 此管理员正处于活跃状态", "错误",JOptionPane.ERROR_MESSAGE);
+                                    return;
+                                }
+                                reloadOperatorTable();
+                            } else
+                                return;
+                        }
+                    });
+
+                    JMenuItem modMenItem = new JMenuItem();
+                    modMenItem.setText("  修改管理员  ");
+                    modMenItem.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            FrmModOperator dlg = new FrmModOperator(FrmMain.this,"修改管理员",true, id);
+                            dlg.setVisible(true);
+                            reloadCategoryTable();
+                        }
+                    });
+
+                    app_popup = new JPopupMenu();
+                    app_popup.add(delMenItem);
+                    app_popup.add(modMenItem);
+                    app_popup.show(dataTableOperator, e.getX(), e.getY());
+                }
+            }
+        });
+
+
 
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -522,34 +641,42 @@ public class FrmMain extends JFrame implements ActionListener {
             FrmAddAppointment dlg = new FrmAddAppointment(this,"添加预约",true);
             dlg.setVisible(true);
             view_app.doClick();
-        } else if (e.getSource() == del_app){
-            int i = this.dataTableAppointment.getSelectedRow();
-            if(i<0){
-                JOptionPane.showMessageDialog(null, "请选择要操作的对象", "错误",JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            int id = Integer.parseInt((String) tblAppointmentData[i][0]);
-            int option = JOptionPane.showConfirmDialog(null, "是否要删除预约"+id, "取消", JOptionPane.YES_NO_OPTION);
-            if(option == 0 ){
-                PetManageSystemUtil.appointmentController.delAppointment(id);
-                this.reloadAppointmentTable();
-            } else
-                return;
-        } else if(e.getSource() == mod_app){
-            int i = this.dataTableAppointment.getSelectedRow();
-            if(i<0){
-                JOptionPane.showMessageDialog(null, "请选择要操作的对象", "错误",JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            int id = Integer.parseInt((String) tblAppointmentData[i][0]);
-            FrmModAppointment dlg = new FrmModAppointment(this,"修改预约",true, id);
-            dlg.setVisible(true);
-            this.reloadAppointmentTable();
-        } else if (e.getSource() == view_cate){
+        }
+//        else if (e.getSource() == del_app){
+//            int i = this.dataTableAppointment.getSelectedRow();
+//            if(i<0){
+//                JOptionPane.showMessageDialog(null, "请选择要操作的对象", "错误",JOptionPane.ERROR_MESSAGE);
+//                return;
+//            }
+//            int id = Integer.parseInt((String) tblAppointmentData[i][0]);
+//            int option = JOptionPane.showConfirmDialog(null, "是否要删除预约"+id, "取消", JOptionPane.YES_NO_OPTION);
+//            if(option == 0 ){
+//                PetManageSystemUtil.appointmentController.delAppointment(id);
+//                this.reloadAppointmentTable();
+//            } else
+//                return;
+//        }
+//        else if(e.getSource() == mod_app){
+//            int i = this.dataTableAppointment.getSelectedRow();
+//            if(i<0){
+//                JOptionPane.showMessageDialog(null, "请选择要操作的对象", "错误",JOptionPane.ERROR_MESSAGE);
+//                return;
+//            }
+//            int id = Integer.parseInt((String) tblAppointmentData[i][0]);
+//            FrmModAppointment dlg = new FrmModAppointment(this,"修改预约",true, id);
+//            dlg.setVisible(true);
+//            this.reloadAppointmentTable();
+//        }
+        else if (e.getSource() == view_cate){
             this.getContentPane().removeAll();
             this.reloadCategoryTable();
             this.getContentPane().add(new JScrollPane(this.dataTableCategory), BorderLayout.CENTER);
             this.setVisible(true);
+        } else if (e.getSource() == add_cate) {
+            this.getContentPane().removeAll();
+            FrmAddCategory dlg = new FrmAddCategory(this,"添加分类",true);
+            dlg.setVisible(true);
+            view_cate.doClick();
         } else if (e.getSource() == view_order){
             this.getContentPane().removeAll();
             this.reloadOrderTable();
@@ -565,6 +692,12 @@ public class FrmMain extends JFrame implements ActionListener {
             this.reloadOperatorTable();
             this.getContentPane().add(new JScrollPane(this.dataTableOperator), BorderLayout.CENTER);
             this.setVisible(true);
+        } else if(e.getSource() == add_oper){
+            this.getContentPane().removeAll();
+            FrmAddOperator dlg = new FrmAddOperator(this,"添加管理员",true);
+            dlg.setVisible(true);
+            reloadOperatorTable();
+            view_oper.doClick();
         } else if (e.getSource() == view_pet) {
             this.getContentPane().removeAll();
             this.reloadPetTable();

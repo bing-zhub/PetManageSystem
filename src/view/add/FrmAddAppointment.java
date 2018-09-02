@@ -1,4 +1,4 @@
-package view;
+package view.add;
 
 import model.BeanAppointment;
 import model.BeanMyUser;
@@ -11,11 +11,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.sql.Date;
 import java.util.List;
 
-public class FrmModAppointment extends JDialog implements ActionListener{
+public class FrmAddAppointment extends JDialog implements ActionListener{
 
     private JPanel toolBar = new JPanel();
     private JPanel workPane = new JPanel();
@@ -23,26 +25,26 @@ public class FrmModAppointment extends JDialog implements ActionListener{
     private Button btnCancel = new Button("取消");
     private JLabel labelUser = new JLabel("用户:");
     private JLabel labelPet = new JLabel("宠物:");
-    private JLabel labelService = new JLabel("服务:");
-    private JLabel labelPrice = new JLabel("价格:");
-    private JLabel price = new JLabel("未指定");
-    private JComboBox userBox = new JComboBox();
-    private JComboBox petBox = new JComboBox();
-    private JComboBox serviceBox = new JComboBox();
+    private JLabel labelService  = new JLabel("服务:");
+    private JLabel labelPrice = new JLabel("价格");
+    private JLabel price = new JLabel("未指定服务");
 
-    private BeanMyUser objUser = null;
-    private BeanService objService = null;
-    private BeanPet objPet = null;
-    private BeanAppointment objAppointmnet = null;
+    JComboBox userBox = new JComboBox();
+    JComboBox petBox = new JComboBox();
+    JComboBox serviceBox = new JComboBox();
+
+    BeanMyUser objUser = null;
+    BeanService objService = null;
+    BeanPet objPet = null;
 
 
-    public FrmModAppointment(JFrame f, String s, boolean b, int id) {
+    public FrmAddAppointment(JFrame f, String s, boolean b) {
         super(f, s, b);
         toolBar.setLayout(new FlowLayout(FlowLayout.RIGHT));
         toolBar.add(btnOk);
         toolBar.add(btnCancel);
         this.getContentPane().add(toolBar, BorderLayout.SOUTH);
-        objAppointmnet = PetManageSystemUtil.appointmentController.findAppointmentById(id);
+
 
         // users
         List<BeanMyUser> users =  PetManageSystemUtil.userController.loadAll();
@@ -108,6 +110,7 @@ public class FrmModAppointment extends JDialog implements ActionListener{
 
         String service = serviceBox.getSelectedItem().toString();
         objService =  PetManageSystemUtil.serviceController.findServiceByName(service);
+
         price.setText(objService.getServPrice().toString() + "元");
         serviceBox.addItemListener(new ItemListener() {
             @Override
@@ -138,6 +141,7 @@ public class FrmModAppointment extends JDialog implements ActionListener{
         this.validate();
         this.btnOk.addActionListener(this);
         this.btnCancel.addActionListener(this);
+
     }
 
     @Override
@@ -145,13 +149,25 @@ public class FrmModAppointment extends JDialog implements ActionListener{
         if(e.getSource()==this.btnCancel) {
             this.setVisible(false);
             return;
-        }else if(e.getSource() == this.btnOk){
-            objAppointmnet.setUserId(objUser.getUserId());
-            objAppointmnet.setPetId(objPet.getPetId());
-            objAppointmnet.setAppServ(objService.getServId());
-            PetManageSystemUtil.appointmentController.update(objAppointmnet);
-            this.setVisible(false);
-            return;
         }
+        else if(e.getSource()==this.btnOk){
+            String selected = (String) this.userBox.getSelectedItem();
+            System.out.println(selected);
+            try {
+                BeanAppointment appointment = new BeanAppointment();
+                appointment.setPetId(objPet.getPetId());
+                appointment.setUserId(objUser.getUserId());
+                appointment.setAppDate(new Date(System.currentTimeMillis()));
+                appointment.setAppDoneDate(new Date(0));
+                appointment.setAppState("Pending");
+                appointment.setAppServ(objService.getServId());
+                PetManageSystemUtil.appointmentController.addAppointment(appointment);
+                this.setVisible(false);
+            } catch (BaseException e1) {
+                JOptionPane.showMessageDialog(null, e1.getMessage(), "????",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+
     }
 }

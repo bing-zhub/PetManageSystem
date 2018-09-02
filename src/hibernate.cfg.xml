@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://115.159.98.171:3306/PetManageSystem</property>
+        <property name="connection.url"><![CDATA[jdbc:mysql://115.159.98.171:3306/PetManageSystem?useUnicode=true&characterEncoding=utf8]]></property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.username">root</property>
