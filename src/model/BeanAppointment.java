@@ -11,16 +11,22 @@ public class BeanAppointment {
     private String appState;
     private Integer userId;
     private Integer appServ;
-    public static final String[] tableTitles={"预约ID","预约宠物","预约日期","预约完成时间","状态","预约用户","预约服务"};
+    public static final String[] tableTitles={"预约ID","预约用户","预约宠物","预约服务","预约时间","完成时间","状态"};
 
     public String getCell(int col){
         if(col==0) return Integer.toString(this.appId);
-        else if(col==1) return Integer.toString(this.petId);
-        else if(col==2) return appDate.toString();
-        else if(col==3) return appDoneDate.toString();
-        else if(col==4) return appState;
-        else if(col==5) return Integer.toString(userId);
-        else if(col==6) return Integer.toString(appServ);
+        else if(col==1) return Integer.toString(userId);
+        else if(col==2) return Integer.toString(this.petId);
+        else if(col==3) return Integer.toString(appServ);
+        else if(col==4) return appDate.toString();
+        else if(col==5) {
+            if(appDoneDate.toString().equals((new Date(0)).toString())){
+                return "未完成";
+            } else {
+                return appDoneDate.toString();
+            }
+        }
+        else if(col==6) return appState;
         else return "";
     }
 

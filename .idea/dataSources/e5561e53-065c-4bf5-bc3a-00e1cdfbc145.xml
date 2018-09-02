@@ -924,7 +924,7 @@
     <table id="233" parent="2" name="appointment">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="234" parent="2" name="categoty">
+    <table id="234" parent="2" name="category">
       <Engine>InnoDB</Engine>
     </table>
     <table id="235" parent="2" name="myOrder">
@@ -1252,7 +1252,7 @@
     <foreign-key id="300" parent="239" name="FK_Reference_8">
       <ColNames>cate_id</ColNames>
       <RefSchemaName>PetManageSystem</RefSchemaName>
-      <RefTableName>categoty</RefTableName>
+      <RefTableName>category</RefTableName>
       <RefColNames>cate_id</RefColNames>
     </foreign-key>
     <column id="301" parent="240" name="serv_id">
@@ -1302,7 +1302,7 @@
     <foreign-key id="310" parent="240" name="FK_Reference_9">
       <ColNames>cate_id</ColNames>
       <RefSchemaName>PetManageSystem</RefSchemaName>
-      <RefTableName>categoty</RefTableName>
+      <RefTableName>category</RefTableName>
       <RefColNames>cate_id</RefColNames>
     </foreign-key>
   </database-model>

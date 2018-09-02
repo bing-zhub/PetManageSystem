@@ -1,10 +1,7 @@
 package ui;
 
 
-import com.sun.deploy.panel.JavaPanel;
-import control.AppointmentController;
-import model.BeanAppointment;
-import model.BeanOperator;
+import model.*;
 import util.BaseException;
 import util.PetManageSystemUtil;
 
@@ -96,10 +93,10 @@ public class FrmMain extends JFrame implements ActionListener {
         }
     }
 
+    //查看预约
     private Object tblAppointmentTitles[] = BeanAppointment.tableTitles;
     private Object tblAppointmentData[][];
-    private List<BeanAppointment> allAppintment = null;
-
+    private List<BeanAppointment> allAppointment = null;
     DefaultTableModel tabAppointmentModel=new DefaultTableModel(){
         @Override
         public boolean isCellEditable(int row, int column) {
@@ -110,33 +107,87 @@ public class FrmMain extends JFrame implements ActionListener {
             }
         }
     };
+    private JTable dataTableAppointment = new JTable(tabAppointmentModel);
 
     private void reloadAppointmentTable(){
         try {
-            allAppintment = PetManageSystemUtil.appointmentController.loadAll();
+            allAppointment = PetManageSystemUtil.appointmentController.loadAll();
         } catch (BaseException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "????",JOptionPane.ERROR_MESSAGE);
             return;
         }
-        tblAppointmentData =  new Object[allAppintment.size()][tblAppointmentTitles.length];
-        for(int i=0;i<allAppintment.size();i++){
-            for(int j=0;j<tblAppointmentTitles.length;j++)
-                tblAppointmentData[i][j]=allAppintment.get(i).getCell(j);
+        tblAppointmentData =  new Object[allAppointment.size()][tblAppointmentTitles.length];
+        for(int i=0;i<allAppointment.size();i++){
+            for(int j=0;j<tblAppointmentTitles.length;j++){
+                if(j==1){
+                    int id = Integer.parseInt(allAppointment.get(i).getCell(1)) ;
+                    BeanMyUser tmpUser = PetManageSystemUtil.userController.findUserById(id);
+                    tblAppointmentData[i][j] = tmpUser.getUserName();
+                }else if(j==2){
+                    int id = Integer.parseInt(allAppointment.get(i).getCell(2)) ;
+                    BeanPet tmpPet = PetManageSystemUtil.petController.findPetById(id);
+                    tblAppointmentData[i][j] = tmpPet.getPetNikename();
+                }else if(j==3){
+                    int id = Integer.parseInt(allAppointment.get(i).getCell(3)) ;
+                    BeanService tmpService = PetManageSystemUtil.serviceController.findServiceById(id);
+                    tblAppointmentData[i][j] = tmpService.getServName();
+                }else
+                    tblAppointmentData[i][j]=allAppointment.get(i).getCell(j);
+            }
         }
         tabAppointmentModel.setDataVector(tblAppointmentData,tblAppointmentTitles);
         this.dataTableAppointment.validate();
         this.dataTableAppointment.repaint();
     }
+    //查看预约
+
+    //删除预约
+    private BeanAppointment curAppointment = null;
+
+    //删除预约
+
+    // 查看类别
+    private Object tblCategoryTitles[] = BeanCategory.tableTitles;
+    private Object tblCategoryData[][];
+    private List<BeanCategory> allCategory = null;
+    DefaultTableModel tabCategoryModel=new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            if (column == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    };
+    private JTable dataTableCategory = new JTable(tabCategoryModel);
+
+    private void reloadCategoryTable(){
+        try {
+            allCategory = PetManageSystemUtil.categoryController.loadAll();
+        } catch (BaseException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "????",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        tblCategoryData =  new Object[allCategory.size()][tblCategoryTitles.length];
+        for(int i=0;i<allCategory.size();i++){
+            for(int j=0;j<tblCategoryTitles.length;j++)
+                tblCategoryData[i][j]=allCategory.get(i).getCell(j);
+        }
+        tabCategoryModel.setDataVector(tblCategoryData,tblCategoryTitles);
+        this.dataTableCategory.validate();
+        this.dataTableCategory.repaint();
+    }
+    //查看类别
 
 
-    private JTable dataTableAppointment = new JTable(tabAppointmentModel);
 
     public FrmMain(){
 
         this.setExtendedState(Frame.MAXIMIZED_BOTH);
         this.setTitle("宠物服务系统");
         dlgLogin=new FrmLogin(this,"登陆",true);
-        dlgLogin.setVisible(true);
+        dlgLogin.setVisible(false);
 
         this.Appointment.add(add_app);
         this.Appointment.add(del_app);
@@ -245,6 +296,7 @@ public class FrmMain extends JFrame implements ActionListener {
             }
         });
         this.setVisible(true);
+
     }
 
     @Override
@@ -253,6 +305,38 @@ public class FrmMain extends JFrame implements ActionListener {
             this.getContentPane().removeAll();
             this.reloadAppointmentTable();
             this.getContentPane().add(new JScrollPane(this.dataTableAppointment), BorderLayout.WEST);
+            this.setVisible(true);
+        } else if(e.getSource() == add_app){
+            FrmAddAppointment dlg = new FrmAddAppointment(this,"添加预约",true);
+            dlg.setVisible(true);
+            this.reloadAppointmentTable();
+        } else if (e.getSource() == del_app){
+            int i = this.dataTableAppointment.getSelectedRow();
+            if(i<0){
+                JOptionPane.showMessageDialog(null, "请选择要操作的对象", "错误",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            int id = Integer.parseInt((String) tblAppointmentData[i][0]);
+            int option = JOptionPane.showConfirmDialog(null, "是否要删除预约"+id, "取消", JOptionPane.YES_NO_OPTION);
+            if(option == 0 ){
+                PetManageSystemUtil.appointmentController.delAppointment(id);
+                this.reloadAppointmentTable();
+            } else
+                return;
+        } else if(e.getSource() == mod_app){
+            int i = this.dataTableAppointment.getSelectedRow();
+            if(i<0){
+                JOptionPane.showMessageDialog(null, "请选择要操作的对象", "错误",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            int id = Integer.parseInt((String) tblAppointmentData[i][0]);
+            FrmModAppointment dlg = new FrmModAppointment(this,"修改预约",true, id);
+            dlg.setVisible(true);
+            this.reloadAppointmentTable();
+        } else if (e.getSource() == view_cate){
+            this.getContentPane().removeAll();
+            this.reloadCategoryTable();
+            this.getContentPane().add(new JScrollPane(this.dataTableCategory), BorderLayout.CENTER);
             this.setVisible(true);
         }
     }

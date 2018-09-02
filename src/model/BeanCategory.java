@@ -6,6 +6,14 @@ public class BeanCategory {
     private Integer cateId;
     private String cateName;
     private String cateDetail;
+    public static final String[] tableTitles={"类别ID","类别名称","类别详情"};
+
+    public String getCell(int col){
+        if(col==0) return Integer.toString(this.cateId);
+        else if(col==1) return cateName;
+        else if(col==2) return cateDetail;
+        else return "";
+    }
 
     public Integer getCateId() {
         return cateId;

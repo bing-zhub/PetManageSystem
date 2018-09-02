@@ -9,6 +9,7 @@
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.username">root</property>
         <property name="connection.password">695345+zb</property>
+        <property name="connection.pool_size">100</property>
         <mapping resource="model/BeanAppointment.hbm.xml"/>
         <mapping resource="model/BeanCategory.hbm.xml"/>
         <mapping resource="model/BeanMyOrder.hbm.xml"/>
