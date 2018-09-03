@@ -7,9 +7,11 @@ import util.PetManageSystemUtil;
 import view.add.FrmAddAppointment;
 import view.add.FrmAddCategory;
 import view.add.FrmAddOperator;
+import view.add.FrmAddOrder;
 import view.mod.FrmModAppointment;
 import view.mod.FrmModCategory;
 import view.mod.FrmModOperator;
+import view.mod.FrmModOrder;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -36,50 +38,41 @@ public class FrmMain extends JFrame implements ActionListener {
     //appiontment
     private JMenuItem view_app = new JMenuItem("查看预约");
     private JMenuItem add_app = new JMenuItem("添加预约");
-//    private JMenuItem del_app = new JMenuItem("删除预约");
-//    private JMenuItem mod_app = new JMenuItem("修改预约");
+
 
     //category
     private JMenuItem view_cate = new JMenuItem("查看分类");
     private JMenuItem add_cate = new JMenuItem("添加分类");
-//    private JMenuItem del_cate = new JMenuItem("删除分类");
-//    private JMenuItem mod_cate = new JMenuItem("修改分类");
 
     //order
     private JMenuItem view_order = new JMenuItem("查看订单");
     private JMenuItem add_order = new JMenuItem("添加订单");
-//    private JMenuItem del_order = new JMenuItem("删除订单");
-//    private JMenuItem mod_order = new JMenuItem("修改订单");
+
 
     //user
     private JMenuItem view_user = new JMenuItem("查看用户");
     private JMenuItem add_user = new JMenuItem("添加用户");
-//    private JMenuItem del_user = new JMenuItem("删除用户");
-//    private JMenuItem mod_user = new JMenuItem("修改用户");
+
 
     //pet
     private JMenuItem view_pet = new JMenuItem("查看宠物");
     private JMenuItem add_pet = new JMenuItem("添加宠物");
-//    private JMenuItem del_pet = new JMenuItem("删除宠物");
-//    private JMenuItem mod_pet = new JMenuItem("修改宠物");
+
 
     //product
     private JMenuItem view_prod = new JMenuItem("查看产品");
     private JMenuItem add_prod = new JMenuItem("添加产品");
-//    private JMenuItem del_prod = new JMenuItem("删除产品");
-//    private JMenuItem mod_prod = new JMenuItem("修改产品");
+
 
     //service
     private JMenuItem view_serv = new JMenuItem("查看服务");
     private JMenuItem add_serv = new JMenuItem("添加服务");
-//    private JMenuItem del_serv = new JMenuItem("删除服务");
-//    private JMenuItem mod_serv = new JMenuItem("修改服务");
+
 
     //operator
     private JMenuItem view_oper = new JMenuItem("查看管理员");
     private JMenuItem add_oper = new JMenuItem("添加管理员");
-//    private JMenuItem del_oper = new JMenuItem("删除管理员");
-//    private JMenuItem mod_oper = new JMenuItem("修改管理员");
+
 
     //popup menu
     private JPopupMenu app_popup =  null;
@@ -345,85 +338,53 @@ public class FrmMain extends JFrame implements ActionListener {
         dlgLogin.setVisible(false);
 
         this.Appointment.add(add_app);
-//        this.Appointment.add(del_app);
-//        this.Appointment.add(mod_app);
         this.Appointment.add(view_app);
 
         itemList.add(add_app);
-//        itemList.add(del_app);
-//        itemList.add(mod_app);
         itemList.add(view_app);
 
 
         this.Category.add(add_cate);
-//        this.Category.add(del_cate);
-//        this.Category.add(mod_cate);
         this.Category.add(view_cate);
 
         itemList.add(add_cate);
-//        itemList.add(del_cate);
-//        itemList.add(mod_cate);
         itemList.add(view_cate);
 
 
         this.Order.add(add_order);
-//        this.Order.add(del_order);
-//        this.Order.add(mod_order);
         this.Order.add(view_order);
 
         itemList.add(add_order);
-//        itemList.add(del_order);
-//        itemList.add(mod_order);
         itemList.add(view_order);
 
         this.User.add(add_user);
-//        this.User.add(del_user);
-//        this.User.add(mod_user);
         this.User.add(view_user);
 
         itemList.add(add_user);
-//        itemList.add(del_user);
-//        itemList.add(mod_user);
         itemList.add(view_user);
 
         this.Operator.add(add_oper);
-//        this.Operator.add(del_oper);
-//        this.Operator.add(mod_oper);
         this.Operator.add(view_oper);
 
         itemList.add(add_oper);
-//        itemList.add(del_oper);
-//        itemList.add(mod_oper);
         itemList.add(view_oper);
 
         this.Pet.add(add_pet);
-//        this.Pet.add(del_pet);
-//        this.Pet.add(mod_pet);
         this.Pet.add(view_pet);
 
         itemList.add(add_pet);
-//        itemList.add(del_pet);
-//        itemList.add(mod_pet);
         itemList.add(view_pet);
 
         this.Product.add(add_prod);
-//        this.Product.add(del_prod);
-//        this.Product.add(mod_prod);
         this.Product.add(view_prod);
 
         itemList.add(add_prod);
-//        itemList.add(del_prod);
-//        itemList.add(mod_prod);
         itemList.add(view_prod);
 
         this.Service.add(add_serv);
-//        this.Service.add(del_serv);
-//        this.Service.add(mod_serv);
         this.Service.add(view_serv);
 
         itemList.add(add_serv);
-//        itemList.add(del_serv);
-//        itemList.add(mod_serv);
         itemList.add(view_serv);
 
         addListener(itemList);
@@ -652,6 +613,61 @@ public class FrmMain extends JFrame implements ActionListener {
             }
         });
 
+        //订单右键菜单
+        dataTableOrder.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (e.getButton() == java.awt.event.MouseEvent.BUTTON3) {
+                    //通过点击位置找到点击为表格中的行
+                    int focusedRowIndex = dataTableOrder.rowAtPoint(e.getPoint());
+                    if (focusedRowIndex == -1) {
+                        JOptionPane.showMessageDialog(null, "未选中任何对象", "错误",JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    int id = Integer.parseInt((String) tblOrderData[focusedRowIndex][0]);
+
+                    //将表格所选项设为当前右键点击的行
+                    dataTableOrder.setRowSelectionInterval(focusedRowIndex, focusedRowIndex);
+                    //弹出菜单
+
+                    JMenuItem delMenItem = new JMenuItem();
+                    delMenItem.setText("  删除订单  ");
+                    delMenItem.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            int option = JOptionPane.showConfirmDialog(null, "是否要删除订单"+id+"?", "取消", JOptionPane.YES_NO_OPTION);
+                            if(option == 0 ){
+                                try{
+                                    PetManageSystemUtil.orderController.delOrder(id);
+                                }catch (Exception e){
+                                    JOptionPane.showMessageDialog(null, "目前不可删除", "错误",JOptionPane.ERROR_MESSAGE);
+                                    return;
+                                }
+                                reloadOrderTable();
+                            } else
+                                return;
+                        }
+                    });
+
+                    JMenuItem modMenItem = new JMenuItem();
+                    modMenItem.setText("  修改订单  ");
+                    modMenItem.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            FrmModOrder dlg = new FrmModOrder(FrmMain.this,"修改订单",true, id);
+                            dlg.setVisible(true);
+                            reloadOrderTable();
+                        }
+                    });
+
+                    app_popup = new JPopupMenu();
+                    app_popup.add(delMenItem);
+                    app_popup.add(modMenItem);
+                    app_popup.show(dataTableOrder, e.getX(), e.getY());
+                }
+            }
+        });
+
 
 
         this.addWindowListener(new WindowAdapter() {
@@ -715,6 +731,10 @@ public class FrmMain extends JFrame implements ActionListener {
             this.reloadOrderTable();
             this.getContentPane().add(new JScrollPane(this.dataTableOrder), BorderLayout.CENTER);
             this.setVisible(true);
+        } else if (e.getSource() == add_order){
+            this.getContentPane().removeAll();
+            FrmAddOrder dlg = new FrmAddOrder(this, "添加订单", true);
+            dlg.setVisible(true);
         } else if (e.getSource() == view_user) {
             this.getContentPane().removeAll();
             this.reloadUserTable();

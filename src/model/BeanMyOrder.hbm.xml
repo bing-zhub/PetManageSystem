@@ -24,5 +24,6 @@
         <property name="orderState">
             <column name="order_state" sql-type="varchar(1024)" length="1024" not-null="true"/>
         </property>
+
     </class>
 </hibernate-mapping>

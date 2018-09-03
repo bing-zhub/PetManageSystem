@@ -1,11 +1,14 @@
 package model;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class BeanService {
     private Integer servId;
     private String servName;
     private Integer servPrice;
+    private Set<BeanAppointment> appointments = new HashSet<BeanAppointment>();
     public static final String[] tableTitles={"ID","Ãû³Æ","¼Û¸ñ"};
 
     public String getCell(int col){
@@ -53,5 +56,13 @@ public class BeanService {
     public int hashCode() {
 
         return Objects.hash(servId, servName, servPrice);
+    }
+
+    public Set<BeanAppointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(Set<BeanAppointment> appointments) {
+        this.appointments = appointments;
     }
 }

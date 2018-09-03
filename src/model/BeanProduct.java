@@ -1,6 +1,8 @@
 package model;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class BeanProduct {
     private Integer prodId;
@@ -87,4 +89,11 @@ public class BeanProduct {
 
         return Objects.hash(prodId, prodName, cateId, prodBrand, prodPrice, prodBarcode);
     }
+
+    @Override
+    public String toString() {
+        return getProdName();
+    }
+
+
 }

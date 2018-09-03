@@ -25,4 +25,12 @@ public class PetManageSystemUtil {
         tx.commit();
         session.close();
     }
+
+    public static void save(Object o) {
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        session.save(o);
+        tx.commit();
+        session.close();
+    }
 }

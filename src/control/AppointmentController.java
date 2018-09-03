@@ -25,14 +25,6 @@ public class AppointmentController {
         return list;
     }
 
-    public void addAppointment(BeanAppointment appointment) throws BaseException{
-        Session session = getSession();
-        Transaction tx = session.beginTransaction();
-        session.save(appointment);
-        tx.commit();
-        session.close();
-    }
-
     public BeanAppointment findAppointmentByName(String name){
         BeanAppointment beanAppointment = new BeanAppointment();
 //        Session session = getSession();

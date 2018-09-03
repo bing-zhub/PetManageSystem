@@ -153,20 +153,15 @@ public class FrmAddAppointment extends JDialog implements ActionListener{
         else if(e.getSource()==this.btnOk){
             String selected = (String) this.userBox.getSelectedItem();
             System.out.println(selected);
-            try {
-                BeanAppointment appointment = new BeanAppointment();
-                appointment.setPetId(objPet.getPetId());
-                appointment.setUserId(objUser.getUserId());
-                appointment.setAppDate(new Date(System.currentTimeMillis()));
-                appointment.setAppDoneDate(new Date(0));
-                appointment.setAppState("Pending");
-                appointment.setAppServ(objService.getServId());
-                PetManageSystemUtil.appointmentController.addAppointment(appointment);
-                this.setVisible(false);
-            } catch (BaseException e1) {
-                JOptionPane.showMessageDialog(null, e1.getMessage(), "????",JOptionPane.ERROR_MESSAGE);
-                return;
-            }
+            BeanAppointment appointment = new BeanAppointment();
+            appointment.setPetId(objPet.getPetId());
+            appointment.setUserId(objUser.getUserId());
+            appointment.setAppDate(new Date(System.currentTimeMillis()));
+            appointment.setAppDoneDate(new Date(0));
+            appointment.setAppState("Pending");
+            appointment.setAppServ(objService.getServId());
+            PetManageSystemUtil.save(appointment);
+            this.setVisible(false);
         }
 
     }

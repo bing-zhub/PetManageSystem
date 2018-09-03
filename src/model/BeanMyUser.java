@@ -76,4 +76,9 @@ public class BeanMyUser {
 
         return Objects.hash(userId, userName, userTel, userEmail, userContact);
     }
+
+    @Override
+    public String toString() {
+        return getUserName();
+    }
 }

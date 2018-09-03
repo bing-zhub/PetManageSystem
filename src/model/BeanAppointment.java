@@ -1,7 +1,9 @@
 package model;
 
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class BeanAppointment {
     private Integer appId;
@@ -11,6 +13,7 @@ public class BeanAppointment {
     private String appState;
     private Integer userId;
     private Integer appServ;
+    private Set<BeanService> services = new HashSet<BeanService>();
     public static final String[] tableTitles={"预约ID","预约用户","预约宠物","预约服务","预约时间","完成时间","状态"};
 
     public String getCell(int col){
@@ -103,5 +106,13 @@ public class BeanAppointment {
     @Override
     public int hashCode() {
         return Objects.hash(appId, petId, appDate, appDoneDate, appState, userId, appServ);
+    }
+
+    public Set<BeanService> getServices() {
+        return services;
+    }
+
+    public void setServices(Set<BeanService> services) {
+        this.services = services;
     }
 }

@@ -1,6 +1,8 @@
 package model;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class BeanMyOrder {
     private Integer orderId;
@@ -87,4 +89,6 @@ public class BeanMyOrder {
 
         return Objects.hash(orderId, orderProd, orderUser, orderNum, orderPrice, orderState);
     }
+
+
 }
