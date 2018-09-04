@@ -189,8 +189,19 @@ public class FrmMain extends JFrame implements ActionListener {
         allOrder = PetManageSystemUtil.orderController.loadAll();
         tblOrderData =  new Object[allOrder.size()][tblOrderTitles.length];
         for(int i=0;i<allOrder.size();i++){
-            for(int j=0;j<tblOrderTitles.length;j++)
-                tblOrderData[i][j]=allOrder.get(i).getCell(j);
+            for(int j=0;j<tblOrderTitles.length;j++){
+                if(j==1) {
+                    int id = Integer.parseInt(allOrder.get(i).getCell(1));
+                    BeanProduct tmpProduct = PetManageSystemUtil.productController.findProductById(id);
+                    tblOrderData[i][j] = tmpProduct.getProdName();
+                }else if(j==2){
+                    int id = Integer.parseInt(allOrder.get(i).getCell(2));
+                    BeanMyUser tmpUser = PetManageSystemUtil.userController.findUserById(id);
+                    tblOrderData[i][j] = tmpUser.getUserName();
+                }else{
+                    tblOrderData[i][j]=allOrder.get(i).getCell(j);
+                }
+            }
         }
         tabOrderModel.setDataVector(tblOrderData,tblOrderTitles);
         this.dataTableOrder.validate();
@@ -650,7 +661,7 @@ public class FrmMain extends JFrame implements ActionListener {
                     });
 
                     JMenuItem modMenItem = new JMenuItem();
-                    modMenItem.setText("  修改订单  ");
+                    modMenItem.setText("  修改订单信息  ");
                     modMenItem.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
@@ -660,9 +671,35 @@ public class FrmMain extends JFrame implements ActionListener {
                         }
                     });
 
+                    JMenuItem ongoMenItem = new JMenuItem();
+                    ongoMenItem.setText("  已发货  ");
+                    ongoMenItem.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            BeanMyOrder order = PetManageSystemUtil.orderController.findOrderById(id);
+                            order.setOrderState("已发货");
+                            PetManageSystemUtil.update(order);
+                            reloadOrderTable();
+                        }
+                    });
+
+                    JMenuItem finishMenItem = new JMenuItem();
+                    finishMenItem.setText("  已完成  ");
+                    finishMenItem.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            BeanMyOrder order = PetManageSystemUtil.orderController.findOrderById(id);
+                            order.setOrderState("已完成");
+                            PetManageSystemUtil.update(order);
+                            reloadOrderTable();
+                        }
+                    });
+
                     app_popup = new JPopupMenu();
                     app_popup.add(delMenItem);
                     app_popup.add(modMenItem);
+                    app_popup.add(ongoMenItem);
+                    app_popup.add(finishMenItem);
                     app_popup.show(dataTableOrder, e.getX(), e.getY());
                 }
             }

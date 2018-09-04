@@ -1,5 +1,6 @@
 package control;
 
+import com.sun.xml.internal.rngom.parse.host.Base;
 import model.BeanMyUser;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -48,6 +49,22 @@ public class UserController {
         Query query  = session.createQuery("from BeanMyUser b where  b.userId = :id");
         query.setParameter("id",id);
         user = (BeanMyUser) query.list().get(0);
+        tx.commit();
+        session.close();
         return user;
+    }
+
+    public void addUser(BeanMyUser user) throws BaseException{
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from BeanMyUser b where b.userName = :name");
+        query.setParameter("name", user.getUserName());
+        if(query.list().size() != 0){
+            throw new BaseException("用户名已存在");
+        }else {
+            session.save(user);
+        }
+        tx.commit();
+        session.close();
     }
 }

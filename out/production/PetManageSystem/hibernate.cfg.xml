@@ -11,6 +11,8 @@
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.pool_size">100</property>
         <property name="hbm2ddl.auto">update</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
         <mapping resource="model/BeanAppointment.hbm.xml"/>
         <mapping resource="model/BeanCategory.hbm.xml"/>
         <mapping resource="model/BeanMyOrder.hbm.xml"/>
