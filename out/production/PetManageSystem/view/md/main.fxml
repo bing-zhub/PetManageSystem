@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.md.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <AnchorPane fx:id="rootPane" prefHeight="127.0" prefWidth="345.0" GridPane.rowIndex="1">
+         <children>
+            <Pane layoutX="14.0" layoutY="14.0" prefHeight="204.0" prefWidth="371.0">
+               <children>
+                  <JFXTextField fx:id="username" focusColor="#002697" labelFloat="true" layoutX="74.0" layoutY="14.0" prefHeight="27.0" prefWidth="223.0" promptText="用户名" />
+                  <JFXButton fx:id="login" buttonType="RAISED" layoutX="52.0" layoutY="141.0" onAction="#userLogin" prefHeight="36.0" prefWidth="71.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="登录" textFill="WHITE" />
+                  <JFXButton fx:id="register" buttonType="RAISED" layoutX="145.0" layoutY="141.0" onAction="#userRegister" prefHeight="36.0" prefWidth="71.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="注册" textFill="WHITE" />
+                  <JFXPasswordField fx:id="password" labelFloat="true" layoutX="74.0" layoutY="75.0" prefHeight="27.0" prefWidth="223.0" promptText="密  码" />
+                  <JFXButton buttonType="RAISED" cancelButton="true" layoutX="236.0" layoutY="141.0" onAction="#quit" prefHeight="36.0" prefWidth="71.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="退出" textFill="WHITE" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>

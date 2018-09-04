@@ -2,36 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7b77731-27ef-432f-9e37-c63ae840d985" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/error-sign.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/addOperator/AddOperator.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/addOperator/addOperator.fxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/addOperator/addOperatorLoader.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/addUser/AddUser.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/addUser/addUser.fxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/addUser/addUserLoader.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/listOperator/ListOperator.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/listOperator/listOperator.fxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/listOperator/listOperatorLoader.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/listUser/ListUser.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/listUser/listUser.fxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/listUser/listUserLoader.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/main/Main.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/main/Stater.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/main/main.fxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/md/Controller.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/md/DrawerContent.fxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/md/DrawerContent.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/md/Main.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/md/main.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/md/main.fxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/mdView.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Hibernate_5_3_2_5_3_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Hibernate_5_3_2_5_3_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/icons/admin.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/icons/appointment.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/icons/category.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/icons/order.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/icons/pet.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/icons/product.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/icons/service.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/icons/user.png" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/PetManageSystem/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/out/production/PetManageSystem/hibernate.cfg.xml" />
-      <change beforePath="$PROJECT_DIR$/src/control/ProductController.java" afterPath="$PROJECT_DIR$/src/control/ProductController.java" />
-      <change beforePath="$PROJECT_DIR$/src/control/UserController.java" afterPath="$PROJECT_DIR$/src/control/UserController.java" />
-      <change beforePath="$PROJECT_DIR$/src/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/src/hibernate.cfg.xml" />
-      <change beforePath="$PROJECT_DIR$/src/view/FrmMain.java" afterPath="$PROJECT_DIR$/src/view/FrmMain.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -95,13 +74,26 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Stater.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Stater.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/ui/main/Stater.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="195">
-                  <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+                <state relative-caret-position="270">
+                  <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
                   <folding />
                 </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="main.fxml" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/ui/main/main.fxml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="210">
+                  <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+              <provider editor-type-id="JavaFX-Scene-Builder">
+                <state />
               </provider>
             </entry>
           </file>
@@ -190,8 +182,8 @@
           <file leaf-file-name="BeanMyUser.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/model/BeanMyUser.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="915">
-                  <caret line="81" column="29" lean-forward="false" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
+                <state relative-caret-position="284">
+                  <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
                   <folding>
                     <element signature="e#2098#2099#0" expanded="true" />
                     <element signature="e#2134#2135#0" expanded="true" />
@@ -399,6 +391,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/ui/icons" />
       <recent name="$PROJECT_DIR$/src/ui/addOperator" />
       <recent name="$PROJECT_DIR$/img" />
       <recent name="$PROJECT_DIR$/src/ui" />
@@ -409,6 +402,7 @@
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/ui/icons" />
       <recent name="$PROJECT_DIR$/src/ui/listUser" />
       <recent name="$PROJECT_DIR$/src/ui/addUser" />
     </key>
@@ -650,7 +644,7 @@
       <workItem from="1535964071730" duration="2419000" />
       <workItem from="1535988766504" duration="74000" />
       <workItem from="1535988859431" duration="4836000" />
-      <workItem from="1536027149545" duration="13061000" />
+      <workItem from="1536027149545" duration="13836000" />
     </task>
     <task id="LOCAL-00001" summary="structure ok! login/register ok!">
       <created>1535724217187</created>
@@ -666,14 +660,22 @@
       <option name="project" value="LOCAL" />
       <updated>1535782380296</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="setup a new GUI">
+      <created>1536070990051</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1536070990052</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93982000" />
+    <option name="totallyTimeSpent" value="94757000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -685,7 +687,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2763562" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2763562" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1953602" sideWeight="0.54314005" order="5" side_tool="true" content_ui="tabs" />
@@ -715,7 +717,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="structure ok! login/register ok!" />
     <MESSAGE value="check out appointment ok! need to be wrapped" />
-    <option name="LAST_COMMIT_MESSAGE" value="check out appointment ok! need to be wrapped" />
+    <MESSAGE value="setup a new GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="setup a new GUI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1110,17 +1113,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/BeanMyUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="81" column="29" lean-forward="false" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
-          <folding>
-            <element signature="e#2098#2099#0" expanded="true" />
-            <element signature="e#2134#2135#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/addUser/AddUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="672">
@@ -1147,17 +1139,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/main/main.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="40" lean-forward="true" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -1174,12 +1155,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/BeanMyUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <element signature="e#2098#2099#0" expanded="true" />
+            <element signature="e#2134#2135#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/main/Stater.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        <state relative-caret-position="270">
+          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/main/main.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
   </component>
