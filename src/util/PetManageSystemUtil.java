@@ -1,7 +1,6 @@
 package util;
 
 import control.*;
-import model.BeanCategory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

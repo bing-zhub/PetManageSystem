@@ -6,7 +6,6 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import util.BaseException;
 
-
 import java.util.List;
 
 import static util.HibernateUtil.getSession;
@@ -20,7 +19,11 @@ public class OperatorController {
         String hql = "from BeanOperator b where b.opName = :name";
         Query query = session.createQuery(hql);
         query.setParameter("name",username);
+        if(query.list().size()==0){
+            throw new BaseException("用户不存在");
+        }
         BeanOperator beanOperator = (BeanOperator) query.list().get(0);
+        System.out.println("ui password:" +pwd +" dbpassword:"+beanOperator.getOpPwd()+" operatorName:"+beanOperator.getOpName());
         if(beanOperator.getOpPwd().equals(pwd)){
            return beanOperator;
         }else{
@@ -92,6 +95,8 @@ public class OperatorController {
         Query query = session.createQuery("from BeanOperator b where b.opId = :id");
         query.setParameter("id", id );
         operator = (BeanOperator) query.list().get(0);
+        tx.commit();
+        session.close();
         return operator;
     }
 
@@ -133,4 +138,5 @@ public class OperatorController {
         tx.commit();
         session.close();
     }
+
 }

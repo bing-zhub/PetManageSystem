@@ -1,4 +1,4 @@
-package ui.add.addOperator;
+package ui.add.addPet;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -12,7 +12,7 @@ import model.BeanOperator;
 import util.BaseException;
 import util.PetManageSystemUtil;
 
-public class AddOperator {
+public class AddPet {
 
     @FXML
     private AnchorPane rootPane;
@@ -72,11 +72,6 @@ public class AddOperator {
             alert.showAndWait();
             return;
         }
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setContentText("Ìí¼Ó³É¹¦");
-        alert.show();
-        return;
     }
 
 }

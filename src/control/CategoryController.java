@@ -12,7 +12,7 @@ import java.util.List;
 import static util.HibernateUtil.getSession;
 
 public class CategoryController {
-    public List<BeanCategory> loadAll() throws BaseException{
+    public List<BeanCategory> loadAll() {
         List<BeanCategory> list = new ArrayList<BeanCategory>();
         Session session = getSession();
         Transaction tx = session.beginTransaction();
@@ -22,17 +22,6 @@ public class CategoryController {
         tx.commit();
         session.close();
         return list;
-    }
-
-    public static void main(String[] args) {
-        try {
-            CategoryController categoryController = new CategoryController();
-            for(BeanCategory b: categoryController.loadAll()){
-                System.out.println(b.getCateName());
-            }
-        }catch (BaseException e){
-            e.printStackTrace();
-        }
     }
 
     public void add(BeanCategory cate) throws BaseException{

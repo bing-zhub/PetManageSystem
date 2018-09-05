@@ -3,8 +3,8 @@ package control;
 import model.BeanService;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import org.hibernate.query.Query;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +41,8 @@ public class ServiceController {
         Query query = session.createQuery("from BeanService b where b.servId = :id");
         query.setParameter("id",id);
         service = (BeanService) query.list().get(0);
+        tx.commit();
+        session.close();
         return service;
     }
 }

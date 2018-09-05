@@ -1,6 +1,5 @@
 package control;
 
-import com.sun.xml.internal.rngom.parse.host.Base;
 import model.BeanMyUser;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

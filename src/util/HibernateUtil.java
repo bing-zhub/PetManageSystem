@@ -12,7 +12,6 @@ public class HibernateUtil {
         try {
             Configuration configuration = new Configuration();
             configuration.configure();
-
             ourSessionFactory = configuration.buildSessionFactory();
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);
@@ -22,4 +21,10 @@ public class HibernateUtil {
     public static Session getSession() throws HibernateException {
         return ourSessionFactory.openSession();
     }
+
+    public static void closeSession() {
+       ourSessionFactory.close();
+    }
+
+
 }

@@ -1,7 +1,6 @@
 package control;
 
 import model.BeanAppointment;
-import model.BeanService;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -25,14 +24,6 @@ public class AppointmentController {
         return list;
     }
 
-    public BeanAppointment findAppointmentByName(String name){
-        BeanAppointment beanAppointment = new BeanAppointment();
-//        Session session = getSession();
-//        Transaction tx = session.beginTransaction();
-//        Query query = session.createQuery("from BeanAppointment b where b.app");
-
-        return beanAppointment;
-    }
 
     public void delAppointment(int app_id){
         Session session = getSession();
@@ -45,13 +36,17 @@ public class AppointmentController {
     }
 
 
-    public BeanAppointment findAppointmentById(int id) {
+    public BeanAppointment findAppointmentById(int id) throws BaseException{
         BeanAppointment appointment = null;
         Session session = getSession();
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("from BeanAppointment  b where b.appId = :id");
         query.setParameter("id",id);
+        if(query.list().size() == 0)
+            throw new BaseException("Ô¤Ô¼²»´æÔÚ");
         appointment = (BeanAppointment) query.list().get(0);
+        tx.commit();
+        session.close();
         return appointment;
     }
 

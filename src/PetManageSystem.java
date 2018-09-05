@@ -1,16 +1,14 @@
 import org.hibernate.Metamodel;
-import org.hibernate.query.Query;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import javax.persistence.metamodel.EntityType;
-
-import view.FrmMain;
 
 import static util.HibernateUtil.getSession;
 
 public class PetManageSystem {
 
-    public static void test(final String[] args) throws Exception {
+    public static void main(final String[] args) throws Exception {
         final Session session = getSession();
         try {
             System.out.println("querying all the managed entities...");
@@ -29,7 +27,7 @@ public class PetManageSystem {
         }
     }
 
-    public static void main(String[] args) {
-        new FrmMain();
-    }
+//    public static void main(String[] args) {
+//        new FrmMain();
+//    }
 }

@@ -27,6 +27,7 @@
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.46-bin.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.46.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/jfoenix-8.0.7.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/commons-codec-1.10.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

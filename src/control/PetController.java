@@ -43,6 +43,8 @@ public class PetController {
         Query query = session.createQuery("from BeanPet  b where b.petId = :id ");
         query.setParameter("id",id);
         pet = (BeanPet) query.list().get(0);
+        tx.commit();
+        session.close();
         return pet;
     }
 
