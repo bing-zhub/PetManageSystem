@@ -1,4 +1,4 @@
-package ui.addOperator;
+package ui.add.addOperator;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;

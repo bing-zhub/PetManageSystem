@@ -1,4 +1,4 @@
-package ui.listUser;
+package ui.list.listUser;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,7 +9,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import model.BeanMyUser;
-import model.BeanOperator;
 import util.PetManageSystemUtil;
 
 import java.net.URL;

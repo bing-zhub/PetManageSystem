@@ -1,4 +1,4 @@
-package ui.addUser;
+package ui.add.addUser;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;

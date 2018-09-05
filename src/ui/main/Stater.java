@@ -12,7 +12,7 @@ public class Stater extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
 
-        Scene scene = new Scene(root,350,285);
+        Scene scene = new Scene(root,910,580);
 
         primaryStage.setScene(scene);
         primaryStage.show();

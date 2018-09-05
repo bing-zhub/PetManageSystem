@@ -1,4 +1,4 @@
-package ui.addUser;
+package ui.list.listOperator;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,13 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class addUserLoader extends Application {
+public class listOperatorLoader extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("addUser.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("listOperator.fxml"));
 
-        Scene scene = new Scene(root,350,285);
+        Scene scene = new Scene(root,350,245);
 
         primaryStage.setScene(scene);
         primaryStage.show();

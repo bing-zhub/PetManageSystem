@@ -1,4 +1,4 @@
-package ui.listOperator;
+package ui.list.listOperator;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

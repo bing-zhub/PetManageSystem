@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane fx:id="rootPane" prefHeight="245.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.addOperator.AddOperator">
+<AnchorPane fx:id="rootPane" prefHeight="275.0" prefWidth="349.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.add.addUser.AddUser">
    <children>
       <VBox layoutY="2.0" prefHeight="265.0" prefWidth="340.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -18,19 +16,24 @@
                   <Insets bottom="10.0" left="20.0" right="20.0" top="25.0" />
                </VBox.margin>
             </JFXTextField>
-            <JFXPasswordField fx:id="password" labelFloat="true" promptText="密码">
-               <VBox.margin>
-                  <Insets left="20.0" right="20.0" top="15.0" />
-               </VBox.margin>
-            </JFXPasswordField>
-            <JFXPasswordField fx:id="confirmPassword" labelFloat="true" promptText="确认密码">
-               <VBox.margin>
-                  <Insets left="20.0" right="20.0" top="20.0" />
-               </VBox.margin>
-            </JFXPasswordField>
+            <JFXTextField fx:id="tel" labelFloat="true" prefHeight="27.0" prefWidth="313.0" promptText="手机号">
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+            </JFXTextField>
+            <JFXTextField fx:id="email" labelFloat="true" prefHeight="27.0" prefWidth="313.0" promptText="电子邮箱">
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </JFXTextField>
+            <JFXTextField fx:id="address" labelFloat="true" prefHeight="27.0" prefWidth="313.0" promptText="住址">
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </JFXTextField>
             <HBox prefHeight="55.0" prefWidth="340.0">
                <children>
-                  <JFXButton fx:id="btnRegister" onAction="#userRegister" prefHeight="58.0" prefWidth="162.0" style="-fx-background-color: #2196F3;" text="注册" textFill="WHITE">
+                  <JFXButton fx:id="btnAdd" onAction="#userAdd" prefHeight="58.0" prefWidth="162.0" style="-fx-background-color: #2196F3;" text="添加" textFill="WHITE">
                      <HBox.margin>
                         <Insets bottom="5.0" right="5.0" />
                      </HBox.margin>
@@ -38,7 +41,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </JFXButton>
-                  <JFXButton fx:id="cancel" onAction="#cancel" prefHeight="58.0" prefWidth="162.0" style="-fx-background-color: #2196F3;" text="取消" textFill="WHITE">
+                  <JFXButton fx:id="btnCancel" onAction="#cancel" prefHeight="58.0" prefWidth="162.0" style="-fx-background-color: #2196F3;" text="取消" textFill="WHITE">
                      <HBox.margin>
                         <Insets bottom="5.0" right="5.0" />
                      </HBox.margin>
@@ -47,12 +50,12 @@
                      </padding>
                   </JFXButton>
                </children>
-               <VBox.margin>
-                  <Insets left="5.0" right="5.0" top="10.0" />
-               </VBox.margin>
                <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                </padding>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
             </HBox>
          </children>
       </VBox>
