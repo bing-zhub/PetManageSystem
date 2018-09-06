@@ -32,6 +32,9 @@ public class AddOperator {
     @FXML
     private JFXButton cancel;
 
+    private Boolean isEditMode = false;
+    private int operatorId = 0;
+
     @FXML
     void cancel(ActionEvent event) {
         Stage stage = (Stage) rootPane.getScene().getWindow();
@@ -63,8 +66,16 @@ public class AddOperator {
         operator.setOpLevel(1);
         operator.setOpName(tUserName);
         operator.setOpPwd(tPassword);
+        String contentText = "";
         try {
-            PetManageSystemUtil.operatorController.addOperator(operator);
+            if(isEditMode){
+                operator.setOpId(operatorId);
+                PetManageSystemUtil.update(operator);
+                contentText = "修改成功";
+            } else {
+                PetManageSystemUtil.operatorController.addOperator(operator);
+                contentText = "添加成功";
+            }
         } catch (BaseException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
@@ -74,9 +85,18 @@ public class AddOperator {
         }
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
-        alert.setContentText("添加成功");
+        alert.setContentText(contentText);
         alert.show();
+        cancel(new ActionEvent());
         return;
+    }
+
+    public void inflateUI(BeanOperator operator){
+        username.setText(operator.getOpName());
+        password.setText(operator.getOpPwd());
+        confirmPassword.setText(operator.getOpPwd());
+        this.isEditMode = true;
+        this.operatorId = operator.getOpId();
     }
 
 }

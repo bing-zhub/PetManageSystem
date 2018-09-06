@@ -25,6 +25,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.*;
+import ui.add.addOperator.AddOperator;
 import util.BaseException;
 import util.PetManageSystemUtil;
 
@@ -204,7 +205,7 @@ public class Main implements Initializable{
         showWindow("/ui/add/addUser/addUser.fxml","添加用户");
     }
 
-    void showWindow(String loc, String title){
+    private void showWindow(String loc, String title){
         try {
             Parent parent = FXMLLoader.load(getClass().getResource(loc));
             Stage stage = new Stage(StageStyle.DECORATED);
@@ -243,10 +244,7 @@ public class Main implements Initializable{
     void deleteOperator(ActionEvent event) {
         BeanOperator operator = operatorTbl.getSelectionModel().getSelectedItem();
         if(operator == null){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("请选择要删除的管理员");
-            alert.showAndWait();
+            alertForSelectNothing("管理员");
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -262,10 +260,7 @@ public class Main implements Initializable{
             operators.remove(operator);
             return;
         }else if(answer.get() == ButtonType.CANCEL){
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setHeaderText(null);
-            a.setContentText("取消删除操作");
-            a.showAndWait();
+            alertForCancel("删除");
             return;
         }
     }
@@ -274,10 +269,7 @@ public class Main implements Initializable{
     void deleteUser (ActionEvent event){
         BeanMyUser user = userTbl.getSelectionModel().getSelectedItem();
         if(user == null){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("请选择要删除的用户");
-            alert.showAndWait();
+            alertForSelectNothing("用户");
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -301,10 +293,7 @@ public class Main implements Initializable{
             users.remove(user);
             return;
         }else if(answer.get() == ButtonType.CANCEL){
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setHeaderText(null);
-            a.setContentText("取消删除操作");
-            a.showAndWait();
+           alertForCancel("删除");
             return;
         }
     }
@@ -313,10 +302,7 @@ public class Main implements Initializable{
     void deletePet(ActionEvent event){
         BeanPet pet = petTbl.getSelectionModel().getSelectedItem();
         if(pet == null){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("请选择要删除的宠物");
-            alert.showAndWait();
+            alertForSelectNothing("宠物");
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -340,10 +326,7 @@ public class Main implements Initializable{
             pets.remove(pet);
             return;
         }else if(answer.get() == ButtonType.CANCEL){
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setHeaderText(null);
-            a.setContentText("取消删除操作");
-            a.showAndWait();
+            alertForCancel("删除");
             return;
         }
     }
@@ -352,10 +335,7 @@ public class Main implements Initializable{
     void deleteService(ActionEvent event){
         BeanService service = serviceTbl.getSelectionModel().getSelectedItem();
         if(service == null){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("请选择要删除的服务");
-            alert.showAndWait();
+            alertForSelectNothing("服务");
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -379,10 +359,7 @@ public class Main implements Initializable{
             services.remove(service);
             return;
         }else if(answer.get() == ButtonType.CANCEL){
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setHeaderText(null);
-            a.setContentText("取消删除操作");
-            a.showAndWait();
+            alertForCancel("删除");
             return;
         }
     }
@@ -391,10 +368,7 @@ public class Main implements Initializable{
     void deleteProduct(ActionEvent event){
         BeanProduct product = productTbl.getSelectionModel().getSelectedItem();
         if(product == null){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("请选择要删除的产品");
-            alert.showAndWait();
+            alertForSelectNothing("产品");
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -418,10 +392,7 @@ public class Main implements Initializable{
             products.remove(product);
             return;
         }else if(answer.get() == ButtonType.CANCEL){
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setHeaderText(null);
-            a.setContentText("取消删除操作");
-            a.showAndWait();
+            alertForCancel("删除");
             return;
         }
     }
@@ -457,12 +428,52 @@ public class Main implements Initializable{
             categories.remove(category);
             return;
         }else if(answer.get() == ButtonType.CANCEL){
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setHeaderText(null);
-            a.setContentText("取消删除操作");
-            a.showAndWait();
+            alertForCancel("分类");
             return;
         }
+    }
+
+    @FXML
+    void editOperator(ActionEvent event){
+        BeanOperator beanOperator = operatorTbl.getSelectionModel().getSelectedItem();
+        if(beanOperator == null){
+            alertForSelectNothing("分类");
+            return;
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/add/addOperator/addOperator.fxml"));
+            Parent parent = loader.load();
+            AddOperator addOperator = (AddOperator) loader.getController();
+            addOperator.inflateUI(beanOperator);
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.getIcons().add(new Image("/ui/icons/icon.png"));
+            stage.setTitle("编辑管理员");
+            stage.setScene(new Scene(parent));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void refreshOperator(ActionEvent event){
+        operators.clear();
+        operators = getOperator();
+        operatorTbl.setItems(operators);
+    }
+
+    private void alertForSelectNothing(String cate){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setContentText("请选择要删除的"+cate);
+        alert.showAndWait();
+    }
+
+    private void alertForCancel(String cate){
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setHeaderText(null);
+        a.setContentText("取消"+cate+"操作");
+        a.showAndWait();
     }
 
     @FXML
@@ -582,6 +593,15 @@ public class Main implements Initializable{
         return operators;
     }
 
+    private void loadData(){
+        this.operators = getOperator();
+        this.users = getUser();
+        this.categories =  getCategory();
+        this.pets =  getPet();
+        this.products = getProduct();
+        this.services=  getService();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -616,12 +636,7 @@ public class Main implements Initializable{
             }
         });
 
-        operators = getOperator();
-        users = getUser();
-        categories =  getCategory();
-        pets =  getPet();
-        products = getProduct();
-        services=  getService();
+        loadData();
 
         initCol();
 

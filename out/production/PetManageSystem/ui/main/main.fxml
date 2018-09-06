@@ -181,6 +181,8 @@
                                     <ContextMenu>
                                       <items>
                                         <MenuItem mnemonicParsing="false" onAction="#deleteOperator" text="删除" />
+                                          <MenuItem mnemonicParsing="false" onAction="#editOperator" text="编辑" />
+                                          <MenuItem mnemonicParsing="false" onAction="#refreshOperator" text="刷新" />
                                       </items>
                                     </ContextMenu>
                                  </contextMenu>

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.layout.*?>
 <AnchorPane fx:id="rootPane" prefHeight="220.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.add.addOperator.AddOperator">
    <children>
       <VBox layoutY="2.0" prefHeight="240.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -25,7 +29,7 @@
             </JFXPasswordField>
             <HBox prefHeight="55.0" prefWidth="340.0">
                <children>
-                  <JFXButton fx:id="btnRegister" onAction="#userRegister" prefHeight="58.0" prefWidth="162.0" style="-fx-background-color: #2196F3;" text="注册" textFill="WHITE">
+                  <JFXButton fx:id="btnRegister" onAction="#userRegister" prefHeight="58.0" prefWidth="162.0" style="-fx-background-color: #2196F3;" text="保存" textFill="WHITE">
                      <HBox.margin>
                         <Insets bottom="5.0" right="5.0" />
                      </HBox.margin>

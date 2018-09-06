@@ -65,4 +65,11 @@ public class AddUser {
         }
     }
 
+    public void inflateUI(BeanMyUser user){
+        username.setText(user.getUserName());
+        tel.setText(user.getUserTel().toString());
+        email.setText(user.getUserEmail());
+        address.setText(user.getUserContact());
+    }
+
 }
