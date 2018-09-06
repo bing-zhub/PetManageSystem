@@ -34,6 +34,9 @@ public class AddUser {
     @FXML
     private JFXButton btnCancel;
 
+    private Boolean isEditMode = false;
+    private int userId = 0;
+
     @FXML
     void cancel(ActionEvent event) {
         Stage stage = (Stage) rootPane.getScene().getWindow();
@@ -51,11 +54,19 @@ public class AddUser {
         user.setUserContact(rAddress);
         user.setUserTel(tTel);
         user.setUserName(tUsername);
+        String contentText = "";
         try{
-            PetManageSystemUtil.userController.addUser(user);
+            if(isEditMode){
+                user.setUserId(userId);
+                PetManageSystemUtil.update(user);
+                contentText = "修改成功";
+            }else{
+                PetManageSystemUtil.userController.addUser(user);
+                contentText = "添加成功";
+            }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
-            alert.setContentText("添加成功");
+            alert.setContentText(contentText);
             alert.showAndWait();
         }catch (BaseException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -63,6 +74,7 @@ public class AddUser {
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
+        cancel(new ActionEvent());
     }
 
     public void inflateUI(BeanMyUser user){
@@ -70,6 +82,8 @@ public class AddUser {
         tel.setText(user.getUserTel().toString());
         email.setText(user.getUserEmail());
         address.setText(user.getUserContact());
+        isEditMode = true;
+        this.userId = user.getUserId();
     }
 
 }

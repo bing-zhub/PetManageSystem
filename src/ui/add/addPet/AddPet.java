@@ -1,36 +1,56 @@
 package ui.add.addPet;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.RequiredFieldValidator;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.BeanMyUser;
 import model.BeanOperator;
-import util.BaseException;
+import model.BeanPet;
+import org.hibernate.Hibernate;
 import util.PetManageSystemUtil;
 
-public class AddPet {
+import java.net.URL;
+import java.sql.Blob;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class AddPet implements Initializable{
 
     @FXML
     private AnchorPane rootPane;
 
     @FXML
-    private JFXTextField username;
+    private JFXComboBox<BeanMyUser> petOwner;
 
     @FXML
-    private JFXPasswordField password;
+    private JFXTextField petNikename;
 
     @FXML
-    private JFXPasswordField confirmPassword;
+    private JFXTextField petAlias;
 
     @FXML
-    private JFXButton btnRegister;
+    private JFXButton btnOk;
 
-    @FXML
-    private JFXButton cancel;
+    private boolean isEditMode = false;
+    private int petId = 0;
+
+    private ObservableList<BeanMyUser> getUser(){
+        ObservableList<BeanMyUser> users = FXCollections.observableArrayList();
+        List<BeanMyUser> list = PetManageSystemUtil.userController.loadAll();
+        users.addAll(list);
+        return users;
+    }
 
     @FXML
     void cancel(ActionEvent event) {
@@ -39,39 +59,85 @@ public class AddPet {
     }
 
     @FXML
-    void userRegister(ActionEvent event) {
-        String tUserName = username.getText();
-        String tPassword = password.getText();
-        String tConfirmPassword = confirmPassword.getText();
+    void petAdd(ActionEvent event) {
+        String nikename = petNikename.getText();
+        String alias = petAlias.getText();
+        BeanMyUser owner = petOwner.getSelectionModel().getSelectedItem();
 
-        if(tConfirmPassword.isEmpty() || tPassword.isEmpty() || tUserName.isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("请输入所有内容");
-            alert.showAndWait();
+        if(nikename.isEmpty() || owner==null || alias.isEmpty()){
             return;
         }
 
-        if(!tConfirmPassword.equals(tPassword)){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("密码输入不一致");
-            alert.showAndWait();
-            return;
+        BeanPet pet = new BeanPet();
+        String contentText = "";
+        pet.setPetAlias(alias);
+
+        pet.setPetNikename(nikename);
+        pet.setPetOwner(owner.getUserId());
+        pet.setPetImg(null);
+
+        if(isEditMode){
+            btnOk.setText("修改");
+            pet.setPetId(petId);
+            PetManageSystemUtil.update(pet);
+            contentText = "修改成功";
+        }else{
+            btnOk.setText("添加");
+            PetManageSystemUtil.save(pet);
+            contentText = "添加成功";
         }
-        BeanOperator operator = new BeanOperator();
-        operator.setOpLevel(1);
-        operator.setOpName(tUserName);
-        operator.setOpPwd(tPassword);
-        try {
-            PetManageSystemUtil.operatorController.addOperator(operator);
-        } catch (BaseException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
-            return;
-        }
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(contentText);
+        alert.show();
+        cancel(new ActionEvent());
+        return;
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        validator.setMessage("此为必填项");
+        petOwner.getValidators().add(validator);
+        petNikename.getValidators().add(validator);
+        petAlias.getValidators().add(validator);
+
+        petOwner.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    petOwner.validate();
+                }
+            }
+        });
+
+
+        petNikename.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    petNikename.validate();
+                }
+            }
+        });
+
+        petAlias.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue){
+                    petAlias.validate();
+                }
+            }
+        });
+
+        petOwner.setItems(getUser());
+    }
+
+    public void inflateUI(BeanPet pet){
+        petAlias.setText(pet.getPetAlias());
+        petNikename.setText(pet.getPetNikename());
+        this.isEditMode = true;
+        this.petId = pet.getPetId();
+    }
 }

@@ -1,0 +1,9 @@
+* {
+    -fx-primary-color: #6200EE;
+    -fx-secondary-color: #03DAC6;
+    -fx-primary-text: #FFFFFF;
+}
+
+. root {
+    -fx-background-color: -fx-primary-color;
+}

@@ -25,7 +25,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.*;
+import ui.add.addCategory.AddCategory;
 import ui.add.addOperator.AddOperator;
+import ui.add.addPet.AddPet;
+import ui.add.addProduct.AddProduct;
+import ui.add.addService.AddService;
+import ui.add.addUser.AddUser;
 import util.BaseException;
 import util.PetManageSystemUtil;
 
@@ -177,7 +182,7 @@ public class Main implements Initializable{
 
     @FXML
     void addCategoryStarter(ActionEvent event) {
-
+        showWindow("/ui/add/addCategory/addCategory.fxml","添加分类");
     }
 
     @FXML
@@ -187,17 +192,17 @@ public class Main implements Initializable{
 
     @FXML
     void addPetStarter(ActionEvent event) {
-        showWindow("/ui/test/test.fxml","添加用户");
+        showWindow("/ui/add/addPet/addPet.fxml","添加宠物");
     }
 
     @FXML
     void addProductStarter(ActionEvent event) {
-        showWindow("/ui/login/login.fxml","登录");
+        showWindow("/ui/add/addProduct/addProduct.fxml","添加产品");
     }
 
     @FXML
     void addServiceStarter(ActionEvent event) {
-
+        showWindow("/ui/add/addService/addService.fxml","添加服务");
     }
 
     @FXML
@@ -240,6 +245,11 @@ public class Main implements Initializable{
         }
     }
 
+
+    /*
+    *  Delete Operation
+    *
+    * */
     @FXML
     void deleteOperator(ActionEvent event) {
         BeanOperator operator = operatorTbl.getSelectionModel().getSelectedItem();
@@ -332,39 +342,6 @@ public class Main implements Initializable{
     }
 
     @FXML
-    void deleteService(ActionEvent event){
-        BeanService service = serviceTbl.getSelectionModel().getSelectedItem();
-        if(service == null){
-            alertForSelectNothing("服务");
-            return;
-        }
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText("确认");
-        alert.setContentText("是否要删除服务"+service.getServName()+" ?");
-        Optional<ButtonType> answer = alert.showAndWait();
-        if (answer.get() == ButtonType.OK){
-            try {
-                PetManageSystemUtil.serviceController.delService(service.getServId());
-            } catch (Exception e) {
-                Alert t = new Alert(Alert.AlertType.ERROR);
-                t.setHeaderText(null);
-                t.setContentText("该服务目前处于活跃状态,不可删除");
-                t.showAndWait();
-                return;
-            }
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setHeaderText(null);
-            a.setContentText("服务"+service.getServName()+"已删除");
-            a.showAndWait();
-            services.remove(service);
-            return;
-        }else if(answer.get() == ButtonType.CANCEL){
-            alertForCancel("删除");
-            return;
-        }
-    }
-
-    @FXML
     void deleteProduct(ActionEvent event){
         BeanProduct product = productTbl.getSelectionModel().getSelectedItem();
         if(product == null){
@@ -433,11 +410,49 @@ public class Main implements Initializable{
         }
     }
 
+
+    @FXML
+    void deleteService(ActionEvent event){
+        BeanService service = serviceTbl.getSelectionModel().getSelectedItem();
+        if(service == null){
+            alertForSelectNothing("服务");
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("确认");
+        alert.setContentText("是否要删除服务"+service.getServName()+" ?");
+        Optional<ButtonType> answer = alert.showAndWait();
+        if (answer.get() == ButtonType.OK){
+            try {
+                PetManageSystemUtil.serviceController.delService(service.getServId());
+            } catch (Exception e) {
+                Alert t = new Alert(Alert.AlertType.ERROR);
+                t.setHeaderText(null);
+                t.setContentText("该服务目前处于活跃状态,不可删除");
+                t.showAndWait();
+                return;
+            }
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("服务"+service.getServName()+"已删除");
+            a.showAndWait();
+            services.remove(service);
+            return;
+        }else if(answer.get() == ButtonType.CANCEL){
+            alertForCancel("删除");
+            return;
+        }
+    }
+
+    /*
+    *  Edit operation
+    * */
+
     @FXML
     void editOperator(ActionEvent event){
         BeanOperator beanOperator = operatorTbl.getSelectionModel().getSelectedItem();
         if(beanOperator == null){
-            alertForSelectNothing("分类");
+            alertForSelectNothing("管理员");
             return;
         }
         try {
@@ -456,10 +471,161 @@ public class Main implements Initializable{
     }
 
     @FXML
+    void editPet(ActionEvent event){
+        BeanPet beanPet = petTbl.getSelectionModel().getSelectedItem();
+        if(beanPet == null){
+            alertForSelectNothing("宠物");
+            return;
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/add/addPet/addPet.fxml"));
+            Parent parent = loader.load();
+            AddPet addPet = (AddPet) loader.getController();
+            addPet.inflateUI(beanPet);
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.getIcons().add(new Image("/ui/icons/icon.png"));
+            stage.setTitle("编辑宠物");
+            stage.setScene(new Scene(parent));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        refreshPet(new ActionEvent());
+    }
+
+    @FXML
+    void editUser(ActionEvent event){
+        BeanMyUser beanUser = userTbl.getSelectionModel().getSelectedItem();
+        if(beanUser == null){
+            alertForSelectNothing("用户");
+            return;
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/add/addUser/addUser.fxml"));
+            Parent parent = loader.load();
+            AddUser addUser = (AddUser) loader.getController();
+            addUser.inflateUI(beanUser);
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.getIcons().add(new Image("/ui/icons/icon.png"));
+            stage.setTitle("编辑用户");
+            stage.setScene(new Scene(parent));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void editService(ActionEvent event){
+        BeanService service = serviceTbl.getSelectionModel().getSelectedItem();
+        if(service == null){
+            alertForSelectNothing("服务");
+            return;
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/add/addService/addService.fxml"));
+            Parent parent = loader.load();
+            AddService addService = (AddService) loader.getController();
+            addService.inflateUI(service);
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.getIcons().add(new Image("/ui/icons/icon.png"));
+            stage.setTitle("编辑服务");
+            stage.setScene(new Scene(parent));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void editProduct(ActionEvent event){
+        BeanProduct product = productTbl.getSelectionModel().getSelectedItem();
+        if(product == null){
+            alertForSelectNothing("产品");
+            return;
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/add/addProduct/addProduct.fxml"));
+            Parent parent = loader.load();
+            AddProduct addProduct = (AddProduct) loader.getController();
+            addProduct.inflateUI(product);
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.getIcons().add(new Image("/ui/icons/icon.png"));
+            stage.setTitle("编辑产品");
+            stage.setScene(new Scene(parent));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void editCategory(ActionEvent event){
+        BeanCategory category = categoryTbl.getSelectionModel().getSelectedItem();
+        if(category == null){
+            alertForSelectNothing("分类");
+            return;
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/add/addCategory/addCategory.fxml"));
+            Parent parent = loader.load();
+            AddCategory addCategory = (AddCategory) loader.getController();
+            addCategory.inflateUI(category);
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.getIcons().add(new Image("/ui/icons/icon.png"));
+            stage.setTitle("编辑分类");
+            stage.setScene(new Scene(parent));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /*
+    * refresh operation
+    * */
+    @FXML
     void refreshOperator(ActionEvent event){
         operators.clear();
         operators = getOperator();
         operatorTbl.setItems(operators);
+    }
+
+    @FXML
+    void refreshPet(ActionEvent event){
+        pets.clear();
+        pets = getPet();
+        petTbl.setItems(pets);
+    }
+
+    @FXML
+    void refreshUser(ActionEvent event){
+        users.clear();
+        users = getUser();
+        userTbl.setItems(users);
+    }
+
+    @FXML
+    void refreshProduct(ActionEvent event){
+        products.clear();
+        products = getProduct();
+        productTbl.setItems(products);
+    }
+
+    @FXML
+    void refreshCategory(ActionEvent event){
+        categories.clear();
+        categories = getCategory();
+        categoryTbl.setItems(categories);
+    }
+
+    @FXML
+    void refreshService(ActionEvent event){
+        services.clear();
+        services = getService();
+        serviceTbl.setItems(services);
     }
 
     private void alertForSelectNothing(String cate){

@@ -54,4 +54,9 @@ public class BeanCategory {
 
         return Objects.hash(cateId, cateName, cateDetail);
     }
+
+    @Override
+    public String toString() {
+        return this.getCateName();
+    }
 }

@@ -210,6 +210,8 @@
                                     <ContextMenu>
                                       <items>
                                         <MenuItem mnemonicParsing="false" onAction="#deleteUser" text="删除" />
+                                          <MenuItem mnemonicParsing="false" onAction="#editUser" text="编辑" />
+                                          <MenuItem mnemonicParsing="false" onAction="#refreshUser" text="刷新" />
                                       </items>
                                     </ContextMenu>
                                  </contextMenu>
@@ -236,6 +238,8 @@
                                     <ContextMenu>
                                       <items>
                                         <MenuItem mnemonicParsing="false" onAction="#deletePet" text="删除" />
+                                          <MenuItem mnemonicParsing="false" onAction="#editPet" text="编辑" />
+                                          <MenuItem mnemonicParsing="false" onAction="#refreshPet" text="刷新" />
                                       </items>
                                     </ContextMenu>
                                  </contextMenu>
@@ -268,9 +272,11 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                                  <contextMenu>
-                                    <ContextMenu onAction="#deleteService">
+                                    <ContextMenu>
                                       <items>
-                                          <MenuItem mnemonicParsing="false" text="删除" />
+                                          <MenuItem mnemonicParsing="false" onAction="#deleteService" text="删除" />
+                                          <MenuItem mnemonicParsing="false" onAction="#editService" text="编辑" />
+                                          <MenuItem mnemonicParsing="false" onAction="#refreshService" text="刷新" />
                                       </items>
                                     </ContextMenu>
                                  </contextMenu>
@@ -295,9 +301,11 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                                  <contextMenu>
-                                    <ContextMenu onAction="#deleteProduct">
+                                    <ContextMenu>
                                       <items>
-                                        <MenuItem mnemonicParsing="false" text="删除" />
+                                        <MenuItem mnemonicParsing="false" text="删除" onAction="#deleteProduct"/>
+                                          <MenuItem mnemonicParsing="false" onAction="#editProduct" text="编辑" />
+                                          <MenuItem mnemonicParsing="false" onAction="#refreshProduct" text="刷新" />
                                       </items>
                                     </ContextMenu>
                                  </contextMenu>
@@ -319,9 +327,11 @@
                                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                               </columnResizePolicy>
                               <contextMenu>
-                                 <ContextMenu onAction="#deleteCategory">
+                                 <ContextMenu>
                                    <items>
-                                     <MenuItem mnemonicParsing="false" text="删除" />
+                                      <MenuItem mnemonicParsing="false" text="删除" onAction="#deleteCategory"/>
+                                      <MenuItem mnemonicParsing="false" text="编辑" onAction="#editCategory"/>
+                                       <MenuItem mnemonicParsing="false" text="刷新" onAction="#refreshCategory"/>
                                    </items>
                                  </ContextMenu>
                               </contextMenu>

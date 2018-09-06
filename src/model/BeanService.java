@@ -65,4 +65,9 @@ public class BeanService {
     public void setAppointments(Set<BeanAppointment> appointments) {
         this.appointments = appointments;
     }
+
+    @Override
+    public String toString() {
+        return this.getServName();
+    }
 }

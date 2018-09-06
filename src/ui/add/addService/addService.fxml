@@ -8,28 +8,28 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" prefHeight="297.0" prefWidth="351.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.add.addPet.AddPet">
+<AnchorPane fx:id="rootPane" prefHeight="297.0" prefWidth="351.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.add.addService.AddService">
    <children>
       <VBox layoutY="2.0" prefHeight="240.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXComboBox fx:id="petOwner" labelFloat="true" prefHeight="27.0" prefWidth="304.0" promptText="主人">
+            <JFXComboBox fx:id="serviceCategory" labelFloat="true" prefHeight="27.0" prefWidth="304.0" promptText="类别">
                <VBox.margin>
                   <Insets bottom="20.0" left="30.0" right="30.0" top="50.0" />
                </VBox.margin>
             </JFXComboBox>
-            <JFXTextField fx:id="petNikename" labelFloat="true" promptText="昵称">
+            <JFXTextField fx:id="serviceName" labelFloat="true" promptText="名称">
                <VBox.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
                </VBox.margin>
             </JFXTextField>
-            <JFXTextField fx:id="petAlias" labelFloat="true" promptText="别名">
+            <JFXTextField fx:id="servicePrice" labelFloat="true" promptText="价格">
                <VBox.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
                </VBox.margin>
             </JFXTextField>
             <HBox prefHeight="55.0" prefWidth="340.0">
                <children>
-                  <JFXButton fx:id="btnOk" onAction="#petAdd" prefHeight="58.0" prefWidth="162.0" style="-fx-background-color: #2196F3;" text="添加" textFill="WHITE">
+                  <JFXButton fx:id="btnOk" onAction="#serviceAdd" prefHeight="58.0" prefWidth="162.0" style="-fx-background-color: #2196F3;" text="添加" textFill="WHITE">
                      <HBox.margin>
                         <Insets bottom="5.0" right="5.0" />
                      </HBox.margin>

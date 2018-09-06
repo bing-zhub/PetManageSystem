@@ -19,7 +19,7 @@
             <column name="pet_owner" sql-type="int(11)" not-null="true"/>
         </property>
         <property name="petImg">
-            <column name="pet_img" sql-type="longblob" not-null="true"/>
+            <column name="pet_img" sql-type="longblob" not-null="false"/>
         </property>
     </class>
 </hibernate-mapping>
