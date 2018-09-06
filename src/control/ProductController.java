@@ -31,4 +31,14 @@ public class ProductController {
         session.close();
         return beanProduct;
     }
+
+    public void delProduct(Integer prodId) {
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("delete BeanProduct b where b.prodId = :id");
+        query.setParameter("id",prodId);
+        query.executeUpdate();
+        tx.commit();
+        session.close();
+    }
 }

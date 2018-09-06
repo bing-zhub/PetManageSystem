@@ -45,4 +45,14 @@ public class ServiceController {
         session.close();
         return service;
     }
+
+    public void delService(Integer servId) {
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("delete BeanService b where b.servId = :id ");
+        query.setParameter("id",servId);
+        query.executeUpdate();
+        tx.commit();
+        session.close();
+    }
 }

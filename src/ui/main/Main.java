@@ -12,6 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,14 +25,17 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.*;
+import util.BaseException;
 import util.PetManageSystemUtil;
 
+import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Main implements Initializable{
@@ -152,6 +157,12 @@ public class Main implements Initializable{
     @FXML
     private TableColumn<BeanCategory, String> CategoryDetailCol;
 
+    private ObservableList<BeanOperator> operators = null;
+    private ObservableList<BeanMyUser> users = null;
+    private ObservableList<BeanPet> pets = null;
+    private ObservableList<BeanService> services = null;
+    private ObservableList<BeanProduct> products = null;
+    private ObservableList<BeanCategory> categories = null;
 
     @FXML
     void AddAppointmentStarter(ActionEvent event) {
@@ -229,6 +240,232 @@ public class Main implements Initializable{
     }
 
     @FXML
+    void deleteOperator(ActionEvent event) {
+        BeanOperator operator = operatorTbl.getSelectionModel().getSelectedItem();
+        if(operator == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("请选择要删除的管理员");
+            alert.showAndWait();
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("确认");
+        alert.setContentText("是否要删除管理员"+operator.getOpName()+" ?");
+        Optional<ButtonType> answer = alert.showAndWait();
+        if (answer.get() == ButtonType.OK){
+            PetManageSystemUtil.operatorController.delOperator(operator.getOpId());
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("管理员"+operator.getOpName()+"已删除");
+            a.showAndWait();
+            operators.remove(operator);
+            return;
+        }else if(answer.get() == ButtonType.CANCEL){
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("取消删除操作");
+            a.showAndWait();
+            return;
+        }
+    }
+
+    @FXML
+    void deleteUser (ActionEvent event){
+        BeanMyUser user = userTbl.getSelectionModel().getSelectedItem();
+        if(user == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("请选择要删除的用户");
+            alert.showAndWait();
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("确认");
+        alert.setContentText("是否要删除用户"+user.getUserName()+" ?");
+        Optional<ButtonType> answer = alert.showAndWait();
+        if (answer.get() == ButtonType.OK){
+            try {
+                PetManageSystemUtil.userController.delUser(user.getUserId());
+            } catch (Exception e) {
+                Alert t = new Alert(Alert.AlertType.ERROR);
+                t.setHeaderText(null);
+                t.setContentText("该用户目前处于活跃状态,不可删除");
+                t.showAndWait();
+                return;
+            }
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("用户"+user.getUserName()+"已删除");
+            a.showAndWait();
+            users.remove(user);
+            return;
+        }else if(answer.get() == ButtonType.CANCEL){
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("取消删除操作");
+            a.showAndWait();
+            return;
+        }
+    }
+
+    @FXML
+    void deletePet(ActionEvent event){
+        BeanPet pet = petTbl.getSelectionModel().getSelectedItem();
+        if(pet == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("请选择要删除的宠物");
+            alert.showAndWait();
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("确认");
+        alert.setContentText("是否要删除宠物"+pet.getPetNikename()+" ?");
+        Optional<ButtonType> answer = alert.showAndWait();
+        if (answer.get() == ButtonType.OK){
+            try {
+                PetManageSystemUtil.petController.delPet(pet.getPetId());
+            } catch (Exception e) {
+                Alert t = new Alert(Alert.AlertType.ERROR);
+                t.setHeaderText(null);
+                t.setContentText("该宠物目前处于活跃状态,不可删除");
+                t.showAndWait();
+                return;
+            }
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("宠物"+pet.getPetNikename()+"已删除");
+            a.showAndWait();
+            pets.remove(pet);
+            return;
+        }else if(answer.get() == ButtonType.CANCEL){
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("取消删除操作");
+            a.showAndWait();
+            return;
+        }
+    }
+
+    @FXML
+    void deleteService(ActionEvent event){
+        BeanService service = serviceTbl.getSelectionModel().getSelectedItem();
+        if(service == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("请选择要删除的服务");
+            alert.showAndWait();
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("确认");
+        alert.setContentText("是否要删除服务"+service.getServName()+" ?");
+        Optional<ButtonType> answer = alert.showAndWait();
+        if (answer.get() == ButtonType.OK){
+            try {
+                PetManageSystemUtil.serviceController.delService(service.getServId());
+            } catch (Exception e) {
+                Alert t = new Alert(Alert.AlertType.ERROR);
+                t.setHeaderText(null);
+                t.setContentText("该服务目前处于活跃状态,不可删除");
+                t.showAndWait();
+                return;
+            }
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("服务"+service.getServName()+"已删除");
+            a.showAndWait();
+            services.remove(service);
+            return;
+        }else if(answer.get() == ButtonType.CANCEL){
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("取消删除操作");
+            a.showAndWait();
+            return;
+        }
+    }
+
+    @FXML
+    void deleteProduct(ActionEvent event){
+        BeanProduct product = productTbl.getSelectionModel().getSelectedItem();
+        if(product == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("请选择要删除的产品");
+            alert.showAndWait();
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("确认");
+        alert.setContentText("是否要删除产品"+product.getProdName()+" ?");
+        Optional<ButtonType> answer = alert.showAndWait();
+        if (answer.get() == ButtonType.OK){
+            try {
+                PetManageSystemUtil.productController.delProduct(product.getProdId());
+            } catch (Exception e) {
+                Alert t = new Alert(Alert.AlertType.ERROR);
+                t.setHeaderText(null);
+                t.setContentText("该产品目前处于活跃状态,不可删除");
+                t.showAndWait();
+                return;
+            }
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("产品"+product.getProdName()+"已删除");
+            a.showAndWait();
+            products.remove(product);
+            return;
+        }else if(answer.get() == ButtonType.CANCEL){
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("取消删除操作");
+            a.showAndWait();
+            return;
+        }
+    }
+
+    @FXML
+    void deleteCategory(ActionEvent event){
+        BeanCategory category = categoryTbl.getSelectionModel().getSelectedItem();
+        if(category == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("请选择要删除的分类");
+            alert.showAndWait();
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("确认");
+        alert.setContentText("是否要删除分类"+category.getCateName()+" ?");
+        Optional<ButtonType> answer = alert.showAndWait();
+        if (answer.get() == ButtonType.OK){
+            try {
+                PetManageSystemUtil.categoryController.delCategory(category.getCateId());
+            } catch (Exception e) {
+                Alert t = new Alert(Alert.AlertType.ERROR);
+                t.setHeaderText(null);
+                t.setContentText("该分类目前处于活跃状态,不可删除");
+                t.showAndWait();
+                return;
+            }
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("分类"+category.getCateName()+"已删除");
+            a.showAndWait();
+            categories.remove(category);
+            return;
+        }else if(answer.get() == ButtonType.CANCEL){
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("取消删除操作");
+            a.showAndWait();
+            return;
+        }
+    }
+
+    @FXML
     void loadOrderInfo(ActionEvent event) {
         try{
             int id = Integer.parseInt(orderId.getText());
@@ -255,37 +492,37 @@ public class Main implements Initializable{
         OperatorIdCol.setCellValueFactory(new PropertyValueFactory<>("opId"));
         OperatornameCol.setCellValueFactory(new PropertyValueFactory<>("opName"));
         OPeratorlevCol.setCellValueFactory(new PropertyValueFactory<>("opLevel"));
-        operatorTbl.setItems(getOperator());
+        operatorTbl.setItems(operators);
 
         UserIdCol.setCellValueFactory(new PropertyValueFactory<>("userId"));
         UsernameCol.setCellValueFactory(new PropertyValueFactory<>("userName"));
         UserEmailCol.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
         UserTelCol.setCellValueFactory(new PropertyValueFactory<>("userTel"));
         UserContactCol.setCellValueFactory(new PropertyValueFactory<>("userContact"));
-        userTbl.setItems(getUser());
+        userTbl.setItems(users);
 
         PetIdCol.setCellValueFactory(new PropertyValueFactory<>("petId"));
         PetNikenameCol.setCellValueFactory(new PropertyValueFactory<>("petNikename"));
         PetAliasCol.setCellValueFactory(new PropertyValueFactory<>("petAlias"));
         PetOwnerCol.setCellValueFactory(new PropertyValueFactory<>("petOwner"));
-        petTbl.setItems(getPet());
+        petTbl.setItems(pets);
 
         ServiceIdCol.setCellValueFactory(new PropertyValueFactory<>("servId"));
         ServiceNameCol.setCellValueFactory(new PropertyValueFactory<>("servName"));
         ServicePriceCol.setCellValueFactory(new PropertyValueFactory<>("servPrice"));
-        serviceTbl.setItems(getService());
+        serviceTbl.setItems(services);
 
         ProductIdCol.setCellValueFactory(new PropertyValueFactory<>("prodId"));
         ProductNameCol.setCellValueFactory(new PropertyValueFactory<>("prodName"));
         ProductBrandCol.setCellValueFactory(new PropertyValueFactory<>("prodBrand"));
         ProductBarcodeCol.setCellValueFactory(new PropertyValueFactory<>("prodBarcode"));
         ProductPriceCol.setCellValueFactory(new PropertyValueFactory<>("prodPrice"));
-        productTbl.setItems(getProduct());
+        productTbl.setItems(products);
 
         CategoryIdCol.setCellValueFactory(new PropertyValueFactory<>("cateId"));
         CategoryDetailCol.setCellValueFactory(new PropertyValueFactory<>("cateDetail"));
         CategoryNameCol.setCellValueFactory(new PropertyValueFactory<>("cateName"));
-        categoryTbl.setItems(getCategory());
+        categoryTbl.setItems(categories);
 
 
 
@@ -378,6 +615,13 @@ public class Main implements Initializable{
                 }
             }
         });
+
+        operators = getOperator();
+        users = getUser();
+        categories =  getCategory();
+        pets =  getPet();
+        products = getProduct();
+        services=  getService();
 
         initCol();
 

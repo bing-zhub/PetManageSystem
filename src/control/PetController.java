@@ -59,4 +59,14 @@ public class PetController {
         session.close();
         return list;
     }
+
+    public void delPet(Integer petId) {
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("delete BeanPet pet where pet.petId = :id");
+        query.setParameter("id",petId);
+        query.executeUpdate();
+        tx.commit();
+        session.close();
+    }
 }

@@ -66,4 +66,14 @@ public class UserController {
         tx.commit();
         session.close();
     }
+
+    public void delUser(Integer userId){
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("delete BeanMyUser u where u.userId = :id");
+        query.setParameter("id",userId);
+        query.executeUpdate();
+        tx.commit();
+        session.close();
+    }
 }

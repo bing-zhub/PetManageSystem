@@ -37,8 +37,7 @@ public class Login {
 
     @FXML
     void quit(ActionEvent event) {
-        Stage stage = (Stage) rootPane.getScene().getWindow();
-        stage.close();
+        System.exit(0);
     }
 
     @FXML
