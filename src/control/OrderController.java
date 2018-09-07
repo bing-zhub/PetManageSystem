@@ -1,6 +1,7 @@
 package control;
 
 import model.BeanMyOrder;
+import model.BeanOrderDetail;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -45,5 +46,26 @@ public class OrderController {
         tx.commit();
         session.close();
         return  order;
+    }
+
+    public List<BeanOrderDetail> loadAllDetails() {
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from BeanOrderDetail");
+        List<BeanOrderDetail> list = query.list();
+        tx.commit();
+        session.close();
+        return list;
+    }
+
+    public List<BeanOrderDetail> loadDetailByOrderId(int orderId) {
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from BeanOrderDetail b where b.order.orderId = :id");
+        query.setParameter("id", orderId);
+        List<BeanOrderDetail> list = query.list();
+        tx.commit();
+        session.close();
+        return list;
     }
 }

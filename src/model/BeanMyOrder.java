@@ -88,5 +88,8 @@ public class BeanMyOrder {
         return Objects.hash(orderId, orderProd, orderUser, orderNum, orderPrice, orderState);
     }
 
-
+    @Override
+    public String toString() {
+        return this.getOrderId().toString();
+    }
 }

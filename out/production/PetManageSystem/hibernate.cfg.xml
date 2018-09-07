@@ -21,6 +21,6 @@
         <mapping resource="model/BeanPet.hbm.xml"/>
         <mapping resource="model/BeanProduct.hbm.xml"/>
         <mapping resource="model/BeanService.hbm.xml"/>
-        <mapping resource="model/BeanOrderDetails.hbm.xml"/>
+        <mapping resource="model/BeanOrderDetail.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

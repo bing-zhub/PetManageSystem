@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.BeanOrderDetail" table="orderDetail" schema="PetManageSystem">
+        <id name="detailId">
+            <column name="detail_id" sql-type="int(11)"/>
+        </id>
+        <property name="prodNum">
+            <column name="prod_num" sql-type="int(11)" not-null="true"/>
+        </property>
+        <many-to-one name="order" class="model.BeanMyOrder" column="order_id" unique="true" lazy="false"/>
+        <many-to-one name="product" class="model.BeanProduct" column="prod_id" unique="true" lazy="false"/>
+    </class>
+</hibernate-mapping>

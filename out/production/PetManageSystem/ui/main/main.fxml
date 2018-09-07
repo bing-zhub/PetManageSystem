@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -250,7 +251,33 @@
                   </Tab>
                   <Tab text="订单详情">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="551.0" prefWidth="775.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <JFXComboBox fx:id="orderBox" labelFloat="true" onAction="#selectOrderId" prefHeight="27.0" prefWidth="320.0" promptText="订单ID">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </JFXComboBox>
+                                    <TableView fx:id="orderTbl" prefHeight="541.0" prefWidth="775.0">
+                                      <columns>
+                                        <TableColumn fx:id="orderProductCol" prefWidth="75.0" text="产品" />
+                                        <TableColumn fx:id="orderNumCol" prefWidth="75.0" text="数量" />
+                                      </columns>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                                       </VBox.margin>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
                      </content>
                   </Tab>
                   <Tab text="预约详情">
@@ -304,7 +331,7 @@
                                  <contextMenu>
                                     <ContextMenu>
                                       <items>
-                                        <MenuItem mnemonicParsing="false" text="删除" onAction="#deleteProduct"/>
+                                        <MenuItem mnemonicParsing="false" onAction="#deleteProduct" text="删除" />
                                           <MenuItem mnemonicParsing="false" onAction="#editProduct" text="编辑" />
                                           <MenuItem mnemonicParsing="false" onAction="#refreshProduct" text="刷新" />
                                       </items>
@@ -330,9 +357,9 @@
                               <contextMenu>
                                  <ContextMenu>
                                    <items>
-                                      <MenuItem mnemonicParsing="false" text="删除" onAction="#deleteCategory"/>
-                                      <MenuItem mnemonicParsing="false" text="编辑" onAction="#editCategory"/>
-                                       <MenuItem mnemonicParsing="false" text="刷新" onAction="#refreshCategory"/>
+                                      <MenuItem mnemonicParsing="false" onAction="#deleteCategory" text="删除" />
+                                      <MenuItem mnemonicParsing="false" onAction="#editCategory" text="编辑" />
+                                       <MenuItem mnemonicParsing="false" onAction="#refreshCategory" text="刷新" />
                                    </items>
                                  </ContextMenu>
                               </contextMenu>

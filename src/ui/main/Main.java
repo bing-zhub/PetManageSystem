@@ -1,5 +1,6 @@
 package ui.main;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
 import javafx.beans.value.ChangeListener;
@@ -12,15 +13,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -31,10 +27,8 @@ import ui.add.addPet.AddPet;
 import ui.add.addProduct.AddProduct;
 import ui.add.addService.AddService;
 import ui.add.addUser.AddUser;
-import util.BaseException;
 import util.PetManageSystemUtil;
 
-import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -121,6 +115,20 @@ public class Main implements Initializable{
     @FXML
     private TableColumn<BeanPet, String> PetAliasCol;
 
+
+    @FXML
+    private TableView<BeanOrderDetail> orderTbl;
+
+    @FXML
+    private JFXComboBox<BeanMyOrder> orderBox;
+
+    @FXML
+    private TableColumn<BeanOrderDetail, BeanProduct> orderProductCol;
+
+    @FXML
+    private TableColumn<BeanOrderDetail, Integer> orderNumCol;
+
+
     @FXML
     private TableView<BeanService> serviceTbl;
 
@@ -172,6 +180,8 @@ public class Main implements Initializable{
     private ObservableList<BeanService> services = null;
     private ObservableList<BeanProduct> products = null;
     private ObservableList<BeanCategory> categories = null;
+    private ObservableList<BeanOrderDetail> orderDetails = null;
+    private ObservableList<BeanService> serviceDetails = null;
 
     @FXML
     void AddAppointmentStarter(ActionEvent event) {
@@ -668,6 +678,15 @@ public class Main implements Initializable{
         }
     }
 
+    @FXML
+    void selectOrderId(ActionEvent event){
+        BeanMyOrder order = orderBox.getSelectionModel().getSelectedItem();
+        System.out.println(order.getOrderId());
+        orderDetails.clear();
+        orderDetails = getOrderDetail( order.getOrderId());
+        orderTbl.setItems(orderDetails);
+    }
+
     private void initCol() {
         OperatorIdCol.setCellValueFactory(new PropertyValueFactory<>("opId"));
         OperatornameCol.setCellValueFactory(new PropertyValueFactory<>("opName"));
@@ -704,6 +723,10 @@ public class Main implements Initializable{
         CategoryDetailCol.setCellValueFactory(new PropertyValueFactory<>("cateDetail"));
         CategoryNameCol.setCellValueFactory(new PropertyValueFactory<>("cateName"));
         categoryTbl.setItems(categories);
+
+        orderProductCol.setCellValueFactory(new PropertyValueFactory<>("product"));
+        orderNumCol.setCellValueFactory(new PropertyValueFactory<>("prodNum"));
+        orderTbl.setItems(orderDetails);
     }
 
     private ObservableList<BeanOperator> getOperator(){
@@ -760,6 +783,34 @@ public class Main implements Initializable{
         return operators;
     }
 
+    private ObservableList<BeanOrderDetail> getOrderDetail(){
+        ObservableList<BeanOrderDetail> details = FXCollections.observableArrayList();
+        List<BeanOrderDetail> list = PetManageSystemUtil.orderController.loadAllDetails();
+        for (BeanOrderDetail e: list){
+            details.add(e);
+        }
+        return details;
+    }
+
+    private ObservableList<BeanMyOrder> getOrder(){
+        ObservableList<BeanMyOrder> details = FXCollections.observableArrayList();
+        List<BeanMyOrder> list = PetManageSystemUtil.orderController.loadAll();
+        for (BeanMyOrder e: list){
+            details.add(e);
+        }
+        return details;
+    }
+
+    private ObservableList<BeanOrderDetail> getOrderDetail(int orderId){
+        ObservableList<BeanOrderDetail> details = FXCollections.observableArrayList();
+        List<BeanOrderDetail> list = PetManageSystemUtil.orderController.loadDetailByOrderId(orderId);
+        for (BeanOrderDetail e: list){
+            details.add(e);
+        }
+        return details;
+    }
+
+
     private void loadData(){
         this.operators = getOperator();
         this.users = getUser();
@@ -767,6 +818,8 @@ public class Main implements Initializable{
         this.pets =  getPet();
         this.products = getProduct();
         this.services=  getService();
+        this.orderDetails = getOrderDetail();
+        orderBox.setItems(getOrder());
     }
 
     @Override
