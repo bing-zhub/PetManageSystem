@@ -73,7 +73,7 @@ public class AddPet implements Initializable{
         pet.setPetAlias(alias);
 
         pet.setPetNikename(nikename);
-        pet.setPetOwner(owner.getUserId());
+        pet.setUser(owner);
         pet.setPetImg(null);
 
         if(isEditMode){

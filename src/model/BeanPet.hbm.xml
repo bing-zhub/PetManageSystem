@@ -15,9 +15,7 @@
         <property name="petAlias">
             <column name="pet_alias" sql-type="varchar(1024)" length="1024" not-null="true"/>
         </property>
-        <property name="petOwner">
-            <column name="pet_owner" sql-type="int(11)" not-null="true"/>
-        </property>
+        <many-to-one name="user" lazy="false" unique="true" column="pet_owner" class="model.BeanMyUser" cascade="all" />
         <property name="petImg">
             <column name="pet_img" sql-type="longblob" not-null="false"/>
         </property>

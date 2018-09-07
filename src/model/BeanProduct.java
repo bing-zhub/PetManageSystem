@@ -5,7 +5,7 @@ import java.util.Objects;
 public class BeanProduct {
     private Integer prodId;
     private String prodName;
-    private Integer cateId;
+    private BeanCategory prodCategory;
     private String prodBrand;
     private Integer prodPrice;
     private String prodBarcode;
@@ -14,7 +14,6 @@ public class BeanProduct {
     public String getCell(int col){
         if(col==0) return this.prodId.toString();
         else if(col==1) return this.prodName.toString();
-        else if(col==2) return this.cateId.toString();
         else if(col==3) return this.prodBrand.toString();
         else if(col==4) return this.prodPrice.toString();
         else if(col==5) return this.prodBarcode.toString();
@@ -37,13 +36,6 @@ public class BeanProduct {
         this.prodName = prodName;
     }
 
-    public Integer getCateId() {
-        return cateId;
-    }
-
-    public void setCateId(Integer prodCate) {
-        this.cateId = prodCate;
-    }
 
     public String getProdBrand() {
         return prodBrand;
@@ -76,7 +68,6 @@ public class BeanProduct {
         BeanProduct that = (BeanProduct) o;
         return Objects.equals(prodId, that.prodId) &&
                 Objects.equals(prodName, that.prodName) &&
-                Objects.equals(cateId, that.cateId) &&
                 Objects.equals(prodBrand, that.prodBrand) &&
                 Objects.equals(prodPrice, that.prodPrice) &&
                 Objects.equals(prodBarcode, that.prodBarcode);
@@ -85,7 +76,7 @@ public class BeanProduct {
     @Override
     public int hashCode() {
 
-        return Objects.hash(prodId, prodName, cateId, prodBrand, prodPrice, prodBarcode);
+        return Objects.hash(prodId, prodName, prodBrand, prodPrice, prodBarcode);
     }
 
     @Override
@@ -94,4 +85,11 @@ public class BeanProduct {
     }
 
 
+    public BeanCategory getProdCategory() {
+        return prodCategory;
+    }
+
+    public void setProdCategory(BeanCategory prodCategory) {
+        this.prodCategory = prodCategory;
+    }
 }

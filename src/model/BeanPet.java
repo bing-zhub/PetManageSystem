@@ -7,17 +7,8 @@ public class BeanPet {
     private Integer petId;
     private String petNikename;
     private String petAlias;
-    private Integer petOwner;
     private byte[] petImg;
-    public static final String[] tableTitles={"ID","昵称","别名","主人"};
-
-    public String getCell(int col){
-        if(col==0) return this.petId.toString();
-        else if(col==1) return this.petNikename.toString();
-        else if(col==2) return this.petAlias.toString();
-        else if(col==3) return this.petOwner.toString();
-        else return "";
-    }
+    private BeanMyUser user;
 
     public Integer getPetId() {
         return petId;
@@ -43,13 +34,6 @@ public class BeanPet {
         this.petAlias = petAlias;
     }
 
-    public Integer getPetOwner() {
-        return petOwner;
-    }
-
-    public void setPetOwner(Integer petOwner) {
-        this.petOwner = petOwner;
-    }
 
     public byte[] getPetImg() {
         return petImg;
@@ -67,15 +51,22 @@ public class BeanPet {
         return Objects.equals(petId, beanPet.petId) &&
                 Objects.equals(petNikename, beanPet.petNikename) &&
                 Objects.equals(petAlias, beanPet.petAlias) &&
-                Objects.equals(petOwner, beanPet.petOwner) &&
                 Arrays.equals(petImg, beanPet.petImg);
     }
 
     @Override
     public int hashCode() {
 
-        int result = Objects.hash(petId, petNikename, petAlias, petOwner);
+        int result = Objects.hash(petId, petNikename, petAlias);
         result = 31 * result + Arrays.hashCode(petImg);
         return result;
+    }
+
+    public BeanMyUser getUser() {
+        return user;
+    }
+
+    public void setUser(BeanMyUser user) {
+        this.user = user;
     }
 }

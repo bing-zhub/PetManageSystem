@@ -1,5 +1,6 @@
 package control;
 
+import model.BeanCategory;
 import model.BeanProduct;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -40,5 +41,15 @@ public class ProductController {
         query.executeUpdate();
         tx.commit();
         session.close();
+    }
+
+    public static void main(String[] args) {
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from BeanProduct b where b.prodId = 1");
+        BeanCategory category = ((BeanProduct) query.list().get(0)).getProdCategory();
+        tx.commit();
+        session.close();
+        System.out.println(category.getCateName());
     }
 }

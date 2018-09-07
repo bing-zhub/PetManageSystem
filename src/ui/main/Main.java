@@ -152,6 +152,9 @@ public class Main implements Initializable{
     private TableColumn<BeanProduct, String> ProductBarcodeCol;
 
     @FXML
+    private TableColumn<BeanProduct, BeanCategory> ProductCategory;
+
+    @FXML
     private TableView<BeanCategory> categoryTbl;
 
     @FXML
@@ -681,7 +684,7 @@ public class Main implements Initializable{
         PetIdCol.setCellValueFactory(new PropertyValueFactory<>("petId"));
         PetNikenameCol.setCellValueFactory(new PropertyValueFactory<>("petNikename"));
         PetAliasCol.setCellValueFactory(new PropertyValueFactory<>("petAlias"));
-        PetOwnerCol.setCellValueFactory(new PropertyValueFactory<>("petOwner"));
+        PetOwnerCol.setCellValueFactory(new PropertyValueFactory<>("user"));
         petTbl.setItems(pets);
 
         ServiceIdCol.setCellValueFactory(new PropertyValueFactory<>("servId"));
@@ -694,15 +697,13 @@ public class Main implements Initializable{
         ProductBrandCol.setCellValueFactory(new PropertyValueFactory<>("prodBrand"));
         ProductBarcodeCol.setCellValueFactory(new PropertyValueFactory<>("prodBarcode"));
         ProductPriceCol.setCellValueFactory(new PropertyValueFactory<>("prodPrice"));
+        ProductCategory.setCellValueFactory(new PropertyValueFactory<>("prodCategory"));
         productTbl.setItems(products);
 
         CategoryIdCol.setCellValueFactory(new PropertyValueFactory<>("cateId"));
         CategoryDetailCol.setCellValueFactory(new PropertyValueFactory<>("cateDetail"));
         CategoryNameCol.setCellValueFactory(new PropertyValueFactory<>("cateName"));
         categoryTbl.setItems(categories);
-
-
-
     }
 
     private ObservableList<BeanOperator> getOperator(){

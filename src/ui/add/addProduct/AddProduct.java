@@ -84,7 +84,7 @@ public class AddProduct implements Initializable{
             product.setProdBarcode(barcode);
             product.setProdBrand(brand);
             product.setProdPrice(price);
-            product.setCateId(category.getCateId());
+            product.setProdCategory(category);
             PetManageSystemUtil.update(product);
             contentText = "ÐÞ¸Ä³É¹¦";
         }else{

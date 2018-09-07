@@ -296,6 +296,7 @@
                                     <TableColumn fx:id="ProductBrandCol" prefWidth="75.0" text="品牌" />
                                     <TableColumn fx:id="ProductPriceCol" prefWidth="75.0" text="价格" />
                                     <TableColumn fx:id="ProductBarcodeCol" prefWidth="75.0" text="条形码" />
+                                    <TableColumn fx:id="ProductCategory" prefWidth="75.0" text="类别" />
                                  </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
