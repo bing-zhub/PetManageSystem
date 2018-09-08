@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7b77731-27ef-432f-9e37-c63ae840d985" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ui/main/main.fxml" afterPath="$PROJECT_DIR$/src/ui/main/main.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/ui/main/Main.java" afterPath="$PROJECT_DIR$/src/ui/main/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -71,8 +71,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ui/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-68">
-              <caret line="197" column="9" lean-forward="false" selection-start-line="197" selection-start-column="5" selection-end-line="197" selection-end-column="9" />
+            <state relative-caret-position="-1007">
+              <caret line="687" column="52" lean-forward="false" selection-start-line="687" selection-start-column="52" selection-end-line="687" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#AddAppointmentStarter#0;class#Main#0" expanded="false" />
@@ -84,6 +84,7 @@
                 <element signature="method#deleteProduct#0;class#Main#0" expanded="false" />
                 <element signature="method#deleteCategory#0;class#Main#0" expanded="false" />
                 <element signature="method#deleteService#0;class#Main#0" expanded="false" />
+                <element signature="method#deleteAppointmentService#0;class#Main#0" expanded="false" />
                 <element signature="method#editOperator#0;class#Main#0" expanded="false" />
                 <element signature="method#editPet#0;class#Main#0" expanded="false" />
                 <element signature="method#editUser#0;class#Main#0" expanded="false" />
@@ -95,7 +96,6 @@
                 <element signature="method#refreshUser#0;class#Main#0" expanded="false" />
                 <element signature="method#refreshProduct#0;class#Main#0" expanded="false" />
                 <element signature="method#refreshCategory#0;class#Main#0" expanded="false" />
-                <element signature="method#refreshOrder#0;class#Main#0" expanded="false" />
                 <element signature="method#refreshService#0;class#Main#0" expanded="false" />
                 <element signature="method#alertForSelectNothing#0;class#Main#0" expanded="false" />
                 <element signature="method#alertForCancel#0;class#Main#0" expanded="false" />
@@ -729,7 +729,7 @@
       <workItem from="1535988859431" duration="4836000" />
       <workItem from="1536027149545" duration="27479000" />
       <workItem from="1536149890272" duration="24901000" />
-      <workItem from="1536219688743" duration="26216000" />
+      <workItem from="1536219688743" duration="26594000" />
     </task>
     <task id="LOCAL-00001" summary="structure ok! login/register ok!">
       <created>1535724217187</created>
@@ -756,7 +756,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159517000" />
+    <option name="totallyTimeSpent" value="159895000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -1306,8 +1306,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="197" column="9" lean-forward="false" selection-start-line="197" selection-start-column="5" selection-end-line="197" selection-end-column="9" />
+        <state relative-caret-position="-1007">
+          <caret line="687" column="52" lean-forward="false" selection-start-line="687" selection-start-column="52" selection-end-line="687" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#AddAppointmentStarter#0;class#Main#0" expanded="false" />
@@ -1319,6 +1319,7 @@
             <element signature="method#deleteProduct#0;class#Main#0" expanded="false" />
             <element signature="method#deleteCategory#0;class#Main#0" expanded="false" />
             <element signature="method#deleteService#0;class#Main#0" expanded="false" />
+            <element signature="method#deleteAppointmentService#0;class#Main#0" expanded="false" />
             <element signature="method#editOperator#0;class#Main#0" expanded="false" />
             <element signature="method#editPet#0;class#Main#0" expanded="false" />
             <element signature="method#editUser#0;class#Main#0" expanded="false" />
@@ -1330,7 +1331,6 @@
             <element signature="method#refreshUser#0;class#Main#0" expanded="false" />
             <element signature="method#refreshProduct#0;class#Main#0" expanded="false" />
             <element signature="method#refreshCategory#0;class#Main#0" expanded="false" />
-            <element signature="method#refreshOrder#0;class#Main#0" expanded="false" />
             <element signature="method#refreshService#0;class#Main#0" expanded="false" />
             <element signature="method#alertForSelectNothing#0;class#Main#0" expanded="false" />
             <element signature="method#alertForCancel#0;class#Main#0" expanded="false" />

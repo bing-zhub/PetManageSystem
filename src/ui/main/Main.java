@@ -475,6 +475,14 @@ public class Main implements Initializable{
     @FXML
     void deleteOrder(ActionEvent event){}
 
+    @FXML
+    void deleteAppointmentService(ActionEvent event){
+
+    }
+
+    @FXML
+    void deleteAppointment(ActionEvent event){}
+
     /*
     *  Edit operation
     * */
@@ -616,6 +624,9 @@ public class Main implements Initializable{
     @FXML
     void editOrder(ActionEvent event){}
 
+    @FXML
+    void editAppointment(ActionEvent event){}
+
     /*
     * refresh operation
     * */
@@ -667,6 +678,14 @@ public class Main implements Initializable{
         services.clear();
         services = getService();
         serviceTbl.setItems(services);
+    }
+
+    @FXML
+    void refreshAppointment(ActionEvent event){
+        appointmentBox.setItems(getAppointment());
+        appointmentDetails.clear();
+        appointmentDetails = getAppointmentDetail();
+        appointmentTbl.setItems(appointmentDetails);
     }
 
     private void alertForSelectNothing(String cate){

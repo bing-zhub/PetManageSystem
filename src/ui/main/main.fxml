@@ -312,7 +312,7 @@
                                                    <Insets />
                                                 </opaqueInsets>
                                              </JFXComboBox>
-                                          <JFXButton buttonType="RAISED" onAction="#deleteAppointment">
+                                          <JFXButton buttonType="RAISED" onAction="#deleteAppointment" text="删除预约">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
