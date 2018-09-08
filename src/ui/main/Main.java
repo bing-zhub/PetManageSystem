@@ -469,6 +469,12 @@ public class Main implements Initializable{
         }
     }
 
+    @FXML
+    void deleteOrderProduct(ActionEvent event){}
+
+    @FXML
+    void deleteOrder(ActionEvent event){}
+
     /*
     *  Edit operation
     * */
@@ -607,6 +613,9 @@ public class Main implements Initializable{
         }
     }
 
+    @FXML
+    void editOrder(ActionEvent event){}
+
     /*
     * refresh operation
     * */
@@ -643,6 +652,14 @@ public class Main implements Initializable{
         categories.clear();
         categories = getCategory();
         categoryTbl.setItems(categories);
+    }
+
+    @FXML
+    void refreshOrder(ActionEvent event){
+        orderBox.setItems(getOrder());
+        orderDetails.clear();
+        orderDetails = getOrderDetail();
+        orderTbl.setItems(orderDetails);
     }
 
     @FXML

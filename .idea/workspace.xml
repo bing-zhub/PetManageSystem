@@ -2,22 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7b77731-27ef-432f-9e37-c63ae840d985" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/BeanAppointmentDetail.hbm.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/BeanAppointmentDetail.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/add/addOrder/AddOrder.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ui/add/addOrder/addOrder.fxml" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e5561e53-065c-4bf5-bc3a-00e1cdfbc145.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/e5561e53-065c-4bf5-bc3a-00e1cdfbc145.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/PetManageSystem/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/out/production/PetManageSystem/hibernate.cfg.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/PetManageSystem/ui/main/main.fxml" afterPath="$PROJECT_DIR$/out/production/PetManageSystem/ui/main/main.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/control/AppointmentController.java" afterPath="$PROJECT_DIR$/src/control/AppointmentController.java" />
-      <change beforePath="$PROJECT_DIR$/src/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/src/hibernate.cfg.xml" />
-      <change beforePath="$PROJECT_DIR$/src/model/BeanAppointment.hbm.xml" afterPath="$PROJECT_DIR$/src/model/BeanAppointment.hbm.xml" />
-      <change beforePath="$PROJECT_DIR$/src/model/BeanAppointment.java" afterPath="$PROJECT_DIR$/src/model/BeanAppointment.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/BeanMyOrder.hbm.xml" afterPath="$PROJECT_DIR$/src/model/BeanMyOrder.hbm.xml" />
-      <change beforePath="$PROJECT_DIR$/src/model/BeanMyOrder.java" afterPath="$PROJECT_DIR$/src/model/BeanMyOrder.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/BeanOperator.java" afterPath="$PROJECT_DIR$/src/model/BeanOperator.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/BeanOrderDetail.hbm.xml" afterPath="$PROJECT_DIR$/src/model/BeanOrderDetail.hbm.xml" />
       <change beforePath="$PROJECT_DIR$/src/ui/main/Main.java" afterPath="$PROJECT_DIR$/src/ui/main/Main.java" />
       <change beforePath="$PROJECT_DIR$/src/ui/main/main.fxml" afterPath="$PROJECT_DIR$/src/ui/main/main.fxml" />
     </list>
@@ -88,8 +72,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ui/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="646" column="0" lean-forward="true" selection-start-line="646" selection-start-column="0" selection-end-line="646" selection-end-column="0" />
+            <state relative-caret-position="2106">
+              <caret line="686" column="27" lean-forward="false" selection-start-line="686" selection-start-column="27" selection-end-line="686" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#AddAppointmentStarter#0;class#Main#0" expanded="false" />
@@ -112,9 +96,12 @@
                 <element signature="method#refreshUser#0;class#Main#0" expanded="false" />
                 <element signature="method#refreshProduct#0;class#Main#0" expanded="false" />
                 <element signature="method#refreshCategory#0;class#Main#0" expanded="false" />
+                <element signature="method#refreshOrder#0;class#Main#0" expanded="false" />
+                <element signature="method#refreshService#0;class#Main#0" expanded="false" />
                 <element signature="method#alertForSelectNothing#0;class#Main#0" expanded="false" />
                 <element signature="method#alertForCancel#0;class#Main#0" expanded="false" />
                 <element signature="method#loadOrderInfo#0;class#Main#0" expanded="false" />
+                <element signature="method#selectOrderId#0;class#Main#0" expanded="false" />
                 <element signature="method#selectAppointmentId#0;class#Main#0" expanded="false" />
                 <element signature="method#initCol#0;class#Main#0" expanded="false" />
                 <element signature="method#getOperator#0;class#Main#0" expanded="false" />
@@ -370,7 +357,6 @@
         <option value="$PROJECT_DIR$/src/control/AppointmentController.java" />
         <option value="$PROJECT_DIR$/src/ui/add/addOrder/addPet/addPet.fxml" />
         <option value="$PROJECT_DIR$/src/ui/add/addOrder/addOrder.fxml" />
-        <option value="$PROJECT_DIR$/src/ui/main/Main.java" />
         <option value="$PROJECT_DIR$/src/model/BeanOperator.java" />
         <option value="$PROJECT_DIR$/src/model/BeanMyOrder.java" />
         <option value="$PROJECT_DIR$/src/ui/add/addOrder/AddOrder.java" />
@@ -379,6 +365,7 @@
         <option value="$PROJECT_DIR$/src/model/BeanAppointment.hbm.xml" />
         <option value="$PROJECT_DIR$/src/model/BeanAppointment.java" />
         <option value="$PROJECT_DIR$/src/model/BeanOrderDetail.hbm.xml" />
+        <option value="$PROJECT_DIR$/src/ui/main/Main.java" />
       </list>
     </option>
   </component>
@@ -743,7 +730,7 @@
       <workItem from="1535988859431" duration="4836000" />
       <workItem from="1536027149545" duration="27479000" />
       <workItem from="1536149890272" duration="24901000" />
-      <workItem from="1536219688743" duration="25090000" />
+      <workItem from="1536219688743" duration="25872000" />
     </task>
     <task id="LOCAL-00001" summary="structure ok! login/register ok!">
       <created>1535724217187</created>
@@ -770,7 +757,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="158391000" />
+    <option name="totallyTimeSpent" value="159173000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -785,7 +772,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2763562" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2763562" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1320,8 +1307,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="646" column="0" lean-forward="true" selection-start-line="646" selection-start-column="0" selection-end-line="646" selection-end-column="0" />
+        <state relative-caret-position="2106">
+          <caret line="686" column="27" lean-forward="false" selection-start-line="686" selection-start-column="27" selection-end-line="686" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#AddAppointmentStarter#0;class#Main#0" expanded="false" />
@@ -1344,9 +1331,12 @@
             <element signature="method#refreshUser#0;class#Main#0" expanded="false" />
             <element signature="method#refreshProduct#0;class#Main#0" expanded="false" />
             <element signature="method#refreshCategory#0;class#Main#0" expanded="false" />
+            <element signature="method#refreshOrder#0;class#Main#0" expanded="false" />
+            <element signature="method#refreshService#0;class#Main#0" expanded="false" />
             <element signature="method#alertForSelectNothing#0;class#Main#0" expanded="false" />
             <element signature="method#alertForCancel#0;class#Main#0" expanded="false" />
             <element signature="method#loadOrderInfo#0;class#Main#0" expanded="false" />
+            <element signature="method#selectOrderId#0;class#Main#0" expanded="false" />
             <element signature="method#selectAppointmentId#0;class#Main#0" expanded="false" />
             <element signature="method#initCol#0;class#Main#0" expanded="false" />
             <element signature="method#getOperator#0;class#Main#0" expanded="false" />
