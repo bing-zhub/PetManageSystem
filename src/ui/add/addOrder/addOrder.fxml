@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="rootPane" prefHeight="394.0" prefWidth="356.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.add.addOrder.AddOrder">
+   <children>
+      <VBox layoutY="2.0" prefHeight="240.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXComboBox fx:id="userBox" labelFloat="true" onAction="#userSelected" prefHeight="27.0" prefWidth="290.0" promptText="用户">
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </JFXComboBox>
+            <HBox prefHeight="79.0" prefWidth="310.0">
+               <children>
+                  <JFXComboBox fx:id="productBox1" labelFloat="true" onAction="#product1Selected" prefHeight="27.0" prefWidth="151.0" promptText="产品">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </JFXComboBox>
+                  <JFXTextField fx:id="productNum1" labelFloat="true" onAction="#product1NumInput" prefHeight="27.0" prefWidth="99.0" promptText="数量" />
+                  <Label fx:id="productPrice1" text="价格">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="79.0" prefWidth="310.0">
+               <children>
+                  <JFXComboBox fx:id="productBox2" labelFloat="true" onAction="#product2Selected" prefHeight="27.0" prefWidth="151.0" promptText="产品">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </JFXComboBox>
+                  <JFXTextField fx:id="productNum2" labelFloat="true" onAction="#product2NumInput" prefHeight="27.0" prefWidth="99.0" promptText="数量" />
+                  <Label fx:id="productPrice2" text="价格">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="79.0" prefWidth="310.0">
+               <children>
+                  <JFXComboBox fx:id="productBox3" labelFloat="true" onAction="#product3Selected" prefHeight="27.0" prefWidth="151.0" promptText="产品">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </JFXComboBox>
+                  <JFXTextField fx:id="productNum3" labelFloat="true" onAction="#product3NumInput" prefHeight="27.0" prefWidth="99.0" promptText="数量" />
+                  <Label fx:id="productPrice3" text="价格">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="79.0" prefWidth="310.0">
+               <children>
+                  <JFXComboBox fx:id="productBox4" labelFloat="true" onAction="#product4Selected" prefHeight="27.0" prefWidth="151.0" promptText="产品">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </JFXComboBox>
+                  <JFXTextField fx:id="productNum4" labelFloat="true" onAction="#product4NumInput" prefHeight="27.0" prefWidth="99.0" promptText="数量" />
+                  <Label fx:id="productPrice4" text="价格">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+            <Label fx:id="orderTotalPrice" text="总计" />
+            <HBox prefHeight="55.0" prefWidth="340.0">
+               <children>
+                  <JFXButton fx:id="btnOk" onAction="#orderAdd" prefHeight="58.0" prefWidth="162.0" style="-fx-background-color: #2196F3;" text="保存" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="5.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </JFXButton>
+                  <JFXButton onAction="#cancel" prefHeight="58.0" prefWidth="162.0" style="-fx-background-color: #2196F3;" text="取消" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="5.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="8.0" right="5.0" top="8.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

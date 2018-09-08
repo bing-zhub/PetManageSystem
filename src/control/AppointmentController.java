@@ -1,6 +1,7 @@
 package control;
 
 import model.BeanAppointment;
+import model.BeanAppointmentDetail;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -12,7 +13,7 @@ import java.util.List;
 import static util.HibernateUtil.getSession;
 
 public class AppointmentController {
-    public List<BeanAppointment> loadAll() throws BaseException{
+    public List<BeanAppointment> loadAll(){
         List<BeanAppointment> list = null;
         Session session = getSession();
         Transaction tx = session.beginTransaction();
@@ -71,5 +72,26 @@ public class AppointmentController {
             e.printStackTrace();
         }
 
+    }
+
+    public List<BeanAppointmentDetail> loadAllDetails() {
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from BeanAppointmentDetail ");
+        List<BeanAppointmentDetail> list = query.list();
+        tx.commit();
+        session.close();
+        return list;
+    }
+
+    public List<BeanAppointmentDetail> loadDetailByAppointmentId(int appId){
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from BeanAppointmentDetail b where b.appointment.appId = :id");
+        query.setParameter("id", appId);
+        List<BeanAppointmentDetail> list = query.list();
+        tx.commit();
+        session.close();
+        return list;
     }
 }

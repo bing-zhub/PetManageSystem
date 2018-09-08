@@ -28,9 +28,5 @@
             <column name="app_serv" sql-type="int(11)" not-null="true"/>
         </property>
 
-        <set name="services" table="app_serv">
-            <key column="app_id"/>
-            <many-to-many class="model.BeanService" column="serv_id"/>
-        </set>
     </class>
 </hibernate-mapping>

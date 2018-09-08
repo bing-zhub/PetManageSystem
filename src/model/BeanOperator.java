@@ -3,19 +3,12 @@ package model;
 import java.util.Objects;
 
 public class BeanOperator {
-    public static BeanOperator currentLoginUser=null;
     private Integer opId;
     private String opName;
     private Integer opLevel;
     private String opPwd;
     public static final String[] tableTitles={"ID","Ãû³Æ","µÈ¼¶"};
 
-    public String getCell(int col){
-        if(col==0) return this.opId.toString();
-        else if(col==1) return this.opName.toString();
-        else if(col==2) return this.opLevel.toString();
-        else return "";
-    }
 
     public Integer getOpId() {
         return opId;

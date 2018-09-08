@@ -22,5 +22,6 @@
         <mapping resource="model/BeanProduct.hbm.xml"/>
         <mapping resource="model/BeanService.hbm.xml"/>
         <mapping resource="model/BeanOrderDetail.hbm.xml"/>
+        <mapping resource="model/BeanAppointmentDetail.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

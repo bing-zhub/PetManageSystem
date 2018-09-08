@@ -128,6 +128,18 @@ public class Main implements Initializable{
     @FXML
     private TableColumn<BeanOrderDetail, Integer> orderNumCol;
 
+    @FXML
+    private JFXComboBox<BeanAppointment> appointmentBox;
+
+    @FXML
+    private TableView<BeanAppointmentDetail> appointmentTbl;
+
+    @FXML
+    private TableColumn<BeanAppointmentDetail, BeanService> appointmentServiceCol;
+
+    @FXML
+    private TableColumn<BeanAppointmentDetail, Integer> appointmentTimesCol;
+
 
     @FXML
     private TableView<BeanService> serviceTbl;
@@ -181,7 +193,7 @@ public class Main implements Initializable{
     private ObservableList<BeanProduct> products = null;
     private ObservableList<BeanCategory> categories = null;
     private ObservableList<BeanOrderDetail> orderDetails = null;
-    private ObservableList<BeanService> serviceDetails = null;
+    private ObservableList<BeanAppointmentDetail> appointmentDetails = null;
 
     @FXML
     void AddAppointmentStarter(ActionEvent event) {
@@ -200,7 +212,7 @@ public class Main implements Initializable{
 
     @FXML
     void addOrderStater(ActionEvent event) {
-
+        showWindow("/ui/add/addOrder/addOrder.fxml", "Ìí¼Ó¶©µ¥");
     }
 
     @FXML
@@ -595,7 +607,6 @@ public class Main implements Initializable{
         }
     }
 
-
     /*
     * refresh operation
     * */
@@ -681,10 +692,17 @@ public class Main implements Initializable{
     @FXML
     void selectOrderId(ActionEvent event){
         BeanMyOrder order = orderBox.getSelectionModel().getSelectedItem();
-        System.out.println(order.getOrderId());
         orderDetails.clear();
         orderDetails = getOrderDetail( order.getOrderId());
         orderTbl.setItems(orderDetails);
+    }
+
+    @FXML
+    void selectAppointmentId(ActionEvent event){
+        BeanAppointment appointment = appointmentBox.getSelectionModel().getSelectedItem();
+        appointmentDetails.clear();
+        appointmentDetails = getAppointmentDetail(appointment.getAppId());
+        appointmentTbl.setItems(appointmentDetails);
     }
 
     private void initCol() {
@@ -727,6 +745,10 @@ public class Main implements Initializable{
         orderProductCol.setCellValueFactory(new PropertyValueFactory<>("product"));
         orderNumCol.setCellValueFactory(new PropertyValueFactory<>("prodNum"));
         orderTbl.setItems(orderDetails);
+
+        appointmentServiceCol.setCellValueFactory(new PropertyValueFactory<>("service"));
+        appointmentTimesCol.setCellValueFactory(new PropertyValueFactory<>("times"));
+        appointmentTbl.setItems(appointmentDetails);
     }
 
     private ObservableList<BeanOperator> getOperator(){
@@ -810,6 +832,29 @@ public class Main implements Initializable{
         return details;
     }
 
+    private ObservableList<BeanAppointmentDetail> getAppointmentDetail(){
+        ObservableList<BeanAppointmentDetail> details = FXCollections.observableArrayList();
+        List<BeanAppointmentDetail> list = PetManageSystemUtil.appointmentController.loadAllDetails();
+        for (BeanAppointmentDetail e: list){
+            details.add(e);
+        }
+        return details;
+    }
+
+    private ObservableList<BeanAppointmentDetail> getAppointmentDetail(int appId){
+        ObservableList<BeanAppointmentDetail> details = FXCollections.observableArrayList();
+        List<BeanAppointmentDetail> list = PetManageSystemUtil.appointmentController.loadDetailByAppointmentId(appId);
+        details.addAll(list);
+        return details;
+    }
+
+    private ObservableList<BeanAppointment> getAppointment(){
+        ObservableList<BeanAppointment> appointments = FXCollections.observableArrayList();
+        List<BeanAppointment> list = PetManageSystemUtil.appointmentController.loadAll();
+        appointments.addAll(list);
+        return appointments;
+    }
+
 
     private void loadData(){
         this.operators = getOperator();
@@ -819,7 +864,9 @@ public class Main implements Initializable{
         this.products = getProduct();
         this.services=  getService();
         this.orderDetails = getOrderDetail();
+        this.appointmentDetails = getAppointmentDetail();
         orderBox.setItems(getOrder());
+        appointmentBox.setItems(getAppointment());
     }
 
     @Override

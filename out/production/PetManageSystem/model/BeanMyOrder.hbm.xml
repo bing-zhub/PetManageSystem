@@ -9,9 +9,6 @@
             <column name="order_id" sql-type="int(11)"/>
             <generator class="native" />
         </id>
-        <property name="orderProd">
-            <column name="order_prod" sql-type="int(11)" not-null="true"/>
-        </property>
         <property name="orderUser">
             <column name="order_user" sql-type="int(11)" not-null="true"/>
         </property>
