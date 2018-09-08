@@ -88,8 +88,15 @@ public class AddOrder implements Initializable{
     private int price2 = 0;
     private int price3 = 0;
     private int price4 = 0;
+    private boolean isEditMode = false;
+    private int detailId1 = 0;
+    private int detailId2 = 0;
+    private int detailId3 = 0;
+    private int detailId4 = 0;
+    private BeanMyOrder order= null;
 
     ObservableList<BeanProduct> products = FXCollections.observableArrayList();
+
     ObservableList<BeanMyUser> users = FXCollections.observableArrayList();
 
     private ObservableList<BeanProduct> getProduct(){
@@ -116,7 +123,6 @@ public class AddOrder implements Initializable{
         stage.close();
     }
 
-
     @FXML
     void userSelected(ActionEvent event){
         this.user = userBox.getSelectionModel().getSelectedItem();
@@ -124,19 +130,41 @@ public class AddOrder implements Initializable{
 
     @FXML
     void orderAdd(ActionEvent event) {
-        BeanMyOrder order = new BeanMyOrder();
+
+        product1NumInput(new ActionEvent());
+        product1Selected(new ActionEvent());
+        product2NumInput(new ActionEvent());
+        product2Selected(new ActionEvent());
+        product3NumInput(new ActionEvent());
+        product3Selected(new ActionEvent());
+        product4NumInput(new ActionEvent());
+        product4Selected(new ActionEvent());
+
+        if(!isEditMode)
+            order = new BeanMyOrder();
         order.setOrderState("订单创建完成");
         order.setOrderPrice(price1+price2+price3+price4);
         order.setOrderNum(num1+num2+num3+num4);
-        order.setOrderUser(user.getUserId());
-        PetManageSystemUtil.save(order);
+        order.setOrderUser(user);
+
+        if(isEditMode){
+            PetManageSystemUtil.update(order);
+        }else{
+            PetManageSystemUtil.save(order);
+        }
 
         if(product1!=null && num1 !=0){
             BeanOrderDetail detail = new BeanOrderDetail();
             detail.setOrder(order);
             detail.setProduct(product1);
             detail.setProdNum(num1);
-            PetManageSystemUtil.save(detail);
+            if(isEditMode){
+                System.out.println("edit1");
+                detail.setDetailId(detailId1);
+                PetManageSystemUtil.update(detail);
+            }else{
+                PetManageSystemUtil.save(detail);
+            }
         }
 
         if(product2!=null && num2 !=0){
@@ -144,7 +172,13 @@ public class AddOrder implements Initializable{
             detail.setOrder(order);
             detail.setProduct(product2);
             detail.setProdNum(num2);
-            PetManageSystemUtil.save(detail);
+            if(isEditMode){
+                System.out.println("edit2");
+                detail.setDetailId(detailId2);
+                PetManageSystemUtil.update(detail);
+            }else{
+                PetManageSystemUtil.save(detail);
+            }
         }
 
         if(product3!=null && num3 !=0){
@@ -152,7 +186,13 @@ public class AddOrder implements Initializable{
             detail.setOrder(order);
             detail.setProduct(product3);
             detail.setProdNum(num3);
-            PetManageSystemUtil.save(detail);
+            if(isEditMode){
+                detail.setDetailId(detailId3);
+                PetManageSystemUtil.update(detail);
+                System.out.println("edit3");
+            }else{
+                PetManageSystemUtil.save(detail);
+            }
         }
 
         if(product4!=null && num4 !=0){
@@ -160,7 +200,13 @@ public class AddOrder implements Initializable{
             detail.setOrder(order);
             detail.setProduct(product4);
             detail.setProdNum(num4);
-            PetManageSystemUtil.save(detail);
+            if(isEditMode){
+                detail.setDetailId(detailId4);
+                PetManageSystemUtil.update(detail);
+                System.out.println("edit4");
+            }else{
+                PetManageSystemUtil.save(detail);
+            }
         }
 
         cancel(new ActionEvent());
@@ -179,8 +225,8 @@ public class AddOrder implements Initializable{
             productPrice2.setText("价格");
         }else {
             price2 = product2.getProdPrice()*num2;
-            productPrice2.setText(String.valueOf(price2));
-            orderTotalPrice.setText(String.valueOf(price1+price2+price3+price4));
+            productPrice2.setText(String.valueOf(price2)+"元");
+            orderTotalPrice.setText("总价:"+String.valueOf(price1+price2+price3+price4)+"元");
         }
     }
 
@@ -189,11 +235,11 @@ public class AddOrder implements Initializable{
         product2 = productBox2.getSelectionModel().getSelectedItem();
 
         if(num2 == 0 || product2 == null){
-            productPrice2.setText("");
+            productPrice2.setText("价格");
         }else {
             price2 = product2.getProdPrice()*num2;
-            productPrice2.setText(String.valueOf(price2));
-            orderTotalPrice.setText(String.valueOf(price1+price2+price3+price4));
+            productPrice2.setText(String.valueOf(price2)+"元");
+            orderTotalPrice.setText("总价:"+String.valueOf(price1+price2+price3+price4)+"元");
         }
 
     }
@@ -207,11 +253,11 @@ public class AddOrder implements Initializable{
         }
 
         if(num3 == 0 || product3 == null){
-            productPrice3.setText("");
+            productPrice3.setText("价格");
         }else {
             price3 = product3.getProdPrice()*num3;
-            productPrice3.setText(String.valueOf(price3));
-            orderTotalPrice.setText(String.valueOf(price1+price2+price3+price4));
+            productPrice3.setText(String.valueOf(price3)+"元");
+            orderTotalPrice.setText("总价:"+String.valueOf(price1+price2+price3+price4)+"元");
         }
     }
 
@@ -220,11 +266,11 @@ public class AddOrder implements Initializable{
         product3 = productBox3.getSelectionModel().getSelectedItem();
 
         if(num3 == 0 || product3 == null){
-            productPrice3.setText("");
+            productPrice3.setText("价格");
         }else {
             price3 = product3.getProdPrice()*num3;
-            productPrice3.setText(String.valueOf(price3));
-            orderTotalPrice.setText(String.valueOf(price1+price2+price3+price4));
+            productPrice3.setText(String.valueOf(price3)+"元");
+            orderTotalPrice.setText("总价:"+String.valueOf(price1+price2+price3+price4)+"元");
         }
     }
 
@@ -237,11 +283,11 @@ public class AddOrder implements Initializable{
         }
 
         if(num4 == 0 || product4 == null){
-            productPrice4.setText("");
+            productPrice4.setText("价格");
         }else {
             price4 = product4.getProdPrice()*num4;
-            productPrice4.setText(String.valueOf(price4));
-            orderTotalPrice.setText(String.valueOf(price1+price2+price3+price4));
+            productPrice4.setText(String.valueOf(price4)+"元");
+            orderTotalPrice.setText("总价:"+String.valueOf(price1+price2+price3+price4)+"元");
 
         }
     }
@@ -254,11 +300,9 @@ public class AddOrder implements Initializable{
             productPrice4.setText("");
         }else {
             price4 = product4.getProdPrice()*num4;
-            productPrice4.setText(String.valueOf(price4));
-            orderTotalPrice.setText(String.valueOf(price1+price2+price3+price4));
-
+            productPrice4.setText(String.valueOf(price4)+"元");
+            orderTotalPrice.setText("总价:"+String.valueOf(price1+price2+price3+price4)+"元");
         }
-
     }
 
     @FXML
@@ -270,12 +314,11 @@ public class AddOrder implements Initializable{
         }
 
         if(num1 == 0 || product1 == null){
-            productPrice1.setText("");
+            productPrice1.setText("价格");
         }else {
             price1 = product1.getProdPrice()*num1;
-            productPrice1.setText(String.valueOf(price1));
-            orderTotalPrice.setText(String.valueOf(price1+price2+price3+price4));
-
+            productPrice1.setText(String.valueOf(price1)+"元");
+            orderTotalPrice.setText("总价:"+String.valueOf(price1+price2+price3+price4)+"元");
         }
     }
 
@@ -284,16 +327,14 @@ public class AddOrder implements Initializable{
         product1 = productBox1.getSelectionModel().getSelectedItem();
 
         if(num1 == 0 || product1 == null){
-            productPrice1.setText("");
+            productPrice1.setText("价格");
         }else {
             price1 = product1.getProdPrice()*num1;
-            productPrice1.setText(String.valueOf(price1));
-            orderTotalPrice.setText(String.valueOf(price1+price2+price3+price4));
+            productPrice1.setText(String.valueOf(price1)+"元");
+            orderTotalPrice.setText("总价:"+String.valueOf(price1+price2+price3+price4)+"元");
         }
 
     }
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -372,5 +413,80 @@ public class AddOrder implements Initializable{
                 }
             }
         });
+    }
+
+    public void inflateUI(BeanMyOrder order) {
+        List<BeanOrderDetail> details = PetManageSystemUtil.orderController.loadDetailByOrderId(order.getOrderId());
+        userBox.setValue(order.getOrderUser());
+        int size = details.size();
+        this.isEditMode = true;
+        if(size == 1){
+            product1 = details.get(0).getProduct();
+            productBox1.setValue(product1);
+            num1 = details.get(0).getProdNum();
+            productNum1.setText(String.valueOf(num1));
+            orderTotalPrice.setText("总价:"+String.valueOf(order.getOrderPrice())+"元");
+            detailId1 = details.get(0).getDetailId();
+        }else if(size == 2) {
+            product1 = details.get(0).getProduct();
+            productBox1.setValue(product1);
+            num1 = details.get(0).getProdNum();
+            productNum1.setText(String.valueOf(num1));
+            orderTotalPrice.setText("总价:"+String.valueOf(order.getOrderPrice())+"元");
+            detailId1 = details.get(0).getDetailId();
+            product2 = details.get(1).getProduct();
+            productBox2.setValue(product2);
+            num2 = details.get(1).getProdNum();
+            productNum2.setText(String.valueOf(num2));
+            orderTotalPrice.setText("总价:"+String.valueOf(order.getOrderPrice())+"元");
+            detailId2 = details.get(1).getDetailId();
+        }else if(size == 3){
+            product1 = details.get(0).getProduct();
+            productBox1.setValue(product1);
+            num1 = details.get(0).getProdNum();
+            productNum1.setText(String.valueOf(num1));
+            orderTotalPrice.setText("总价:"+String.valueOf(order.getOrderPrice())+"元");
+            detailId1 = details.get(0).getDetailId();
+            product2 = details.get(1).getProduct();
+            productBox2.setValue(product2);
+            num2 = details.get(1).getProdNum();
+            productNum2.setText(String.valueOf(num2));
+            orderTotalPrice.setText("总价:"+String.valueOf(order.getOrderPrice())+"元");
+            detailId2 = details.get(1).getDetailId();
+            product3 = details.get(2).getProduct();
+            productBox3.setValue(product3);
+            num3 = details.get(2).getProdNum();
+            productNum3.setText(String.valueOf(num3));
+            orderTotalPrice.setText("总价:"+String.valueOf(order.getOrderPrice())+"元");
+            detailId3 = details.get(2).getDetailId();
+        }else if(size == 3){
+            product1 = details.get(0).getProduct();
+            productBox1.setValue(product1);
+            num1 = details.get(0).getProdNum();
+            productNum1.setText(String.valueOf(num1));
+            orderTotalPrice.setText("总价:"+String.valueOf(order.getOrderPrice())+"元");
+            detailId1 = details.get(0).getDetailId();
+            product2 = details.get(1).getProduct();
+            productBox2.setValue(product2);
+            num2 = details.get(1).getProdNum();
+            productNum2.setText(String.valueOf(num2));
+            orderTotalPrice.setText("总价:"+String.valueOf(order.getOrderPrice())+"元");
+            detailId2 = details.get(1).getDetailId();
+            product3 = details.get(2).getProduct();
+            productBox3.setValue(product3);
+            num3 = details.get(2).getProdNum();
+            productNum3.setText(String.valueOf(num3));
+            orderTotalPrice.setText("总价:"+String.valueOf(order.getOrderPrice())+"元");
+            detailId3 = details.get(2).getDetailId();
+            product4 = details.get(3).getProduct();
+            productBox4.setValue(product4);
+            num4 = details.get(3).getProdNum();
+            productNum4.setText(String.valueOf(num4));
+            orderTotalPrice.setText("总价:"+String.valueOf(order.getOrderPrice())+"元");
+            detailId4 = details.get(3).getDetailId();
+        }
+
+        this.order = order;
+
     }
 }

@@ -74,10 +74,12 @@ public class AddService implements Initializable{
         if(isEditMode){
             btnOk.setText("修改");
             service.setServId(servId);
+            service.setCategory(serviceCategory.getSelectionModel().getSelectedItem());
             PetManageSystemUtil.update(service);
             contentText = "修改成功";
         }else{
             btnOk.setText("添加");
+            service.setCategory(serviceCategory.getSelectionModel().getSelectedItem());
             PetManageSystemUtil.save(service);
             contentText = "添加成功";
         }
@@ -134,6 +136,7 @@ public class AddService implements Initializable{
     public void inflateUI(BeanService service){
         serviceName.setText(service.getServName());
         servicePrice.setText(service.getServPrice().toString());
+        serviceCategory.setValue(service.getCategory());
         this.isEditMode = true;
         this.servId = service.getServId();
     }

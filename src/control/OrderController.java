@@ -68,4 +68,21 @@ public class OrderController {
         session.close();
         return list;
     }
+
+    public void delOrderDetail(BeanOrderDetail detail) {
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("delete BeanOrderDetail b where b.detailId = :id");
+        query.setParameter("id", detail.getDetailId());
+        query.executeUpdate();
+
+        query = session.createQuery("update BeanMyOrder b set b.orderNum = b.orderNum -:num, b.orderPrice = b.orderPrice - :price where orderId =:id");
+        query.setParameter("num",detail.getProdNum());
+        query.setParameter("id",detail.getOrder().getOrderId());
+        query.setParameter("price", detail.getProdNum() * detail.getProduct().getProdPrice());
+        query.executeUpdate();
+
+        tx.commit();
+        session.close();
+    }
 }

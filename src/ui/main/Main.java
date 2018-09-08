@@ -23,6 +23,7 @@ import javafx.stage.StageStyle;
 import model.*;
 import ui.add.addCategory.AddCategory;
 import ui.add.addOperator.AddOperator;
+import ui.add.addOrder.AddOrder;
 import ui.add.addPet.AddPet;
 import ui.add.addProduct.AddProduct;
 import ui.add.addService.AddService;
@@ -470,10 +471,43 @@ public class Main implements Initializable{
     }
 
     @FXML
-    void deleteOrderProduct(ActionEvent event){}
+    void deleteOrderProduct(ActionEvent event){
+        BeanOrderDetail detail = orderTbl.getSelectionModel().getSelectedItem();
+        if(detail == null){
+            alertForSelectNothing("产品");
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("确认");
+        alert.setContentText("是否要删除产品"+detail.getProduct().getProdName()+" ?");
+        Optional<ButtonType> answer = alert.showAndWait();
+        if (answer.get() == ButtonType.OK){
+            try {
+                PetManageSystemUtil.orderController.delOrderDetail(detail);
+            } catch (Exception e) {
+                Alert t = new Alert(Alert.AlertType.ERROR);
+                t.setHeaderText(null);
+                t.setContentText("该产品目前处于活跃状态,不可删除");
+                t.showAndWait();
+                return;
+            }
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("产品"+detail.getProduct().getProdName()+"已删除");
+            a.showAndWait();
+            orderDetails.remove(detail);
+            return;
+        }else if(answer.get() == ButtonType.CANCEL){
+            alertForCancel("删除");
+            return;
+        }
+    }
 
     @FXML
-    void deleteOrder(ActionEvent event){}
+    void deleteOrder(ActionEvent event){
+        BeanMyOrder order = orderBox.getSelectionModel().getSelectedItem();
+        PetManageSystemUtil.orderController.delOrder(order.getOrderId());
+    }
 
     @FXML
     void deleteAppointmentService(ActionEvent event){
@@ -622,10 +656,30 @@ public class Main implements Initializable{
     }
 
     @FXML
-    void editOrder(ActionEvent event){}
+    void editOrder(ActionEvent event){
+        BeanMyOrder order = orderBox.getSelectionModel().getSelectedItem();
+        if(order == null){
+            alertForSelectNothing("订单");
+            return;
+        }
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/add/addOrder/addOrder.fxml"));
+            Parent parent = loader.load();
+            AddOrder addOrder = (AddOrder) loader.getController();
+            addOrder.inflateUI(order);
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setTitle("编辑分类");
+            stage.setScene(new Scene(parent));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
-    void editAppointment(ActionEvent event){}
+    void editAppointmentService(ActionEvent event){}
 
     /*
     * refresh operation
@@ -667,6 +721,7 @@ public class Main implements Initializable{
 
     @FXML
     void refreshOrder(ActionEvent event){
+        orderBox.getItems().clear();
         orderBox.setItems(getOrder());
         orderDetails.clear();
         orderDetails = getOrderDetail();
@@ -691,7 +746,7 @@ public class Main implements Initializable{
     private void alertForSelectNothing(String cate){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
-        alert.setContentText("请选择要删除的"+cate);
+        alert.setContentText("请选择要操作的"+cate);
         alert.showAndWait();
     }
 
@@ -708,7 +763,7 @@ public class Main implements Initializable{
             int id = Integer.parseInt(orderId.getText());
             BeanMyOrder order = null;
             order = PetManageSystemUtil.orderController.findOrderById(id);
-            int userId = order.getOrderUser();
+            int userId = order.getOrderUser().getUserId();
             String status = order.getOrderState();
             int price = order.getOrderPrice();
             BeanMyUser user = PetManageSystemUtil.userController.findUserById(userId);
@@ -729,8 +784,13 @@ public class Main implements Initializable{
     void selectOrderId(ActionEvent event){
         BeanMyOrder order = orderBox.getSelectionModel().getSelectedItem();
         orderDetails.clear();
-        orderDetails = getOrderDetail( order.getOrderId());
-        orderTbl.setItems(orderDetails);
+        if(order == null){
+            orderDetails.clear();
+            orderTbl.setItems(orderDetails);
+        }else {
+            orderDetails = getOrderDetail(order.getOrderId());
+            orderTbl.setItems(orderDetails);
+        }
     }
 
     @FXML

@@ -137,6 +137,7 @@ public class AddPet implements Initializable{
     public void inflateUI(BeanPet pet){
         petAlias.setText(pet.getPetAlias());
         petNikename.setText(pet.getPetNikename());
+        petOwner.setValue(pet.getUser());
         this.isEditMode = true;
         this.petId = pet.getPetId();
     }

@@ -76,15 +76,14 @@ public class AddProduct implements Initializable{
         if(name.isEmpty() || brand.isEmpty() || barcode.isEmpty() || category == null){
             return;
         }
-
+        product.setProdName(name);
+        product.setProdBarcode(barcode);
+        product.setProdBrand(brand);
+        product.setProdPrice(price);
+        product.setProdCategory(category);
         if(isEditMode){
             btnOk.setText("修改");
             product.setProdId(productId);
-            product.setProdName(name);
-            product.setProdBarcode(barcode);
-            product.setProdBrand(brand);
-            product.setProdPrice(price);
-            product.setProdCategory(category);
             PetManageSystemUtil.update(product);
             contentText = "修改成功";
         }else{
@@ -164,6 +163,7 @@ public class AddProduct implements Initializable{
         productBarcode.setText(product.getProdBarcode());
         productBrand.setText(product.getProdBrand());
         productName.setText(product.getProdName());
+        serviceCategory.setValue(product.getProdCategory());
         this.isEditMode = true;
         this.productId = product.getProdId();
     }

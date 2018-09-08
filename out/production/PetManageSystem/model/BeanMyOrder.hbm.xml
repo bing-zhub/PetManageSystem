@@ -9,9 +9,7 @@
             <column name="order_id" sql-type="int(11)"/>
             <generator class="native" />
         </id>
-        <property name="orderUser">
-            <column name="order_user" sql-type="int(11)" not-null="true"/>
-        </property>
+        <many-to-one name="orderUser" column="order_user" lazy="false" unique="true" class="model.BeanMyUser" />
         <property name="orderNum">
             <column name="order_num" sql-type="int(11)" not-null="true"/>
         </property>

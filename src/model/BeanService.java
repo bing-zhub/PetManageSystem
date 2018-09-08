@@ -8,15 +8,7 @@ public class BeanService {
     private Integer servId;
     private String servName;
     private Integer servPrice;
-    private Set<BeanAppointment> appointments = new HashSet<BeanAppointment>();
-    public static final String[] tableTitles={"ID","Ãû³Æ","¼Û¸ñ"};
-
-    public String getCell(int col){
-        if(col==0) return this.servId.toString();
-        else if(col==1) return this.servName.toString();
-        else if(col==2) return this.servPrice.toString();
-        else return "";
-    }
+    private BeanCategory category;
 
     public Integer getServId() {
         return servId;
@@ -58,16 +50,17 @@ public class BeanService {
         return Objects.hash(servId, servName, servPrice);
     }
 
-    public Set<BeanAppointment> getAppointments() {
-        return appointments;
-    }
-
-    public void setAppointments(Set<BeanAppointment> appointments) {
-        this.appointments = appointments;
-    }
 
     @Override
     public String toString() {
         return this.getServName();
+    }
+
+    public BeanCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(BeanCategory category) {
+        this.category = category;
     }
 }

@@ -1,10 +1,11 @@
 package model;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class BeanAppointmentDetail {
     private Integer detailId;
-    private Integer times;
+    private Date app_date;
     private BeanAppointment appointment;
     private BeanService service;
 
@@ -16,27 +17,19 @@ public class BeanAppointmentDetail {
         this.detailId = detailId;
     }
 
-    public Integer getTimes() {
-        return times;
-    }
-
-    public void setTimes(Integer times) {
-        this.times = times;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BeanAppointmentDetail that = (BeanAppointmentDetail) o;
-        return Objects.equals(detailId, that.detailId) &&
-                Objects.equals(times, that.times);
+        return Objects.equals(detailId, that.detailId);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(detailId, times);
+        return Objects.hash(detailId);
     }
 
     public BeanAppointment getAppointment() {
@@ -53,5 +46,13 @@ public class BeanAppointmentDetail {
 
     public void setService(BeanService service) {
         this.service = service;
+    }
+
+    public Date getApp_date() {
+        return app_date;
+    }
+
+    public void setApp_date(Date app_date) {
+        this.app_date = app_date;
     }
 }

@@ -9,8 +9,8 @@
             <column name="detail_id" sql-type="int(11)"/>
             <generator class="native" />
         </id>
-        <property name="times">
-            <column name="times" sql-type="int(11)"/>
+        <property name="app_date">
+            <column name="app_date" sql-type="date"/>
         </property>
         <many-to-one name="appointment" column="app_id" lazy="false" unique="true" class="model.BeanAppointment"/>
         <many-to-one name="service" column="serv_id" lazy="false" unique="true" class="model.BeanService" />

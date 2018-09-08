@@ -305,14 +305,20 @@
                            <children>
                                  <VBox alignment="CENTER" prefHeight="551.0" prefWidth="775.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
-                                       <JFXComboBox fx:id="appointmentBox" labelFloat="true" onAction="#selectAppointmentId" prefHeight="27.0" prefWidth="320.0" promptText="预约ID">
-                                          <VBox.margin>
-                                             <Insets top="20.0" />
-                                          </VBox.margin>
-                                          <opaqueInsets>
-                                             <Insets />
-                                          </opaqueInsets>
-                                       </JFXComboBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                             <JFXComboBox fx:id="appointmentBox" labelFloat="true" onAction="#selectAppointmentId" prefHeight="27.0" prefWidth="320.0" promptText="预约ID">
+                                                <opaqueInsets>
+                                                   <Insets />
+                                                </opaqueInsets>
+                                             </JFXComboBox>
+                                          <JFXButton buttonType="RAISED" onAction="#deleteAppointment" text="删除预约">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                       </children>
+                                    </HBox>
                                        <TableView fx:id="appointmentTbl" prefHeight="541.0" prefWidth="775.0">
                                           <columns>
                                              <TableColumn fx:id="appointmentServiceCol" prefWidth="75.0" text="服务" />
@@ -324,6 +330,15 @@
                                           <columnResizePolicy>
                                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                           </columnResizePolicy>
+                                       <contextMenu>
+                                          <ContextMenu>
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" onAction="#deleteAppointmentService" text="删除" />
+                                                <MenuItem mnemonicParsing="false" onAction="#editAppointmentService" text="编辑" />
+                                                <MenuItem mnemonicParsing="false" onAction="#refreshAppointment" text="刷新" />
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu>
                                        </TableView>
                                     </children>
                                  </VBox>

@@ -15,9 +15,6 @@
         <property name="servPrice">
             <column name="serv_price" sql-type="int(11)" not-null="true"/>
         </property>
-        <set name="appointments" table="app_serv">
-            <key column="serv_id"/>
-            <many-to-many column="app_id" class="model.BeanAppointment"/>
-        </set>
+        <many-to-one name="category" class="model.BeanCategory" unique="true" lazy="false" column="cate_id" />
     </class>
 </hibernate-mapping>

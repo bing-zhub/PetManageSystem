@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class BeanMyOrder {
     private Integer orderId;
-    private Integer orderUser;
     private Integer orderNum;
+    private BeanMyUser orderUser;
     private Integer orderPrice;
     private String orderState;
 
@@ -15,14 +15,6 @@ public class BeanMyOrder {
 
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
-    }
-
-    public Integer getOrderUser() {
-        return orderUser;
-    }
-
-    public void setOrderUser(Integer orderUser) {
-        this.orderUser = orderUser;
     }
 
     public Integer getOrderNum() {
@@ -70,5 +62,13 @@ public class BeanMyOrder {
     @Override
     public String toString() {
         return this.getOrderId().toString();
+    }
+
+    public void setOrderUser(BeanMyUser orderUser) {
+        this.orderUser = orderUser;
+    }
+
+    public BeanMyUser getOrderUser() {
+        return orderUser;
     }
 }
