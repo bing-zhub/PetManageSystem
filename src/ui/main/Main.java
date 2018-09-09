@@ -198,7 +198,7 @@ public class Main implements Initializable{
 
     @FXML
     void AddAppointmentStarter(ActionEvent event) {
-
+        showWindow("/ui/add/addAppointment/addAppointment.fxml","添加预约");
     }
 
     @FXML
@@ -256,12 +256,6 @@ public class Main implements Initializable{
             System.out.println(1);
             BeanAppointment appointment = null;
             appointment = PetManageSystemUtil.appointmentController.findAppointmentById(id);
-            BeanPet pet = PetManageSystemUtil.petController.findPetById(appointment.getPetId());
-            BeanMyUser user = PetManageSystemUtil.userController.findUserById(appointment.getUserId());
-            appDate.setText(appointment.getAppDate().toString());
-            appPet.setText(pet.getPetNikename());
-            appUser.setText(user.getUserName());
-            appStatus.setText((appointment.getAppDoneDate().toString().equals(new Date(System.currentTimeMillis()).toString()))?"未完成":"已完成");
         }catch (Exception e){
             System.out.println(e.getMessage());
             appUser.setText("");

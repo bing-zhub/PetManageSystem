@@ -69,4 +69,9 @@ public class BeanPet {
     public void setUser(BeanMyUser user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return this.getPetNikename();
+    }
 }

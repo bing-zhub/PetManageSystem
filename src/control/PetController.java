@@ -15,7 +15,7 @@ public class PetController {
         List<BeanPet> list = new ArrayList<BeanPet>();
         Session session = getSession();
         Transaction tx = session.beginTransaction();
-        String hql = "from BeanPet b where b.petOwner = :owner";
+        String hql = "from BeanPet b where b.user.userId = :owner";
         Query query = session.createQuery(hql);
         query.setParameter("owner", owner_id);
         list = query.list();

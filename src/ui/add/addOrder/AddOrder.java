@@ -13,6 +13,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.BeanMyOrder;
@@ -161,7 +164,6 @@ public class AddOrder implements Initializable{
             detail.setProduct(product1);
             detail.setProdNum(num1);
             if(isEditMode){
-                System.out.println("edit1");
                 detail.setDetailId(detailId1);
                 PetManageSystemUtil.update(detail);
             }else{
@@ -175,7 +177,6 @@ public class AddOrder implements Initializable{
             detail.setProduct(product2);
             detail.setProdNum(num2);
             if(isEditMode){
-                System.out.println("edit2");
                 detail.setDetailId(detailId2);
                 PetManageSystemUtil.update(detail);
             }else{

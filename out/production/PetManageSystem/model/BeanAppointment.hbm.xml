@@ -9,24 +9,9 @@
             <column name="app_id" sql-type="int(11)"/>
             <generator class="native" />
         </id>
-        <property name="petId">
-            <column name="pet_id" sql-type="int(11)" not-null="true"/>
-        </property>
-        <property name="appDate">
-            <column name="app_date" sql-type="date" not-null="true"/>
-        </property>
-        <property name="appDoneDate">
-            <column name="app_done_date" sql-type="date" not-null="true"/>
-        </property>
         <property name="appState">
             <column name="app_state" sql-type="varchar(1024)" length="1024" not-null="true"/>
         </property>
-        <property name="userId">
-            <column name="user_id" sql-type="int(11)" not-null="true"/>
-        </property>
-        <property name="appServ">
-            <column name="app_serv" sql-type="int(11)" not-null="true"/>
-        </property>
-
+        <many-to-one name="user" lazy="false" unique="true" column="user_id" class="model.BeanMyUser" />
     </class>
 </hibernate-mapping>

@@ -14,5 +14,6 @@
         </property>
         <many-to-one name="appointment" column="app_id" lazy="false" unique="true" class="model.BeanAppointment"/>
         <many-to-one name="service" column="serv_id" lazy="false" unique="true" class="model.BeanService" />
+        <many-to-one name="pet" class="model.BeanPet" column="pet_id" unique="true" lazy="false" />
     </class>
 </hibernate-mapping>

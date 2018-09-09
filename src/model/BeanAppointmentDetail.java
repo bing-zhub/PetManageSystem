@@ -8,6 +8,7 @@ public class BeanAppointmentDetail {
     private Date app_date;
     private BeanAppointment appointment;
     private BeanService service;
+    private BeanPet pet;
 
     public Integer getDetailId() {
         return detailId;
@@ -54,5 +55,13 @@ public class BeanAppointmentDetail {
 
     public void setApp_date(Date app_date) {
         this.app_date = app_date;
+    }
+
+    public BeanPet getPet() {
+        return pet;
+    }
+
+    public void setPet(BeanPet pet) {
+        this.pet = pet;
     }
 }

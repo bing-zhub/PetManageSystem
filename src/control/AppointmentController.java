@@ -52,16 +52,6 @@ public class AppointmentController {
     }
 
 
-    public void finishAppointment(BeanAppointment appointment){
-        appointment.setAppDoneDate(new Date(System.currentTimeMillis()));
-        appointment.setAppState("Finished");
-        Session session = getSession();
-        Transaction tx = session.beginTransaction();
-        session.update(appointment);
-        tx.commit();
-        session.close();
-    }
-
     public static void main(String[] args) {
         try{
             AppointmentController appointmentController = new AppointmentController();
