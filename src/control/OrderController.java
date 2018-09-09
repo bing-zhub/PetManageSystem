@@ -26,7 +26,11 @@ public class OrderController {
     public void delOrder(int id) {
         Session session = getSession();
         Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("delete BeanMyOrder b where b.orderId = :id");
+        Query query = session.createQuery("delete BeanOrderDetail b where b.order.orderId = :id");
+        query.setParameter("id",id);
+        query.executeUpdate();
+
+        query = session.createQuery("delete BeanMyOrder b where b.orderId = :id");
         query.setParameter("id",id);
         query.executeUpdate();
         tx.commit();

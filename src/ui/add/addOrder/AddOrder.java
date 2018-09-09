@@ -139,9 +139,11 @@ public class AddOrder implements Initializable{
         product3Selected(new ActionEvent());
         product4NumInput(new ActionEvent());
         product4Selected(new ActionEvent());
+        userSelected(new ActionEvent());
 
         if(!isEditMode)
             order = new BeanMyOrder();
+
         order.setOrderState("订单创建完成");
         order.setOrderPrice(price1+price2+price3+price4);
         order.setOrderNum(num1+num2+num3+num4);

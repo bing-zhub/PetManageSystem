@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7b77731-27ef-432f-9e37-c63ae840d985" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/control/OrderController.java" afterPath="$PROJECT_DIR$/src/control/OrderController.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/BeanAppointmentDetail.hbm.xml" afterPath="$PROJECT_DIR$/src/model/BeanAppointmentDetail.hbm.xml" />
-      <change beforePath="$PROJECT_DIR$/src/model/BeanAppointmentDetail.java" afterPath="$PROJECT_DIR$/src/model/BeanAppointmentDetail.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/BeanMyOrder.hbm.xml" afterPath="$PROJECT_DIR$/src/model/BeanMyOrder.hbm.xml" />
-      <change beforePath="$PROJECT_DIR$/src/model/BeanMyOrder.java" afterPath="$PROJECT_DIR$/src/model/BeanMyOrder.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/BeanService.hbm.xml" afterPath="$PROJECT_DIR$/src/model/BeanService.hbm.xml" />
-      <change beforePath="$PROJECT_DIR$/src/model/BeanService.java" afterPath="$PROJECT_DIR$/src/model/BeanService.java" />
       <change beforePath="$PROJECT_DIR$/src/ui/add/addOrder/AddOrder.java" afterPath="$PROJECT_DIR$/src/ui/add/addOrder/AddOrder.java" />
-      <change beforePath="$PROJECT_DIR$/src/ui/add/addPet/AddPet.java" afterPath="$PROJECT_DIR$/src/ui/add/addPet/AddPet.java" />
-      <change beforePath="$PROJECT_DIR$/src/ui/add/addProduct/AddProduct.java" afterPath="$PROJECT_DIR$/src/ui/add/addProduct/AddProduct.java" />
-      <change beforePath="$PROJECT_DIR$/src/ui/add/addService/AddService.java" afterPath="$PROJECT_DIR$/src/ui/add/addService/AddService.java" />
       <change beforePath="$PROJECT_DIR$/src/ui/main/Main.java" afterPath="$PROJECT_DIR$/src/ui/main/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -82,8 +74,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="792" column="9" lean-forward="true" selection-start-line="792" selection-start-column="9" selection-end-line="792" selection-end-column="9" />
+            <state relative-caret-position="567">
+              <caret line="1006" column="0" lean-forward="true" selection-start-line="1006" selection-start-column="0" selection-end-line="1006" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#AddAppointmentStarter#0;class#Main#0" expanded="false" />
@@ -115,6 +107,7 @@
                 <element signature="method#alertForSelectNothing#0;class#Main#0" expanded="false" />
                 <element signature="method#alertForCancel#0;class#Main#0" expanded="false" />
                 <element signature="method#loadOrderInfo#0;class#Main#0" expanded="false" />
+                <element signature="method#selectOrderId#0;class#Main#0" expanded="false" />
                 <element signature="method#selectAppointmentId#0;class#Main#0" expanded="false" />
                 <element signature="method#initCol#0;class#Main#0" expanded="false" />
                 <element signature="method#getOperator#0;class#Main#0" expanded="false" />
@@ -125,6 +118,7 @@
                 <element signature="method#getCategory#0;class#Main#0" expanded="false" />
                 <element signature="method#getOrderDetail#0;class#Main#0" expanded="false" />
                 <element signature="method#getOrder#0;class#Main#0" expanded="false" />
+                <element signature="method#getOrderDetail#1;class#Main#0" expanded="false" />
                 <element signature="method#getAppointmentDetail#0;class#Main#0" expanded="false" />
                 <element signature="method#getAppointmentDetail#1;class#Main#0" expanded="false" />
                 <element signature="method#getAppointment#0;class#Main#0" expanded="false" />
@@ -135,29 +129,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/main/main.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="275" column="41" lean-forward="false" selection-start-line="275" selection-start-column="41" selection-end-line="275" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddOrder.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AddOrder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/add/addOrder/AddOrder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="469" column="43" lean-forward="true" selection-start-line="469" selection-start-column="43" selection-end-line="469" selection-end-column="43" />
+            <state relative-caret-position="116">
+              <caret line="131" column="37" lean-forward="false" selection-start-line="131" selection-start-column="37" selection-end-line="131" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getProduct#0;class#AddOrder#0" expanded="false" />
                 <element signature="method#getUser#0;class#AddOrder#0" expanded="false" />
                 <element signature="method#cancel#0;class#AddOrder#0" expanded="false" />
+                <element signature="e#3279#3280#0" expanded="true" />
+                <element signature="e#3352#3353#0" expanded="true" />
+                <element signature="method#orderAdd#0;class#AddOrder#0" expanded="false" />
                 <element signature="method#product2NumInput#0;class#AddOrder#0" expanded="false" />
                 <element signature="method#product2Selected#0;class#AddOrder#0" expanded="false" />
                 <element signature="method#product3NumInput#0;class#AddOrder#0" expanded="false" />
@@ -167,16 +151,30 @@
                 <element signature="method#product1NumInput#0;class#AddOrder#0" expanded="false" />
                 <element signature="method#product1Selected#0;class#AddOrder#0" expanded="false" />
                 <element signature="method#initialize#0;class#AddOrder#0" expanded="false" />
+                <element signature="method#inflateUI#0;class#AddOrder#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PetManageSystemUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/util/PetManageSystemUtil.java">
+      <file leaf-file-name="OrderController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/control/OrderController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="357">
+              <caret line="40" column="46" lean-forward="true" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ui/main/main.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="257" column="43" lean-forward="true" selection-start-line="257" selection-start-column="43" selection-end-line="257" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -322,7 +320,6 @@
         <option value="$PROJECT_DIR$/src/model/BeanAppointment.hbm.xml" />
         <option value="$PROJECT_DIR$/src/model/BeanAppointment.java" />
         <option value="$PROJECT_DIR$/src/model/BeanOrderDetail.hbm.xml" />
-        <option value="$PROJECT_DIR$/src/control/OrderController.java" />
         <option value="$PROJECT_DIR$/src/model/BeanAppointmentDetail.java" />
         <option value="$PROJECT_DIR$/src/model/BeanAppointmentDetail.hbm.xml" />
         <option value="$PROJECT_DIR$/src/ui/add/addPet/AddPet.java" />
@@ -334,6 +331,7 @@
         <option value="$PROJECT_DIR$/src/ui/add/addProduct/AddProduct.java" />
         <option value="$PROJECT_DIR$/src/ui/main/Main.java" />
         <option value="$PROJECT_DIR$/src/ui/add/addOrder/AddOrder.java" />
+        <option value="$PROJECT_DIR$/src/control/OrderController.java" />
       </list>
     </option>
   </component>
@@ -344,8 +342,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1680" />
-    <option name="height" value="1050" />
+    <option name="width" value="640" />
+    <option name="height" value="480" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -384,7 +382,7 @@
               <item name="PetManageSystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="PetManageSystem" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PetManageSystem" type="b2602c69:ProjectViewProjectNode" />
@@ -398,14 +396,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="add" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PetManageSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PetManageSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="add" type="462c0819:PsiDirectoryNode" />
-              <item name="addOrder" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PetManageSystem" type="b2602c69:ProjectViewProjectNode" />
@@ -698,7 +688,7 @@
       <workItem from="1535988859431" duration="4836000" />
       <workItem from="1536027149545" duration="27479000" />
       <workItem from="1536149890272" duration="24901000" />
-      <workItem from="1536219688743" duration="36265000" />
+      <workItem from="1536219688743" duration="38368000" />
     </task>
     <task id="LOCAL-00001" summary="structure ok! login/register ok!">
       <created>1535724217187</created>
@@ -725,7 +715,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169566000" />
+    <option name="totallyTimeSpent" value="171669000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -740,7 +730,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2763562" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2763562" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1176,14 +1166,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/OrderController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="58" column="5" lean-forward="true" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/BeanAppointmentDetail.hbm.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1274,14 +1256,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/PetManageSystemUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/add/addProduct/AddProduct.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -1294,21 +1268,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/main/main.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="275" column="41" lean-forward="false" selection-start-line="275" selection-start-column="41" selection-end-line="275" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="792" column="9" lean-forward="true" selection-start-line="792" selection-start-column="9" selection-end-line="792" selection-end-column="9" />
+        <state relative-caret-position="567">
+          <caret line="1006" column="0" lean-forward="true" selection-start-line="1006" selection-start-column="0" selection-end-line="1006" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#AddAppointmentStarter#0;class#Main#0" expanded="false" />
@@ -1340,6 +1303,7 @@
             <element signature="method#alertForSelectNothing#0;class#Main#0" expanded="false" />
             <element signature="method#alertForCancel#0;class#Main#0" expanded="false" />
             <element signature="method#loadOrderInfo#0;class#Main#0" expanded="false" />
+            <element signature="method#selectOrderId#0;class#Main#0" expanded="false" />
             <element signature="method#selectAppointmentId#0;class#Main#0" expanded="false" />
             <element signature="method#initCol#0;class#Main#0" expanded="false" />
             <element signature="method#getOperator#0;class#Main#0" expanded="false" />
@@ -1350,6 +1314,7 @@
             <element signature="method#getCategory#0;class#Main#0" expanded="false" />
             <element signature="method#getOrderDetail#0;class#Main#0" expanded="false" />
             <element signature="method#getOrder#0;class#Main#0" expanded="false" />
+            <element signature="method#getOrderDetail#1;class#Main#0" expanded="false" />
             <element signature="method#getAppointmentDetail#0;class#Main#0" expanded="false" />
             <element signature="method#getAppointmentDetail#1;class#Main#0" expanded="false" />
             <element signature="method#getAppointment#0;class#Main#0" expanded="false" />
@@ -1359,15 +1324,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/PetManageSystemUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/main/main.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="257" column="43" lean-forward="true" selection-start-line="257" selection-start-column="43" selection-end-line="257" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/add/addOrder/AddOrder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="469" column="43" lean-forward="true" selection-start-line="469" selection-start-column="43" selection-end-line="469" selection-end-column="43" />
+        <state relative-caret-position="116">
+          <caret line="131" column="37" lean-forward="false" selection-start-line="131" selection-start-column="37" selection-end-line="131" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getProduct#0;class#AddOrder#0" expanded="false" />
             <element signature="method#getUser#0;class#AddOrder#0" expanded="false" />
             <element signature="method#cancel#0;class#AddOrder#0" expanded="false" />
+            <element signature="e#3279#3280#0" expanded="true" />
+            <element signature="e#3352#3353#0" expanded="true" />
+            <element signature="method#orderAdd#0;class#AddOrder#0" expanded="false" />
             <element signature="method#product2NumInput#0;class#AddOrder#0" expanded="false" />
             <element signature="method#product2Selected#0;class#AddOrder#0" expanded="false" />
             <element signature="method#product3NumInput#0;class#AddOrder#0" expanded="false" />
@@ -1377,7 +1364,16 @@
             <element signature="method#product1NumInput#0;class#AddOrder#0" expanded="false" />
             <element signature="method#product1Selected#0;class#AddOrder#0" expanded="false" />
             <element signature="method#initialize#0;class#AddOrder#0" expanded="false" />
+            <element signature="method#inflateUI#0;class#AddOrder#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/OrderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="40" column="46" lean-forward="true" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>

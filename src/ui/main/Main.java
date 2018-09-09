@@ -951,7 +951,6 @@ public class Main implements Initializable{
         return appointments;
     }
 
-
     private void loadData(){
         this.operators = getOperator();
         this.users = getUser();
