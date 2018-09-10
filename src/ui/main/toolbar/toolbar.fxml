@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="585.0" prefWidth="152.0" stylesheets="@../../theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.main.toolbar.Toolbar">
+   <children>
+      <JFXButton fx:id="btnAddAdmin" mnemonicParsing="false" onAction="#addAdminStarter" prefHeight="73.0" prefWidth="167.0" text="添加管理员">
+         <graphic>
+            <FontAwesomeIcon glyphName="USER" size="40" translateX="-10.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="addUser" mnemonicParsing="false" onAction="#addUserStarter" prefHeight="73.0" prefWidth="167.0" text="添加用户">
+         <graphic>
+            <FontAwesomeIcon glyphName="GROUP" size="40" translateX="-10.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnAddPet" mnemonicParsing="false" onAction="#addPetStarter" prefHeight="73.0" prefWidth="167.0" text="添加宠物">
+         <graphic>
+            <FontAwesomeIcon glyphName="LINUX" size="40" translateX="-10.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnAddOrder" mnemonicParsing="false" onAction="#addOrderStater" prefHeight="73.0" prefWidth="167.0" text="添加订单">
+         <graphic>
+            <FontAwesomeIcon glyphName="FILE" size="40" translateX="-10.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnAddAppointment" mnemonicParsing="false" onAction="#AddAppointmentStarter" prefHeight="73.0" prefWidth="167.0" text="添加预约">
+         <graphic>
+            <FontAwesomeIcon glyphName="PHONE" size="40" translateX="-10.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnAddService" mnemonicParsing="false" onAction="#addServiceStarter" prefHeight="73.0" prefWidth="167.0" text="添加服务">
+         <graphic>
+            <FontAwesomeIcon glyphName="CUT" size="40" translateX="-10.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnAddProduct" mnemonicParsing="false" onAction="#addProductStarter" prefHeight="73.0" prefWidth="167.0" text="添加产品">
+         <graphic>
+            <FontAwesomeIcon glyphName="BRIEFCASE" size="40" translateX="-10.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnAddCategory" mnemonicParsing="false" onAction="#addCategoryStarter" prefHeight="73.0" prefWidth="167.0" text="添加分类">
+         <graphic>
+            <FontAwesomeIcon glyphName="TAGS" size="40" translateX="-10.0" />
+         </graphic>
+      </JFXButton>
+   </children>
+</VBox>

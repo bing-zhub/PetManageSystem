@@ -24,9 +24,6 @@ public class Login {
     private AnchorPane rootPane;
 
     @FXML
-    private Label titleBar;
-
-    @FXML
     private JFXTextField username;
 
     @FXML
@@ -42,19 +39,16 @@ public class Login {
 
     @FXML
     void userLogin(ActionEvent event) {
-        titleBar.setText("宠物服务管理系统");
-        titleBar.setStyle("-fx-background-color: #000000");
 
         String userName = username.getText();
         String passWord = DigestUtils.sha1Hex(password.getText());
         try {
             PetManageSystemUtil.operatorController.login(userName, passWord);
-            titleBar.setStyle("-fx-text-fill: white");
             loadMain();
             ((Stage)username.getScene().getWindow()).close();
         } catch (BaseException e) {
-            titleBar.setText("账号或密码输入错误");
-            titleBar.setStyle("-fx-background-color: #d32f2f");
+            username.getStyleClass().add("wrong-match");
+            password.getStyleClass().add("wrong-match");
         }
     }
 

@@ -23,7 +23,6 @@ public class OperatorController {
             throw new BaseException("用户不存在");
         }
         BeanOperator beanOperator = (BeanOperator) query.list().get(0);
-        System.out.println("ui password:" +pwd +" dbpassword:"+beanOperator.getOpPwd()+" operatorName:"+beanOperator.getOpName());
         if(beanOperator.getOpPwd().equals(pwd)){
            return beanOperator;
         }else{

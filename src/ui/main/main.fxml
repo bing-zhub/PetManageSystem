@@ -2,17 +2,15 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -21,496 +19,427 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="927.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.main.Main">
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="970.0" stylesheets="@../theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.main.Main">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <center>
-            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-              <tabs>
-                <Tab text="主页">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox layoutX="121.0" layoutY="44.0" prefHeight="551.0" prefWidth="775.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                  <JFXTabPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <tabs>
+                        <Tab text="主页">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <HBox prefHeight="284.0" prefWidth="775.0">
+                                    <VBox layoutX="121.0" layoutY="44.0" prefHeight="551.0" prefWidth="775.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <VBox alignment="CENTER" prefHeight="274.0" prefWidth="406.0">
+                                          <HBox prefHeight="284.0" prefWidth="775.0">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="管理员总数" textAlignment="CENTER" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="用户总数" textAlignment="CENTER" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="宠物总数" textAlignment="CENTER" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="订单总数" textAlignment="CENTER" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="预约总数" textAlignment="CENTER" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="服务总数" textAlignment="CENTER" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="产品总数" textAlignment="CENTER" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="分类总数" textAlignment="CENTER" />
+                                                <VBox alignment="CENTER" prefHeight="274.0" prefWidth="406.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="管理员总数" textAlignment="CENTER" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="用户总数" textAlignment="CENTER" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="宠物总数" textAlignment="CENTER" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="订单总数" textAlignment="CENTER" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="预约总数" textAlignment="CENTER" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="服务总数" textAlignment="CENTER" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="产品总数" textAlignment="CENTER" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="分类总数" textAlignment="CENTER" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="274.0" prefWidth="367.0" />
                                              </children>
-                                          </VBox>
-                                          <VBox prefHeight="274.0" prefWidth="367.0" />
+                                          </HBox>
+                                          <HBox prefHeight="288.0" prefWidth="775.0">
+                                             <children>
+                                                <VBox prefHeight="278.0" prefWidth="412.0" />
+                                                <VBox prefHeight="278.0" prefWidth="370.0" />
+                                             </children>
+                                          </HBox>
                                        </children>
-                                    </HBox>
-                                    <HBox prefHeight="288.0" prefWidth="775.0">
-                                       <children>
-                                          <VBox prefHeight="278.0" prefWidth="412.0" />
-                                          <VBox prefHeight="278.0" prefWidth="370.0" />
-                                       </children>
-                                    </HBox>
+                                    </VBox>
                                  </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </Tab>
-                <Tab text="检索">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox prefHeight="551.0" prefWidth="775.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="检索">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <HBox prefHeight="275.0" prefWidth="775.0">
+                                    <VBox prefHeight="551.0" prefWidth="775.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <VBox alignment="CENTER" prefHeight="275.0" prefWidth="297.0">
+                                          <HBox prefHeight="275.0" prefWidth="775.0">
                                              <children>
-                                                <JFXTextField fx:id="orderId" labelFloat="true" onAction="#loadOrderInfo" promptText="订单ID" />
+                                                <VBox alignment="CENTER" prefHeight="275.0" prefWidth="297.0">
+                                                   <children>
+                                                      <JFXTextField fx:id="orderId" labelFloat="true" onAction="#loadOrderInfo" promptText="订单ID" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="275.0" prefWidth="481.0">
+                                                   <children>
+                                                      <Text fx:id="orderUser" strokeType="OUTSIDE" strokeWidth="0.0" text="用户">
+                                                         <font>
+                                                            <Font size="29.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fx:id="orderPrice" strokeType="OUTSIDE" strokeWidth="0.0" text="总价">
+                                                         <VBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </VBox.margin>
+                                                         <font>
+                                                            <Font size="29.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fx:id="orderTel" strokeType="OUTSIDE" strokeWidth="0.0" text="联系方式">
+                                                         <VBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </VBox.margin>
+                                                         <font>
+                                                            <Font size="29.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fx:id="orderStatus" strokeType="OUTSIDE" strokeWidth="0.0" text="状态">
+                                                         <VBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </VBox.margin>
+                                                         <font>
+                                                            <Font size="29.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                </VBox>
                                              </children>
-                                          </VBox>
-                                          <VBox alignment="CENTER" prefHeight="275.0" prefWidth="481.0">
-                                             <children>
-                                                <Text fx:id="orderUser" strokeType="OUTSIDE" strokeWidth="0.0" text="用户">
-                                                   <font>
-                                                      <Font size="29.0" />
-                                                   </font>
-                                                </Text>
-                                                <Text fx:id="orderPrice" strokeType="OUTSIDE" strokeWidth="0.0" text="总价">
-                                                   <VBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </VBox.margin>
-                                                   <font>
-                                                      <Font size="29.0" />
-                                                   </font>
-                                                </Text>
-                                                <Text fx:id="orderTel" strokeType="OUTSIDE" strokeWidth="0.0" text="联系方式">
-                                                   <VBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </VBox.margin>
-                                                   <font>
-                                                      <Font size="29.0" />
-                                                   </font>
-                                                </Text>
-                                                <Text fx:id="orderStatus" strokeType="OUTSIDE" strokeWidth="0.0" text="状态">
-                                                   <VBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </VBox.margin>
-                                                   <font>
-                                                      <Font size="29.0" />
-                                                   </font>
-                                                </Text>
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <HBox prefHeight="275.0" prefWidth="775.0">
-                                       <children>
-                                          <VBox alignment="CENTER" prefHeight="275.0" prefWidth="297.0">
-                                             <children>
-                                                <JFXTextField fx:id="appId" labelFloat="true" onAction="#loadAppInfo" promptText="预约ID" />
-                                             </children>
-                                          </VBox>
-                                          <VBox alignment="CENTER" prefHeight="275.0" prefWidth="481.0">
-                                             <children>
-                                                <Text fx:id="appUser" strokeType="OUTSIDE" strokeWidth="0.0" text="用户">
-                                                   <font>
-                                                      <Font size="29.0" />
-                                                   </font>
-                                                </Text>
-                                                <Text fx:id="appDate" strokeType="OUTSIDE" strokeWidth="0.0" text="预约时间">
-                                                   <VBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </VBox.margin>
-                                                   <font>
-                                                      <Font size="29.0" />
-                                                   </font>
-                                                </Text>
-                                                <Text fx:id="appPet" strokeType="OUTSIDE" strokeWidth="0.0" text="宠物">
-                                                   <VBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </VBox.margin>
-                                                   <font>
-                                                      <Font size="29.0" />
-                                                   </font>
-                                                </Text>
-                                                <Text fx:id="appStatus" strokeType="OUTSIDE" strokeWidth="0.0" text="状态">
-                                                   <VBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </VBox.margin>
-                                                   <font>
-                                                      <Font size="29.0" />
-                                                   </font>
-                                                </Text>
-                                             </children>
-                                             <HBox.margin>
+                                             <VBox.margin>
                                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                             </HBox.margin>
-                                          </VBox>
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox prefHeight="275.0" prefWidth="775.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="275.0" prefWidth="297.0">
+                                                   <children>
+                                                      <JFXTextField fx:id="appId" labelFloat="true" onAction="#loadAppInfo" promptText="预约ID" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="275.0" prefWidth="481.0">
+                                                   <children>
+                                                      <Text fx:id="appUser" strokeType="OUTSIDE" strokeWidth="0.0" text="用户">
+                                                         <font>
+                                                            <Font size="29.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fx:id="appDate" strokeType="OUTSIDE" strokeWidth="0.0" text="预约时间">
+                                                         <VBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </VBox.margin>
+                                                         <font>
+                                                            <Font size="29.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fx:id="appPet" strokeType="OUTSIDE" strokeWidth="0.0" text="宠物">
+                                                         <VBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </VBox.margin>
+                                                         <font>
+                                                            <Font size="29.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fx:id="appStatus" strokeType="OUTSIDE" strokeWidth="0.0" text="状态">
+                                                         <VBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </VBox.margin>
+                                                         <font>
+                                                            <Font size="29.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                             </VBox.margin>
+                                          </HBox>
                                        </children>
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                       </VBox.margin>
-                                    </HBox>
+                                    </VBox>
                                  </children>
-                              </VBox>
-                           </children></AnchorPane>
-                  </content>
-                </Tab>
-                  <Tab text="管理员详情">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TableView fx:id="operatorTbl" layoutX="26.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <columns>
-                                    <TableColumn fx:id="OperatorIdCol" prefWidth="75.0" text="ID" />
-                                    <TableColumn fx:id="OperatornameCol" prefWidth="75.0" text="用户名" />
-                                    <TableColumn fx:id="OPeratorlevCol" prefWidth="75.0" text="等级" />
-                                 </columns>
-                                 <columnResizePolicy>
-                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                 </columnResizePolicy>
-                                 <contextMenu>
-                                    <ContextMenu>
-                                      <items>
-                                        <MenuItem mnemonicParsing="false" onAction="#deleteOperator" text="删除" />
-                                          <MenuItem mnemonicParsing="false" onAction="#editOperator" text="编辑" />
-                                          <MenuItem mnemonicParsing="false" onAction="#refreshOperator" text="刷新" />
-                                      </items>
-                                    </ContextMenu>
-                                 </contextMenu>
-                              </TableView>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-                  <Tab text="用户详情">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TableView fx:id="userTbl" layoutX="26.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <columns>
-                                    <TableColumn fx:id="UserIdCol" prefWidth="75.0" text="ID" />
-                                    <TableColumn fx:id="UsernameCol" prefWidth="75.0" text="用户名" />
-                                    <TableColumn fx:id="UserTelCol" prefWidth="75.0" text="手机号码" />
-                                    <TableColumn fx:id="UserEmailCol" prefWidth="75.0" text="电子邮箱" />
-                                    <TableColumn fx:id="UserContactCol" prefWidth="75.0" text="其他联系方式" />
-                                 </columns>
-                                 <columnResizePolicy>
-                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                 </columnResizePolicy>
-                                 <contextMenu>
-                                    <ContextMenu>
-                                      <items>
-                                        <MenuItem mnemonicParsing="false" onAction="#deleteUser" text="删除" />
-                                          <MenuItem mnemonicParsing="false" onAction="#editUser" text="编辑" />
-                                          <MenuItem mnemonicParsing="false" onAction="#refreshUser" text="刷新" />
-                                      </items>
-                                    </ContextMenu>
-                                 </contextMenu>
-                              </TableView>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-                  <Tab text="宠物详情">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TableView fx:id="petTbl" layoutX="26.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <columns>
-                                    <TableColumn fx:id="PetIdCol" prefWidth="75.0" text="ID" />
-                                    <TableColumn fx:id="PetOwnerCol" prefWidth="75.0" text="主人" />
-                                    <TableColumn fx:id="PetNikenameCol" prefWidth="75.0" text="昵称" />
-                                    <TableColumn fx:id="PetAliasCol" prefWidth="75.0" text="别名" />
-                                 </columns>
-                                 <columnResizePolicy>
-                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                 </columnResizePolicy>
-                                 <contextMenu>
-                                    <ContextMenu>
-                                      <items>
-                                        <MenuItem mnemonicParsing="false" onAction="#deletePet" text="删除" />
-                                          <MenuItem mnemonicParsing="false" onAction="#editPet" text="编辑" />
-                                          <MenuItem mnemonicParsing="false" onAction="#refreshPet" text="刷新" />
-                                      </items>
-                                    </ContextMenu>
-                                 </contextMenu>
-                              </TableView>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-                  <Tab text="订单详情">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox alignment="CENTER" prefHeight="551.0" prefWidth="775.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="管理员详情">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                                       <children>
-                                          <JFXComboBox fx:id="orderBox" labelFloat="true" onAction="#selectOrderId" prefHeight="27.0" prefWidth="320.0" promptText="订单ID">
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                             <HBox.margin>
-                                                <Insets bottom="5.0" left="20.0" right="10.0" top="10.0" />
-                                             </HBox.margin>
-                                          </JFXComboBox>
-                                          <JFXButton buttonType="RAISED" onAction="#deleteOrder" text="删除订单">
-                                             <HBox.margin>
-                                                <Insets left="20.0" top="10.0" />
-                                             </HBox.margin>
-                                          </JFXButton>
-                                       </children>
-                                    </HBox>
-                                    <TableView fx:id="orderTbl" prefHeight="541.0" prefWidth="775.0">
-                                      <columns>
-                                        <TableColumn fx:id="orderProductCol" prefWidth="75.0" text="产品" />
-                                        <TableColumn fx:id="orderNumCol" prefWidth="75.0" text="数量" />
-                                      </columns>
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
-                                       </VBox.margin>
+                                    <TableView fx:id="operatorTbl" layoutX="26.0" layoutY="38.0" prefHeight="486.0" prefWidth="918.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columns>
+                                          <TableColumn fx:id="OperatorIdCol" prefWidth="75.0" text="ID" />
+                                          <TableColumn fx:id="OperatornameCol" prefWidth="75.0" text="用户名" />
+                                          <TableColumn fx:id="OPeratorlevCol" prefWidth="75.0" text="等级" />
+                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                        </columnResizePolicy>
                                        <contextMenu>
                                           <ContextMenu>
-                                            <items>
-                                                <MenuItem mnemonicParsing="false" onAction="#deleteOrderProduct" text="删除" />
-                                              <MenuItem mnemonicParsing="false" onAction="#editOrder" text="编辑" />
-                                                <MenuItem mnemonicParsing="false" onAction="#refreshOrder" text="刷新" />
-                                            </items>
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" onAction="#deleteOperator" text="删除" />
+                                                <MenuItem mnemonicParsing="false" onAction="#editOperator" text="编辑" />
+                                                <MenuItem mnemonicParsing="false" onAction="#refreshOperator" text="刷新" />
+                                             </items>
                                           </ContextMenu>
                                        </contextMenu>
                                     </TableView>
                                  </children>
-                              </VBox>
-                           </children></AnchorPane>
-                     </content>
-                  </Tab>
-                  <Tab text="预约详情">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                                 <VBox alignment="CENTER" prefHeight="551.0" prefWidth="775.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                    <children>
-                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                                       <children>
-                                             <JFXComboBox fx:id="appointmentBox" labelFloat="true" onAction="#selectAppointmentId" prefHeight="27.0" prefWidth="320.0" promptText="预约ID">
-                                                <opaqueInsets>
-                                                   <Insets />
-                                                </opaqueInsets>
-                                             </JFXComboBox>
-                                          <JFXButton buttonType="RAISED" onAction="#deleteAppointment" text="删除预约">
-                                             <HBox.margin>
-                                                <Insets left="10.0" />
-                                             </HBox.margin>
-                                          </JFXButton>
-                                       </children>
-                                    </HBox>
-                                       <TableView fx:id="appointmentTbl" prefHeight="541.0" prefWidth="775.0">
-                                          <columns>
-                                             <TableColumn fx:id="appointmentServiceCol" prefWidth="75.0" text="服务" />
-                                             <TableColumn fx:id="appointmentPetCol" prefWidth="75.0" text="宠物" />
-                                          <TableColumn fx:id="appointmentDateCol" prefWidth="75.0" text="时间" />
-                                          </columns>
-                                          <VBox.margin>
-                                             <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
-                                          </VBox.margin>
-                                          <columnResizePolicy>
-                                             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                          </columnResizePolicy>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="用户详情">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="userTbl" layoutX="26.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columns>
+                                          <TableColumn fx:id="UserIdCol" prefWidth="75.0" text="ID" />
+                                          <TableColumn fx:id="UsernameCol" prefWidth="75.0" text="用户名" />
+                                          <TableColumn fx:id="UserTelCol" prefWidth="75.0" text="手机号码" />
+                                          <TableColumn fx:id="UserEmailCol" prefWidth="75.0" text="电子邮箱" />
+                                          <TableColumn fx:id="UserContactCol" prefWidth="75.0" text="其他联系方式" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
                                        <contextMenu>
                                           <ContextMenu>
-                                            <items>
-                                              <MenuItem mnemonicParsing="false" onAction="#deleteAppointmentService" text="删除" />
-                                                <MenuItem mnemonicParsing="false" onAction="#editAppointmentService" text="编辑" />
-                                                <MenuItem mnemonicParsing="false" onAction="#refreshAppointment" text="刷新" />
-                                            </items>
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" onAction="#deleteUser" text="删除" />
+                                                <MenuItem mnemonicParsing="false" onAction="#editUser" text="编辑" />
+                                                <MenuItem mnemonicParsing="false" onAction="#refreshUser" text="刷新" />
+                                             </items>
                                           </ContextMenu>
                                        </contextMenu>
-                                       </TableView>
-                                    </children>
-                                 </VBox>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-                  <Tab text="服务详情">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TableView fx:id="serviceTbl" layoutX="26.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <columns>
-                                    <TableColumn fx:id="ServiceIdCol" prefWidth="75.0" text="ID" />
-                                    <TableColumn fx:id="ServiceNameCol" prefWidth="75.0" text="名称" />
-                                    <TableColumn fx:id="ServicePriceCol" prefWidth="75.0" text="价格" />
-                                 </columns>
-                                 <columnResizePolicy>
-                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                 </columnResizePolicy>
-                                 <contextMenu>
-                                    <ContextMenu>
-                                      <items>
-                                          <MenuItem mnemonicParsing="false" onAction="#deleteService" text="删除" />
-                                          <MenuItem mnemonicParsing="false" onAction="#editService" text="编辑" />
-                                          <MenuItem mnemonicParsing="false" onAction="#refreshService" text="刷新" />
-                                      </items>
-                                    </ContextMenu>
-                                 </contextMenu>
-                              </TableView>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-                  <Tab text="产品详情">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TableView fx:id="productTbl" layoutX="26.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <columns>
-                                    <TableColumn fx:id="ProductIdCol" prefWidth="75.0" text="ID" />
-                                    <TableColumn fx:id="ProductNameCol" prefWidth="75.0" text="名称" />
-                                    <TableColumn fx:id="ProductBrandCol" prefWidth="75.0" text="品牌" />
-                                    <TableColumn fx:id="ProductPriceCol" prefWidth="75.0" text="价格" />
-                                    <TableColumn fx:id="ProductBarcodeCol" prefWidth="75.0" text="条形码" />
-                                    <TableColumn fx:id="ProductCategory" prefWidth="75.0" text="类别" />
-                                 </columns>
-                                 <columnResizePolicy>
-                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                 </columnResizePolicy>
-                                 <contextMenu>
-                                    <ContextMenu>
-                                      <items>
-                                        <MenuItem mnemonicParsing="false" onAction="#deleteProduct" text="删除" />
-                                          <MenuItem mnemonicParsing="false" onAction="#editProduct" text="编辑" />
-                                          <MenuItem mnemonicParsing="false" onAction="#refreshProduct" text="刷新" />
-                                          <MenuItem mnemonicParsing="false" onAction="#showProductBarcode" text="查看条形码" />
-                                      </items>
-                                    </ContextMenu>
-                                 </contextMenu>
-                              </TableView>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-                  <Tab text="分类详情">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <TableView fx:id="categoryTbl" layoutX="26.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                              <columns>
-                                 <TableColumn fx:id="CategoryIdCol" prefWidth="75.0" text="ID" />
-                                 <TableColumn fx:id="CategoryNameCol" prefWidth="75.0" text="名称" />
-                                 <TableColumn fx:id="CategoryDetailCol" prefWidth="75.0" text="详情" />
-                              </columns>
-                              <columnResizePolicy>
-                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                              </columnResizePolicy>
-                              <contextMenu>
-                                 <ContextMenu>
-                                   <items>
-                                      <MenuItem mnemonicParsing="false" onAction="#deleteCategory" text="删除" />
-                                      <MenuItem mnemonicParsing="false" onAction="#editCategory" text="编辑" />
-                                       <MenuItem mnemonicParsing="false" onAction="#refreshCategory" text="刷新" />
-                                   </items>
-                                 </ContextMenu>
-                              </contextMenu>
-                           </TableView>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-              </tabs>
-            </TabPane>
-         </center>
-         <right>
-            <VBox prefHeight="643.0" prefWidth="152.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="btnAddAdmin" mnemonicParsing="false" onAction="#addAdminStarter" prefHeight="73.0" prefWidth="167.0" text="添加管理员">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/admin.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="addUser" mnemonicParsing="false" onAction="#addUserStarter" prefHeight="73.0" prefWidth="167.0" text="添加用户">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/user.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnAddPet" mnemonicParsing="false" onAction="#addPetStarter" prefHeight="73.0" prefWidth="167.0" text="添加宠物">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/pet.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnAddOrder" mnemonicParsing="false" onAction="#addOrderStater" prefHeight="73.0" prefWidth="167.0" text="添加订单">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/order.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnAddAppointment" mnemonicParsing="false" onAction="#AddAppointmentStarter" prefHeight="73.0" prefWidth="167.0" text="添加预约">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/appointment.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnAddService" mnemonicParsing="false" onAction="#addServiceStarter" prefHeight="73.0" prefWidth="167.0" text="添加服务">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/service.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnAddProduct" mnemonicParsing="false" onAction="#addProductStarter" prefHeight="73.0" prefWidth="167.0" text="添加产品">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/product.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnAddCategory" mnemonicParsing="false" onAction="#addCategoryStarter" prefHeight="73.0" prefWidth="167.0" text="添加分类">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/category.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="宠物详情">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="petTbl" layoutX="26.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columns>
+                                          <TableColumn fx:id="PetIdCol" prefWidth="75.0" text="ID" />
+                                          <TableColumn fx:id="PetOwnerCol" prefWidth="75.0" text="主人" />
+                                          <TableColumn fx:id="PetNikenameCol" prefWidth="75.0" text="昵称" />
+                                          <TableColumn fx:id="PetAliasCol" prefWidth="75.0" text="别名" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                       <contextMenu>
+                                          <ContextMenu>
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" onAction="#deletePet" text="删除" />
+                                                <MenuItem mnemonicParsing="false" onAction="#editPet" text="编辑" />
+                                                <MenuItem mnemonicParsing="false" onAction="#refreshPet" text="刷新" />
+                                             </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="订单详情">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="551.0" prefWidth="775.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <JFXComboBox fx:id="orderBox" labelFloat="true" onAction="#selectOrderId" prefHeight="27.0" prefWidth="320.0" promptText="订单ID">
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <HBox.margin>
+                                                      <Insets bottom="5.0" left="20.0" right="10.0" top="10.0" />
+                                                   </HBox.margin>
+                                                </JFXComboBox>
+                                                <JFXButton buttonType="RAISED" onAction="#deleteOrder" text="删除订单">
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" top="10.0" />
+                                                   </HBox.margin>
+                                                </JFXButton>
+                                             </children>
+                                          </HBox>
+                                          <TableView fx:id="orderTbl" prefHeight="541.0" prefWidth="775.0">
+                                             <columns>
+                                                <TableColumn fx:id="orderProductCol" prefWidth="75.0" text="产品" />
+                                                <TableColumn fx:id="orderNumCol" prefWidth="75.0" text="数量" />
+                                             </columns>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                                             </VBox.margin>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                             <contextMenu>
+                                                <ContextMenu>
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" onAction="#deleteOrderProduct" text="删除" />
+                                                      <MenuItem mnemonicParsing="false" onAction="#editOrder" text="编辑" />
+                                                      <MenuItem mnemonicParsing="false" onAction="#refreshOrder" text="刷新" />
+                                                   </items>
+                                                </ContextMenu>
+                                             </contextMenu>
+                                          </TableView>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="预约详情">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="551.0" prefWidth="775.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <JFXComboBox fx:id="appointmentBox" labelFloat="true" onAction="#selectAppointmentId" prefHeight="27.0" prefWidth="320.0" promptText="预约ID">
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </JFXComboBox>
+                                                <JFXButton buttonType="RAISED" onAction="#deleteAppointment" text="删除预约">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin>
+                                                </JFXButton>
+                                             </children>
+                                          </HBox>
+                                          <TableView fx:id="appointmentTbl" prefHeight="541.0" prefWidth="775.0">
+                                             <columns>
+                                                <TableColumn fx:id="appointmentServiceCol" prefWidth="75.0" text="服务" />
+                                                <TableColumn fx:id="appointmentPetCol" prefWidth="75.0" text="宠物" />
+                                                <TableColumn fx:id="appointmentDateCol" prefWidth="75.0" text="时间" />
+                                             </columns>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                                             </VBox.margin>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                             <contextMenu>
+                                                <ContextMenu>
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" onAction="#deleteAppointmentService" text="删除" />
+                                                      <MenuItem mnemonicParsing="false" onAction="#editAppointmentService" text="编辑" />
+                                                      <MenuItem mnemonicParsing="false" onAction="#refreshAppointment" text="刷新" />
+                                                   </items>
+                                                </ContextMenu>
+                                             </contextMenu>
+                                          </TableView>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="服务详情">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="serviceTbl" layoutX="26.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columns>
+                                          <TableColumn fx:id="ServiceIdCol" prefWidth="75.0" text="ID" />
+                                          <TableColumn fx:id="ServiceNameCol" prefWidth="75.0" text="名称" />
+                                          <TableColumn fx:id="ServicePriceCol" prefWidth="75.0" text="价格" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                       <contextMenu>
+                                          <ContextMenu>
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" onAction="#deleteService" text="删除" />
+                                                <MenuItem mnemonicParsing="false" onAction="#editService" text="编辑" />
+                                                <MenuItem mnemonicParsing="false" onAction="#refreshService" text="刷新" />
+                                             </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="产品详情">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="productTbl" layoutX="26.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columns>
+                                          <TableColumn fx:id="ProductIdCol" prefWidth="75.0" text="ID" />
+                                          <TableColumn fx:id="ProductNameCol" prefWidth="75.0" text="名称" />
+                                          <TableColumn fx:id="ProductBrandCol" prefWidth="75.0" text="品牌" />
+                                          <TableColumn fx:id="ProductPriceCol" prefWidth="75.0" text="价格" />
+                                          <TableColumn fx:id="ProductBarcodeCol" prefWidth="75.0" text="条形码" />
+                                          <TableColumn fx:id="ProductCategory" prefWidth="75.0" text="类别" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                       <contextMenu>
+                                          <ContextMenu>
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" onAction="#deleteProduct" text="删除" />
+                                                <MenuItem mnemonicParsing="false" onAction="#editProduct" text="编辑" />
+                                                <MenuItem mnemonicParsing="false" onAction="#refreshProduct" text="刷新" />
+                                                <MenuItem mnemonicParsing="false" onAction="#showProductBarcode" text="查看条形码" />
+                                             </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="分类详情">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="categoryTbl" layoutX="26.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columns>
+                                          <TableColumn fx:id="CategoryIdCol" prefWidth="75.0" text="ID" />
+                                          <TableColumn fx:id="CategoryNameCol" prefWidth="75.0" text="名称" />
+                                          <TableColumn fx:id="CategoryDetailCol" prefWidth="75.0" text="详情" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                       <contextMenu>
+                                          <ContextMenu>
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" onAction="#deleteCategory" text="删除" />
+                                                <MenuItem mnemonicParsing="false" onAction="#editCategory" text="编辑" />
+                                                <MenuItem mnemonicParsing="false" onAction="#refreshCategory" text="刷新" />
+                                             </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+                  <JFXHamburger styleClass="jfx-hamburger-icon" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="70.0" />
                </children>
-            </VBox>
-         </right>
+            </AnchorPane>
+         </center>
       </BorderPane>
    </children>
 </StackPane>

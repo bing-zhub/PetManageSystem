@@ -1,9 +1,40 @@
 * {
-    -fx-primary-color: #6200EE;
-    -fx-secondary-color: #03DAC6;
-    -fx-primary-text: #FFFFFF;
+    -fx-dark-primary-color: #1976D2;
+    -fx-light-primary-color: #2196F3;
+    -fx-primary-color:#2196F3;
+    -fx-text-color:#FFFFFF;
+    -fx-icon-color:#727272;
+    -fx-secondary-color: #49A8EE;
+    -fx-primary-text: #212121;
+    -fx-secondary-text: #BDBDBD;
 }
 
 . root {
-    -fx-background-color: -fx-primary-color;
+    -fx-background-color: -fx-dark-primary-color;
+}
+
+.glyph-icon {
+    -fx-fill: #b7d7f7;
+}
+
+.button {
+    -fx-text-fill: -fx-text-color;
+    -fx-background-color: -fx-light-primary-color;
+}
+
+.button:hover{
+    -fx-text-fill: -fx-text-color;
+    -fx-background-color: -fx-secondary-color;
+}
+
+.text-field {
+    -fx-prompt-text-fill: #FFFFFF;
+    -jfx-focus-color: #FFFFFF;
+    -jfx-unfocus-color: #FFFFFF;
+    -fx-text-fill: #FFFFFF;
+}
+
+.wrong-match {
+    -jfx-focus-color: #E15241;
+    -jfx-unfocus-color: #E15241;
 }

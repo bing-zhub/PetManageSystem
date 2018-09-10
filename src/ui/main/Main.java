@@ -201,46 +201,6 @@ public class Main implements Initializable{
     private ObservableList<BeanOrderDetail> orderDetails = null;
     private ObservableList<BeanAppointmentDetail> appointmentDetails = null;
 
-    @FXML
-    void AddAppointmentStarter(ActionEvent event) {
-        showWindow("/ui/add/addAppointment/addAppointment.fxml","添加预约");
-    }
-
-    @FXML
-    void addAdminStarter(ActionEvent event) {
-        showWindow("/ui/add/addOperator/addOperator.fxml","添加管理员");
-    }
-
-    @FXML
-    void addCategoryStarter(ActionEvent event) {
-        showWindow("/ui/add/addCategory/addCategory.fxml","添加分类");
-    }
-
-    @FXML
-    void addOrderStater(ActionEvent event) {
-        showWindow("/ui/add/addOrder/addOrder.fxml", "添加订单");
-    }
-
-    @FXML
-    void addPetStarter(ActionEvent event) {
-        showWindow("/ui/add/addPet/addPet.fxml","添加宠物");
-    }
-
-    @FXML
-    void addProductStarter(ActionEvent event) {
-        showWindow("/ui/add/addProduct/addProduct.fxml","添加产品");
-    }
-
-    @FXML
-    void addServiceStarter(ActionEvent event) {
-        showWindow("/ui/add/addService/addService.fxml","添加服务");
-    }
-
-    @FXML
-    void addUserStarter(ActionEvent event) {
-        showWindow("/ui/add/addUser/addUser.fxml","添加用户");
-    }
-
     private void showWindow(String loc, String title){
         try {
             Parent parent = FXMLLoader.load(getClass().getResource(loc));
