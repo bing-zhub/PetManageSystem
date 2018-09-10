@@ -84,4 +84,15 @@ public class AppointmentController {
         session.close();
         return list;
     }
+
+    public void delAppointmentDetail(BeanAppointmentDetail detail) {
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("delete BeanAppointmentDetail b where b.detailId = :id");
+        query.setParameter("id", detail.getDetailId());
+        int i = query.executeUpdate();
+        System.out.println(i);
+        tx.commit();
+        session.close();
+    }
 }

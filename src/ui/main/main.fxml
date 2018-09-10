@@ -322,7 +322,8 @@
                                        <TableView fx:id="appointmentTbl" prefHeight="541.0" prefWidth="775.0">
                                           <columns>
                                              <TableColumn fx:id="appointmentServiceCol" prefWidth="75.0" text="服务" />
-                                             <TableColumn fx:id="appointmentTimesCol" prefWidth="75.0" text="次数" />
+                                             <TableColumn fx:id="appointmentPetCol" prefWidth="75.0" text="宠物" />
+                                          <TableColumn fx:id="appointmentDateCol" prefWidth="75.0" text="时间" />
                                           </columns>
                                           <VBox.margin>
                                              <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />

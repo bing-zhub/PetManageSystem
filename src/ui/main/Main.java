@@ -21,6 +21,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.*;
+import ui.add.addAppointment.AddAppointment;
 import ui.add.addCategory.AddCategory;
 import ui.add.addOperator.AddOperator;
 import ui.add.addOrder.AddOrder;
@@ -34,6 +35,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -139,8 +141,10 @@ public class Main implements Initializable{
     private TableColumn<BeanAppointmentDetail, BeanService> appointmentServiceCol;
 
     @FXML
-    private TableColumn<BeanAppointmentDetail, Integer> appointmentTimesCol;
+    private TableColumn<BeanAppointmentDetail, BeanPet> appointmentPetCol;
 
+    @FXML
+    private TableColumn<BeanAppointmentDetail, LocalDate> appointmentDateCol;
 
     @FXML
     private TableView<BeanService> serviceTbl;
@@ -264,7 +268,6 @@ public class Main implements Initializable{
             appPet.setText("");
         }
     }
-
 
     /*
     *  Delete Operation
@@ -430,7 +433,6 @@ public class Main implements Initializable{
         }
     }
 
-
     @FXML
     void deleteService(ActionEvent event){
         BeanService service = serviceTbl.getSelectionModel().getSelectedItem();
@@ -490,6 +492,14 @@ public class Main implements Initializable{
             a.setContentText("产品"+detail.getProduct().getProdName()+"已删除");
             a.showAndWait();
             orderDetails.remove(detail);
+
+            List<BeanAppointment> list = PetManageSystemUtil.appointmentController.loadAll();
+            for(BeanAppointment a1 : list){
+                List<BeanAppointmentDetail> details = PetManageSystemUtil.appointmentController.loadDetailByAppointmentId(a1.getAppId());
+                if(details.size() == 0)
+                    PetManageSystemUtil.appointmentController.delAppointment(a1.getAppId());
+            }
+
             return;
         }else if(answer.get() == ButtonType.CANCEL){
             alertForCancel("删除");
@@ -505,11 +515,50 @@ public class Main implements Initializable{
 
     @FXML
     void deleteAppointmentService(ActionEvent event){
+        BeanAppointmentDetail detail = appointmentTbl.getSelectionModel().getSelectedItem();
+        if(detail == null){
+            alertForSelectNothing("产品");
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("确认");
+        alert.setContentText("是否要删除预约"+detail.getService().getServName()+" ?");
+        Optional<ButtonType> answer = alert.showAndWait();
+        if (answer.get() == ButtonType.OK){
+            try {
+                PetManageSystemUtil.appointmentController.delAppointmentDetail(detail);
+            } catch (Exception e) {
+                Alert t = new Alert(Alert.AlertType.ERROR);
+                t.setHeaderText(null);
+                t.setContentText("该预约目前处于活跃状态,不可删除");
+                t.showAndWait();
+                return;
+            }
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("预约"+detail.getService().getServName()+"已删除");
+            a.showAndWait();
+            appointmentDetails.remove(detail);
 
+            List<BeanAppointment> list = PetManageSystemUtil.appointmentController.loadAll();
+            for(BeanAppointment a1 : list){
+                List<BeanAppointmentDetail> details = PetManageSystemUtil.appointmentController.loadDetailByAppointmentId(a1.getAppId());
+                if(details.size() == 0)
+                    PetManageSystemUtil.appointmentController.delAppointment(a1.getAppId());
+            }
+
+            return;
+        }else if(answer.get() == ButtonType.CANCEL){
+            alertForCancel("删除");
+            return;
+        }
     }
 
     @FXML
-    void deleteAppointment(ActionEvent event){}
+    void deleteAppointment(ActionEvent event){
+        BeanAppointment appointment = appointmentBox.getSelectionModel().getSelectedItem();
+        PetManageSystemUtil.appointmentController.delAppointment(appointment.getAppId());
+    }
 
     /*
     *  Edit operation
@@ -663,7 +712,7 @@ public class Main implements Initializable{
             AddOrder addOrder = (AddOrder) loader.getController();
             addOrder.inflateUI(order);
             Stage stage = new Stage(StageStyle.DECORATED);
-            stage.setTitle("编辑分类");
+            stage.setTitle("编辑订单");
             stage.setScene(new Scene(parent));
             stage.show();
 
@@ -673,7 +722,27 @@ public class Main implements Initializable{
     }
 
     @FXML
-    void editAppointmentService(ActionEvent event){}
+    void editAppointmentService(ActionEvent event){
+        BeanAppointment appointment = appointmentBox.getSelectionModel().getSelectedItem();
+        if(appointment == null){
+            alertForSelectNothing("预约");
+            return;
+        }
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/add/addAppointment/addAppointment.fxml"));
+            Parent parent = loader.load();
+            AddAppointment addAppointment = (AddAppointment) loader.getController();
+            addAppointment.inflateUI(appointment);
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setTitle("编辑预约");
+            stage.setScene(new Scene(parent));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /*
     * refresh operation
@@ -724,6 +793,8 @@ public class Main implements Initializable{
 
     @FXML
     void refreshService(ActionEvent event){
+        appointmentBox.getItems().clear();
+        appointmentBox.setItems(getAppointment());
         services.clear();
         services = getService();
         serviceTbl.setItems(services);
@@ -837,7 +908,8 @@ public class Main implements Initializable{
         orderTbl.setItems(orderDetails);
 
         appointmentServiceCol.setCellValueFactory(new PropertyValueFactory<>("service"));
-        appointmentTimesCol.setCellValueFactory(new PropertyValueFactory<>("times"));
+        appointmentDateCol.setCellValueFactory(new PropertyValueFactory<>("app_date"));
+        appointmentPetCol.setCellValueFactory(new PropertyValueFactory<>("pet"));
         appointmentTbl.setItems(appointmentDetails);
     }
 

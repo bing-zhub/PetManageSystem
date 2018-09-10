@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseDragEvent;
@@ -133,6 +134,13 @@ public class AddOrder implements Initializable{
 
     @FXML
     void orderAdd(ActionEvent event) {
+        if(user == null || product1 == null || num1 == 0 ){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("缺少信息");
+            alert.showAndWait();
+            return;
+        }
 
         product1NumInput(new ActionEvent());
         product1Selected(new ActionEvent());
@@ -146,6 +154,7 @@ public class AddOrder implements Initializable{
 
         if(!isEditMode)
             order = new BeanMyOrder();
+
 
         order.setOrderState("订单创建完成");
         order.setOrderPrice(price1+price2+price3+price4);
