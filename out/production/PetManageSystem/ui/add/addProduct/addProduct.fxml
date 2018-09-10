@@ -4,13 +4,15 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" prefHeight="424.0" prefWidth="351.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.add.addProduct.AddProduct">
+<AnchorPane fx:id="rootPane" prefHeight="474.0" prefWidth="351.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.add.addProduct.AddProduct">
    <children>
-      <VBox layoutY="2.0" prefHeight="240.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutY="2.0" prefHeight="240.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <JFXComboBox fx:id="serviceCategory" labelFloat="true" prefHeight="27.0" prefWidth="304.0" promptText="类别">
                <VBox.margin>
@@ -32,11 +34,19 @@
                   <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
                </VBox.margin>
             </JFXTextField>
-            <JFXTextField fx:id="productBarcode" labelFloat="true" promptText="条形码">
+            <JFXTextField fx:id="productBarcode" labelFloat="true" onAction="#barcodeEntered" promptText="条形码">
                <VBox.margin>
-                  <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
+                  <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
                </VBox.margin>
             </JFXTextField>
+            <ImageView fx:id="barcodeView" fitHeight="62.0" fitWidth="309.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <image>
+                  <Image url="@../barcode/tmp.png" />
+               </image>
+            </ImageView>
             <HBox prefHeight="55.0" prefWidth="340.0">
                <children>
                   <JFXButton fx:id="btnOk" onAction="#productAdd" prefHeight="58.0" prefWidth="162.0" style="-fx-background-color: #2196F3;" text="添加" textFill="WHITE">

@@ -29,6 +29,7 @@ import ui.add.addPet.AddPet;
 import ui.add.addProduct.AddProduct;
 import ui.add.addService.AddService;
 import ui.add.addUser.AddUser;
+import ui.add.barcode.Barcode;
 import util.PetManageSystemUtil;
 
 import java.io.FileInputStream;
@@ -269,6 +270,26 @@ public class Main implements Initializable{
         }
     }
 
+    @FXML
+    void showProductBarcode(ActionEvent event) {
+        BeanProduct product = productTbl.getSelectionModel().getSelectedItem();
+        if(product == null){
+            alertForSelectNothing("产品");
+            return;
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/add/barcode/barcode.fxml"));
+            Parent parent = loader.load();
+            Barcode barcode = loader.getController();
+            barcode.inflateUI(product.getProdBarcode());
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setTitle("条形码");
+            stage.setScene(new Scene(parent));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /*
     *  Delete Operation
     *

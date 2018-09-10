@@ -396,6 +396,7 @@
                                         <MenuItem mnemonicParsing="false" onAction="#deleteProduct" text="删除" />
                                           <MenuItem mnemonicParsing="false" onAction="#editProduct" text="编辑" />
                                           <MenuItem mnemonicParsing="false" onAction="#refreshProduct" text="刷新" />
+                                          <MenuItem mnemonicParsing="false" onAction="#showProductBarcode" text="查看条形码" />
                                       </items>
                                     </ContextMenu>
                                  </contextMenu>

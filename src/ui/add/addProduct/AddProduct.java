@@ -13,11 +13,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.BeanCategory;
 import model.BeanProduct;
-import model.BeanService;
+import javafx.scene.image.ImageView;
+import ui.add.barcode.Barcode;
 import util.PetManageSystemUtil;
 
 import java.net.URL;
@@ -46,6 +48,11 @@ public class AddProduct implements Initializable{
 
     @FXML
     private JFXButton btnOk;
+
+    @FXML
+    private ImageView barcodeView;
+
+
 
     private boolean isEditMode = false;
     private int productId = 0;
@@ -98,6 +105,19 @@ public class AddProduct implements Initializable{
         alert.show();
         cancel(new ActionEvent());
         return;
+    }
+
+    @FXML
+    void barcodeEntered(ActionEvent event){
+        if(productBarcode.getText().length()<13){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("条形码长度应为13");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+        Barcode barcode = new Barcode();
+        barcode.encode(productBarcode.getText(),300,60,"/ui/add/barcode/tmp.png");
+        barcodeView.setImage(new Image("/ui/add/barcode/tmp.png"));
     }
 
     @Override
@@ -164,6 +184,9 @@ public class AddProduct implements Initializable{
         productBrand.setText(product.getProdBrand());
         productName.setText(product.getProdName());
         serviceCategory.setValue(product.getProdCategory());
+        Barcode barcode = new Barcode();
+        barcode.encode(productBarcode.getText(),300,60,"/ui/add/barcode/tmp.png");
+        barcodeView.setImage(new Image("/ui/add/barcode/tmp.png"));
         this.isEditMode = true;
         this.productId = product.getProdId();
     }

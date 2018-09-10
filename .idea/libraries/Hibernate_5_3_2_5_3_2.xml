@@ -30,6 +30,9 @@
       <root url="jar://$USER_HOME$/Downloads/commons-codec-1.10.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/fontawesomefx-glyphsbrowser-1.3.0/lib/fontawesomefx-commons-8.15.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/fontawesomefx-glyphsbrowser-1.3.0/lib/fontawesomefx-fontawesome-4.7.0-5.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/QR_Generator_Libs/qrgen-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/QR_Generator_Libs/zxing-core-1.7.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/QR_Generator_Libs/zxing-j2se-1.7.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
