@@ -2,19 +2,17 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -23,87 +21,9 @@
 
 <StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="970.0" stylesheets="@../theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.main.Main">
    <children>
-      <BorderPane prefHeight="200.0" prefWidth="200.0">
-         <right>
-            <VBox prefHeight="643.0" prefWidth="152.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="btnAddAdmin" mnemonicParsing="false" onAction="#addAdminStarter" prefHeight="73.0" prefWidth="167.0" text="添加管理员">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/admin.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="addUser" mnemonicParsing="false" onAction="#addUserStarter" prefHeight="73.0" prefWidth="167.0" text="添加用户">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/user.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnAddPet" mnemonicParsing="false" onAction="#addPetStarter" prefHeight="73.0" prefWidth="167.0" text="添加宠物">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/pet.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnAddOrder" mnemonicParsing="false" onAction="#addOrderStater" prefHeight="73.0" prefWidth="167.0" text="添加订单">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/order.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnAddAppointment" mnemonicParsing="false" onAction="#AddAppointmentStarter" prefHeight="73.0" prefWidth="167.0" text="添加预约">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/appointment.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnAddService" mnemonicParsing="false" onAction="#addServiceStarter" prefHeight="73.0" prefWidth="167.0" text="添加服务">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/service.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnAddProduct" mnemonicParsing="false" onAction="#addProductStarter" prefHeight="73.0" prefWidth="167.0" text="添加产品">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/product.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnAddCategory" mnemonicParsing="false" onAction="#addCategoryStarter" prefHeight="73.0" prefWidth="167.0" text="添加分类">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/category.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </VBox>
-         </right>
-         <center>
-            <JFXTabPane BorderPane.alignment="CENTER">
+      <AnchorPane>
+         <children>
+            <JFXTabPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <tabs>
                   <Tab text="主页">
                      <content>
@@ -249,7 +169,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView fx:id="operatorTbl" layoutX="26.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <TableView fx:id="operatorTbl" layoutX="26.0" layoutY="38.0" prefHeight="486.0" prefWidth="918.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <columns>
                                     <TableColumn fx:id="OperatorIdCol" prefWidth="75.0" text="ID" />
                                     <TableColumn fx:id="OperatornameCol" prefWidth="75.0" text="用户名" />
@@ -514,7 +434,9 @@
                   </Tab>
                </tabs>
             </JFXTabPane>
-         </center>
-      </BorderPane>
+            <JFXDrawer fx:id="drawer" direction="RIGHT" layoutX="843.0" overLayVisible="false" prefHeight="585.0" prefWidth="127.0" />
+            <JFXHamburger fx:id="hamburger" styleClass="jfx-hamburger-icon" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="70.0" />
+         </children>
+      </AnchorPane>
    </children>
 </StackPane>

@@ -38,3 +38,54 @@
     -jfx-focus-color: #E15241;
     -jfx-unfocus-color: #E15241;
 }
+
+/* Main */
+
+/* TabPane */
+
+.tab {
+    -fx-background-color:-fx-dark-primary-color;
+    -fx-pref-width: 200;
+    -fx-pref-height: 60;
+}
+
+.tab-header-background {
+    -fx-background-color:-fx-dark-primary-color;
+}
+
+.jfx-hamburger-icon {
+    -fx-spacing : 5;
+}
+
+.jfx-hamburger-icon StackPane {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 5px;
+}
+
+.toolbar-button {
+    -fx-text-fill: -fx-text-color;
+    -fx-background-color: -fx-light-primary-color;
+}
+
+.toolbar-button:hover{
+    -fx-text-fill: -fx-text-color;
+    -fx-background-color: -fx-secondary-color;
+}
+
+.table-view .column-header{
+    -fx-background-color:-fx-dark-primary-color;
+}
+
+.table-column .label{
+    -fx-text-fill: white ;
+    -fx-text-alignment: center ;
+    -fx-graphic-text-gap:0;
+
+}
+.table-view .table-row-cell{
+    -fx-background-color: -fx-dark-primary-color; 
+}
+
+.table-row-cell .table-cell {  
+    -fx-border-width: 0px;
+}

@@ -58,6 +58,39 @@
 }
 
 .jfx-hamburger-icon StackPane {
-    -fx-background-color: -fx-text-color;
+    -fx-background-color: #FFFFFF;
     -fx-background-radius: 5px;
+}
+
+.toolbar-button {
+    -fx-text-fill: -fx-text-color;
+    -fx-background-color: -fx-light-primary-color;
+}
+
+.toolbar-button:hover{
+    -fx-text-fill: -fx-text-color;
+    -fx-background-color: -fx-secondary-color;
+}
+
+.table-view .column-header{
+    -fx-background-color:-fx-dark-primary-color;
+}
+
+.table-column .label{
+    -fx-text-fill: white ;
+    -fx-text-alignment: center ;
+    -fx-graphic-text-gap:0;
+
+}
+.table-view .table-row-cell{
+    -fx-background-color: -fx-dark-primary-color; 
+}
+
+.table-row-cell .table-cell {  
+    -fx-border-width: 0px;
+}
+
+.main-text {
+    -fx-fill: white;
+    -fx-font-size: 20px;
 }

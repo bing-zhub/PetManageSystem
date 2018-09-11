@@ -1,13 +1,19 @@
 package ui.main;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
 import com.jfoenix.validation.NumberValidator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,6 +23,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -32,6 +39,7 @@ import ui.add.addUser.AddUser;
 import ui.add.barcode.Barcode;
 import util.PetManageSystemUtil;
 
+import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -191,6 +199,12 @@ public class Main implements Initializable{
 
     @FXML
     private TableColumn<BeanCategory, String> CategoryDetailCol;
+
+    @FXML
+    private JFXDrawer drawer;
+
+    @FXML
+    private JFXHamburger hamburger;
 
     private ObservableList<BeanOperator> operators = null;
     private ObservableList<BeanMyUser> users = null;
@@ -1048,6 +1062,34 @@ public class Main implements Initializable{
         loadData();
 
         initCol();
+
+        initDrawer();
+
+    }
+
+
+    private void initDrawer() {
+        try {
+            VBox toolbar = FXMLLoader.load(getClass().getResource("/ui/main/toolbar/toolbar.fxml"));
+            drawer.setSidePane(toolbar);
+            drawer.setDefaultDrawerSize(175);
+            HamburgerSlideCloseTransition task = new HamburgerSlideCloseTransition(hamburger);
+            task.setRate(-1);
+            hamburger.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (Event event) -> {
+                task.setRate(task.getRate() * -1);
+                task.play();
+                if(drawer.isClosed()){
+                    drawer.open();
+                    drawer.setMinWidth(175);
+                }else{
+                    drawer.close();
+                    drawer.setMinWidth(0);
+                }
+            });
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
