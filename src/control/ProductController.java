@@ -4,6 +4,7 @@ import model.BeanCategory;
 import model.BeanProduct;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -51,5 +52,10 @@ public class ProductController {
         tx.commit();
         session.close();
         System.out.println(category.getCateName());
+    }
+    public int getProductTotalCount(){
+        return (int)getSession().createCriteria("BeanProduct")
+                .setProjection(Projections.rowCount())
+                .uniqueResult();
     }
 }

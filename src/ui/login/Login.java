@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.BeanOperator;
 import org.apache.commons.codec.digest.DigestUtils;
 import util.BaseException;
 import util.PetManageSystemUtil;
@@ -45,6 +46,8 @@ public class Login {
         try {
             PetManageSystemUtil.operatorController.login(userName, passWord);
             loadMain();
+            BeanOperator operator =  PetManageSystemUtil.operatorController.findOperatorByName(userName);
+            BeanOperator.currentOperator = operator;
             ((Stage)username.getScene().getWindow()).close();
         } catch (BaseException e) {
             username.getStyleClass().add("wrong-match");

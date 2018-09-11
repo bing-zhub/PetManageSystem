@@ -3,6 +3,7 @@ package util;
 import control.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import static util.HibernateUtil.getSession;
 
@@ -31,5 +32,15 @@ public class PetManageSystemUtil {
         session.save(o);
         tx.commit();
         session.close();
+    }
+
+    public static int getCount(String cate){
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from "+cate);
+        int list = query.list().size();
+        tx.commit();
+        session.close();
+        return list;
     }
 }

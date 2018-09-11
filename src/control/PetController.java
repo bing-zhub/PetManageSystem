@@ -3,6 +3,7 @@ package control;
 import model.BeanPet;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.query.Query;
 
 import java.util.ArrayList;
@@ -68,6 +69,12 @@ public class PetController {
         query.executeUpdate();
         tx.commit();
         session.close();
+    }
+
+    public int getPetTotalCount(){
+        return (int)getSession().createCriteria("BeanPet")
+                .setProjection(Projections.rowCount())
+                .uniqueResult();
     }
 
 }

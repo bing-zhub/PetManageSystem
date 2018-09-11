@@ -21,9 +21,9 @@
 
 <StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="970.0" stylesheets="@../theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.main.Main">
    <children>
-      <AnchorPane>
+      <AnchorPane fx:id="rootAnchorPane">
          <children>
-            <JFXTabPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <JFXTabPane fx:id="tabPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <tabs>
                   <Tab text="主页">
                      <content>
@@ -33,19 +33,19 @@
                                  <children>
                                     <HBox prefHeight="284.0" prefWidth="775.0">
                                        <children>
-                                          <VBox alignment="CENTER" prefHeight="274.0" prefWidth="406.0">
+                                          <VBox alignment="CENTER" prefHeight="261.0" prefWidth="531.0">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="管理员总数" textAlignment="CENTER" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="用户总数" textAlignment="CENTER" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="宠物总数" textAlignment="CENTER" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="订单总数" textAlignment="CENTER" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="预约总数" textAlignment="CENTER" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="服务总数" textAlignment="CENTER" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="产品总数" textAlignment="CENTER" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="分类总数" textAlignment="CENTER" />
+                                                <Text fx:id="adminTotal" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="管理员总数" textAlignment="CENTER" />
+                                                <Text fx:id="userTotal" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="用户总数" textAlignment="CENTER" />
+                                                <Text fx:id="PetTotal" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="宠物总数" textAlignment="CENTER" />
+                                                <Text fx:id="orderTotal" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="订单总数" textAlignment="CENTER" />
+                                                <Text fx:id="appointmentTotal" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="预约总数" textAlignment="CENTER" />
+                                                <Text fx:id="serviceTotal" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="服务总数" textAlignment="CENTER" />
+                                                <Text fx:id="productTotal" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="产品总数" textAlignment="CENTER" />
+                                                <Text fx:id="categoryTotal" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="分类总数" textAlignment="CENTER" />
                                              </children>
                                           </VBox>
-                                          <VBox prefHeight="274.0" prefWidth="367.0" />
+                                          <VBox fx:id="charContainer" prefHeight="261.0" prefWidth="421.0" />
                                        </children>
                                     </HBox>
                                     <HBox prefHeight="288.0" prefWidth="775.0">
@@ -184,6 +184,8 @@
                                           <MenuItem mnemonicParsing="false" onAction="#deleteOperator" text="删除" />
                                           <MenuItem mnemonicParsing="false" onAction="#editOperator" text="编辑" />
                                           <MenuItem mnemonicParsing="false" onAction="#refreshOperator" text="刷新" />
+                                          <MenuItem mnemonicParsing="false" onAction="#levelUpOperator" text="升级" />
+                                          <MenuItem mnemonicParsing="false" onAction="#levelDownOperator" text="降级" />
                                        </items>
                                     </ContextMenu>
                                  </contextMenu>
@@ -257,7 +259,7 @@
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <JFXComboBox fx:id="orderBox" labelFloat="true" onAction="#selectOrderId" prefHeight="27.0" prefWidth="320.0" promptText="订单ID">
+                                          <JFXComboBox fx:id="orderBox" focusColor="WHITE" labelFloat="true" onAction="#selectOrderId" prefHeight="27.0" prefWidth="320.0" promptText="订单ID" unFocusColor="WHITE">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
@@ -270,15 +272,28 @@
                                                 <Insets left="20.0" top="10.0" />
                                              </HBox.margin>
                                           </JFXButton>
+                                          <JFXButton buttonType="RAISED" onAction="#sendOrder" text="完成发货">
+                                             <HBox.margin>
+                                                <Insets left="20.0" top="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                          <JFXButton buttonType="RAISED" onAction="#finishOrder" text="完成订单">
+                                             <HBox.margin>
+                                                <Insets left="20.0" top="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
                                        </children>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
                                     </HBox>
-                                    <TableView fx:id="orderTbl" prefHeight="541.0" prefWidth="775.0">
+                                    <TableView fx:id="orderTbl" prefHeight="541.0" prefWidth="775.0" style="-fx-border-color: #1976D2;">
                                        <columns>
                                           <TableColumn fx:id="orderProductCol" prefWidth="75.0" text="产品" />
                                           <TableColumn fx:id="orderNumCol" prefWidth="75.0" text="数量" />
                                        </columns>
                                        <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                        </VBox.margin>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -307,26 +322,37 @@
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <JFXComboBox fx:id="appointmentBox" labelFloat="true" onAction="#selectAppointmentId" prefHeight="27.0" prefWidth="320.0" promptText="预约ID">
+                                          <JFXComboBox fx:id="appointmentBox" focusColor="WHITE" labelFloat="true" onAction="#selectAppointmentId" prefHeight="27.0" prefWidth="320.0" promptText="预约ID" unFocusColor="WHITE">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
+                                             <HBox.margin>
+                                                <Insets top="10.0" />
+                                             </HBox.margin>
                                           </JFXComboBox>
                                           <JFXButton buttonType="RAISED" onAction="#deleteAppointment" text="删除预约">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
                                           </JFXButton>
+                                          <JFXButton buttonType="RAISED" onAction="#finishAppointment" text="完成预约">
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
                                        </children>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
                                     </HBox>
-                                    <TableView fx:id="appointmentTbl" prefHeight="541.0" prefWidth="775.0">
+                                    <TableView fx:id="appointmentTbl" prefHeight="541.0" prefWidth="775.0" style="-fx-border-color: #1976D2;">
                                        <columns>
                                           <TableColumn fx:id="appointmentServiceCol" prefWidth="75.0" text="服务" />
                                           <TableColumn fx:id="appointmentPetCol" prefWidth="75.0" text="宠物" />
                                           <TableColumn fx:id="appointmentDateCol" prefWidth="75.0" text="时间" />
                                        </columns>
                                        <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                        </VBox.margin>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -3,6 +3,7 @@ package control;
 import model.BeanService;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.query.Query;
 
 import java.util.ArrayList;
@@ -54,5 +55,11 @@ public class ServiceController {
         query.executeUpdate();
         tx.commit();
         session.close();
+    }
+
+    public int getServiceTotalCount(){
+        return (int)getSession().createCriteria("BeanService")
+                .setProjection(Projections.rowCount())
+                .uniqueResult();
     }
 }

@@ -1,8 +1,10 @@
 package control;
 
+import com.sun.xml.internal.rngom.parse.host.Base;
 import model.BeanOperator;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.query.Query;
 import util.BaseException;
 
@@ -77,7 +79,10 @@ public class OperatorController {
         return list;
     }
 
-    public void delOperator(int id) {
+    public void delOperator(int id) throws BaseException{
+        if(BeanOperator.currentOperator.getOpId() == id){
+            throw new BaseException("当前管理员活动中不可删除");
+        }
         Session session = getSession();
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("delete BeanOperator b where b.opId = :id");
@@ -136,6 +141,17 @@ public class OperatorController {
 
         tx.commit();
         session.close();
+    }
+
+    public BeanOperator findOperatorByName(String userName) {
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from BeanOperator b where b.opName = :name");
+        query.setParameter("name",userName);
+        BeanOperator operator = (BeanOperator) query.list().get(0);
+        tx.commit();
+        session.close();
+        return operator;
     }
 
 }

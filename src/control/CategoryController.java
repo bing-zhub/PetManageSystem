@@ -3,6 +3,7 @@ package control;
 import model.BeanCategory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.query.Query;
 import util.BaseException;
 
@@ -57,6 +58,12 @@ public class CategoryController {
         tx.commit();
         session.close();
         return category;
+    }
+
+    public int getCategoryTotalCount(){
+        return (int)getSession().createCriteria("BeanCategory")
+                .setProjection(Projections.rowCount())
+                .uniqueResult();
     }
 
 

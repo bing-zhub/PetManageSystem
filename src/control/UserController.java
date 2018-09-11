@@ -3,6 +3,7 @@ package control;
 import model.BeanMyUser;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.query.Query;
 import util.BaseException;
 
@@ -75,5 +76,11 @@ public class UserController {
         query.executeUpdate();
         tx.commit();
         session.close();
+    }
+
+    public int getMyUserTotalCount(){
+        return (int)getSession().createCriteria("BeanMyUser")
+                .setProjection(Projections.rowCount())
+                .uniqueResult();
     }
 }

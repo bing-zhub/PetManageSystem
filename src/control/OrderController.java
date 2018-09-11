@@ -4,6 +4,7 @@ import model.BeanMyOrder;
 import model.BeanOrderDetail;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.query.Query;
 import util.BaseException;
 
@@ -88,5 +89,21 @@ public class OrderController {
 
         tx.commit();
         session.close();
+    }
+
+    public int getMyOrderTotalCount(){
+        return (int)getSession().createCriteria("BeanMyOrder")
+                .setProjection(Projections.rowCount())
+                .uniqueResult();
+    }
+
+    public int getOrderCount(String cate){
+        Session session = getSession();
+        Transaction rx = session.beginTransaction();
+        Query query = session.createQuery("from BeanMyOrder b where b.orderState = '"+ cate+"'");
+        int size = query.list().size();
+        rx.commit();
+        session.close();
+        return size;
     }
 }

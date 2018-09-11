@@ -4,6 +4,7 @@ import model.BeanAppointment;
 import model.BeanAppointmentDetail;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.query.Query;
 import util.BaseException;
 
@@ -94,5 +95,21 @@ public class AppointmentController {
         System.out.println(i);
         tx.commit();
         session.close();
+    }
+
+    public int getAppointmentTotalCount(){
+        return (int)getSession().createCriteria("BeanAppointmentDetail")
+                .setProjection(Projections.rowCount())
+                .uniqueResult();
+    }
+
+    public int getAppointmentCount(String cate){
+        Session session = getSession();
+        Transaction rx = session.beginTransaction();
+        Query query = session.createQuery("from BeanAppointment b where b.appState = '"+ cate+"'");
+        int size = query.list().size();
+        rx.commit();
+        session.close();
+        return size;
     }
 }
