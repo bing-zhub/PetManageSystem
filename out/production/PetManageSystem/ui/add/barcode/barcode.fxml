@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 
 
-<AnchorPane prefHeight="90.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.add.barcode.Barcode">
+<AnchorPane prefHeight="90.0" prefWidth="450.0" stylesheets="@../../theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.add.barcode.Barcode">
    <children>
       <HBox prefHeight="90.0" prefWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>

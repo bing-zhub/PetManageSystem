@@ -77,4 +77,14 @@ public class PetController {
                 .uniqueResult();
     }
 
+    public List<BeanPet> search(String text) {
+        Session session = getSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("from BeanPet b where b.petNikename like :text");
+        query.setParameter("text","%"+text+"%");
+        List<BeanPet> list = query.list();
+        transaction.commit();
+        session.close();
+        return list;
+    }
 }

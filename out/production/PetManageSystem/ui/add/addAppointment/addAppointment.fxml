@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane fx:id="rootPane" prefHeight="556.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.add.addAppointment.AddAppointment">
+<AnchorPane fx:id="rootPane" prefHeight="556.0" prefWidth="366.0" style="-fx-background-color: #1976D2;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.add.addAppointment.AddAppointment">
    <children>
       <VBox layoutY="2.0" prefHeight="240.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXComboBox fx:id="userBox" labelFloat="true" onAction="#userSelected" prefHeight="27.0" prefWidth="290.0" promptText="用户">
+            <JFXComboBox fx:id="userBox" focusColor="WHITE" labelFloat="true" onAction="#userSelected" prefHeight="27.0" prefWidth="290.0" promptText="用户" unFocusColor="WHITE">
                <padding>
                   <Insets left="10.0" right="10.0" />
                </padding>
@@ -23,12 +23,12 @@
                <children>
                   <HBox prefHeight="79.0" prefWidth="310.0">
                      <children>
-                        <JFXComboBox fx:id="serviceBox1" labelFloat="true" onAction="#service1Selected" prefHeight="27.0" prefWidth="151.0" promptText="服务">
+                        <JFXComboBox fx:id="serviceBox1" focusColor="WHITE" labelFloat="true" onAction="#service1Selected" prefHeight="27.0" prefWidth="151.0" promptText="服务" unFocusColor="WHITE">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
                         </JFXComboBox>
-                        <Label fx:id="servicePrice1" text="价格">
+                        <Label fx:id="servicePrice1" text="价格" textFill="WHITE">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -43,7 +43,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="327.0">
                      <children>
-                        <JFXComboBox fx:id="petBox1" labelFloat="true" onAction="#petBox1Selected" prefHeight="27.0" prefWidth="144.0" promptText="宠物">
+                        <JFXComboBox fx:id="petBox1" focusColor="WHITE" labelFloat="true" onAction="#petBox1Selected" prefHeight="27.0" prefWidth="144.0" promptText="宠物" unFocusColor="WHITE">
                            <HBox.margin>
                               <Insets top="3.0" />
                            </HBox.margin></JFXComboBox>
@@ -67,12 +67,12 @@
                <children>
                   <HBox prefHeight="79.0" prefWidth="310.0">
                      <children>
-                        <JFXComboBox fx:id="serviceBox2" labelFloat="true" onAction="#service2Selected" prefHeight="27.0" prefWidth="151.0" promptText="服务">
+                        <JFXComboBox fx:id="serviceBox2" focusColor="WHITE" labelFloat="true" onAction="#service2Selected" prefHeight="27.0" prefWidth="151.0" promptText="服务" unFocusColor="WHITE">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
                         </JFXComboBox>
-                        <Label fx:id="servicePrice2" text="价格">
+                        <Label fx:id="servicePrice2" text="价格" textFill="WHITE">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -87,7 +87,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <JFXComboBox fx:id="petBox2" labelFloat="true" onAction="#petBox2Selected" prefHeight="27.0" prefWidth="143.0" promptText="宠物">
+                        <JFXComboBox fx:id="petBox2" focusColor="WHITE" labelFloat="true" onAction="#petBox2Selected" prefHeight="27.0" prefWidth="143.0" promptText="宠物" unFocusColor="WHITE">
                            <padding>
                               <Insets top="3.0" />
                            </padding></JFXComboBox>
@@ -111,12 +111,12 @@
                <children>
                   <HBox prefHeight="79.0" prefWidth="310.0">
                      <children>
-                        <JFXComboBox fx:id="serviceBox3" labelFloat="true" onAction="#service3Selected" prefHeight="27.0" prefWidth="151.0" promptText="服务">
+                        <JFXComboBox fx:id="serviceBox3" focusColor="WHITE" labelFloat="true" onAction="#service3Selected" prefHeight="27.0" prefWidth="151.0" promptText="服务" unFocusColor="WHITE">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
                         </JFXComboBox>
-                        <Label fx:id="servicePrice3" text="价格">
+                        <Label fx:id="servicePrice3" text="价格" textFill="WHITE">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -131,7 +131,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <JFXComboBox fx:id="petBox3" labelFloat="true" onAction="#petBox3Selected" prefHeight="27.0" prefWidth="140.0" promptText="宠物">
+                        <JFXComboBox fx:id="petBox3" focusColor="WHITE" labelFloat="true" onAction="#petBox3Selected" prefHeight="27.0" prefWidth="140.0" promptText="宠物" unFocusColor="WHITE">
                            <HBox.margin>
                               <Insets top="3.0" />
                            </HBox.margin></JFXComboBox>
@@ -155,12 +155,12 @@
                <children>
                   <HBox prefHeight="79.0" prefWidth="310.0">
                      <children>
-                        <JFXComboBox fx:id="serviceBox4" labelFloat="true" onAction="#service4Selected" prefHeight="27.0" prefWidth="151.0" promptText="服务">
+                        <JFXComboBox fx:id="serviceBox4" focusColor="WHITE" labelFloat="true" onAction="#service4Selected" prefHeight="27.0" prefWidth="151.0" promptText="服务" unFocusColor="WHITE">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
                         </JFXComboBox>
-                        <Label fx:id="servicePrice4" text="价格">
+                        <Label fx:id="servicePrice4" text="价格" textFill="WHITE">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -175,7 +175,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <JFXComboBox fx:id="petBox4" labelFloat="true" onAction="#petBox4Selected" prefHeight="27.0" prefWidth="141.0" promptText="宠物">
+                        <JFXComboBox fx:id="petBox4" focusColor="WHITE" labelFloat="true" onAction="#petBox4Selected" prefHeight="27.0" prefWidth="141.0" promptText="宠物" unFocusColor="WHITE">
                            <HBox.margin>
                               <Insets top="3.0" />
                            </HBox.margin></JFXComboBox>
@@ -195,7 +195,7 @@
                   <Insets top="7.0" />
                </VBox.margin>
             </Line>
-            <Label fx:id="appointmentTotalPrice" text="总计">
+            <Label fx:id="appointmentTotalPrice" text="总计" textFill="WHITE">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin></Label>

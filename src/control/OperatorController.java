@@ -154,4 +154,14 @@ public class OperatorController {
         return operator;
     }
 
+    public List<BeanOperator> search(String text) {
+        Session session = getSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("from BeanOperator b where b.opName like :text");
+        query.setParameter("text","%"+text+"%");
+        List<BeanOperator> list = query.list();
+        transaction.commit();
+        session.close();
+        return list;
+    }
 }

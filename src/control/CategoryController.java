@@ -67,4 +67,14 @@ public class CategoryController {
     }
 
 
+    public List<BeanCategory> search(String text) {
+        Session session = getSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("from BeanCategory b where b.cateName like :text");
+        query.setParameter("text","%"+text+"%");
+        List<BeanCategory> list = query.list();
+        transaction.commit();
+        session.close();
+        return list;
+    }
 }

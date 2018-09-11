@@ -25,13 +25,13 @@
          <children>
             <JFXTabPane fx:id="tabPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <tabs>
-                  <Tab text="主页">
+                  <Tab fx:id="homeTab" text="主页">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <VBox layoutX="121.0" layoutY="44.0" prefHeight="551.0" prefWidth="775.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <HBox prefHeight="284.0" prefWidth="775.0">
+                                    <HBox prefHeight="528.0" prefWidth="970.0">
                                        <children>
                                           <VBox alignment="CENTER" prefHeight="261.0" prefWidth="531.0">
                                              <children>
@@ -46,12 +46,6 @@
                                              </children>
                                           </VBox>
                                           <VBox fx:id="charContainer" prefHeight="261.0" prefWidth="421.0" />
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="288.0" prefWidth="775.0">
-                                       <children>
-                                          <VBox prefHeight="278.0" prefWidth="412.0" />
-                                          <VBox prefHeight="278.0" prefWidth="370.0" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -70,17 +64,21 @@
                                        <children>
                                           <VBox alignment="CENTER" prefHeight="275.0" prefWidth="297.0">
                                              <children>
-                                                <JFXTextField fx:id="orderId" labelFloat="true" onAction="#loadOrderInfo" promptText="订单ID" />
+                                                <JFXComboBox fx:id="choiceType1" focusColor="WHITE" labelFloat="true" onAction="#OrderOrAppointmentChoice" prefHeight="22.0" prefWidth="294.0" promptText="类型" unFocusColor="WHITE" />
+                                                <JFXTextField fx:id="orderId" labelFloat="true" onAction="#loadOrderOrAppointmentInfo" promptText="订单或预约ID">
+                                                   <VBox.margin>
+                                                      <Insets top="40.0" />
+                                                   </VBox.margin></JFXTextField>
                                              </children>
                                           </VBox>
                                           <VBox alignment="CENTER" prefHeight="275.0" prefWidth="481.0">
                                              <children>
-                                                <Text fx:id="orderUser" strokeType="OUTSIDE" strokeWidth="0.0" text="用户">
+                                                <Text fx:id="orderUser" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="用户">
                                                    <font>
                                                       <Font size="29.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="orderPrice" strokeType="OUTSIDE" strokeWidth="0.0" text="总价">
+                                                <Text fx:id="orderPrice" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="总价">
                                                    <VBox.margin>
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
@@ -88,7 +86,7 @@
                                                       <Font size="29.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="orderTel" strokeType="OUTSIDE" strokeWidth="0.0" text="联系方式">
+                                                <Text fx:id="orderTel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="联系方式">
                                                    <VBox.margin>
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
@@ -96,7 +94,7 @@
                                                       <Font size="29.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="orderStatus" strokeType="OUTSIDE" strokeWidth="0.0" text="状态">
+                                                <Text fx:id="orderStatus" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="状态">
                                                    <VBox.margin>
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
@@ -115,17 +113,22 @@
                                        <children>
                                           <VBox alignment="CENTER" prefHeight="275.0" prefWidth="297.0">
                                              <children>
-                                                <JFXTextField fx:id="appId" labelFloat="true" onAction="#loadAppInfo" promptText="预约ID" />
+                                                <JFXComboBox fx:id="choiceType2" focusColor="WHITE" labelFloat="true" onAction="#otherChoice" prefHeight="22.0" prefWidth="300.0" promptText="类型" unFocusColor="WHITE">
+                                                   <VBox.margin>
+                                                      <Insets bottom="30.0" />
+                                                   </VBox.margin>
+                                                </JFXComboBox>
+                                                <JFXTextField fx:id="keyword" labelFloat="true" onAction="#loadOtherInfo" promptText="检索关键词" />
                                              </children>
                                           </VBox>
                                           <VBox alignment="CENTER" prefHeight="275.0" prefWidth="481.0">
                                              <children>
-                                                <Text fx:id="appUser" strokeType="OUTSIDE" strokeWidth="0.0" text="用户">
+                                                <Text fx:id="appUser" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="用户">
                                                    <font>
                                                       <Font size="29.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="appDate" strokeType="OUTSIDE" strokeWidth="0.0" text="预约时间">
+                                                <Text fx:id="appDate" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="预约时间">
                                                    <VBox.margin>
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
@@ -133,7 +136,7 @@
                                                       <Font size="29.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="appPet" strokeType="OUTSIDE" strokeWidth="0.0" text="宠物">
+                                                <Text fx:id="appPet" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="宠物">
                                                    <VBox.margin>
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
@@ -141,7 +144,7 @@
                                                       <Font size="29.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="appStatus" strokeType="OUTSIDE" strokeWidth="0.0" text="状态">
+                                                <Text fx:id="appStatus" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="状态">
                                                    <VBox.margin>
                                                       <Insets top="10.0" />
                                                    </VBox.margin>

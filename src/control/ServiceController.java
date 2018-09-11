@@ -62,4 +62,15 @@ public class ServiceController {
                 .setProjection(Projections.rowCount())
                 .uniqueResult();
     }
+
+    public List<BeanService> search(String text) {
+        Session session = getSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("from BeanService b where b.servName like :text");
+        query.setParameter("text","%"+text+"%");
+        List<BeanService> list = query.list();
+        transaction.commit();
+        session.close();
+        return list;
+    }
 }

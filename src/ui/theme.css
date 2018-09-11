@@ -99,8 +99,7 @@
     -fx-font-size: 20px;
 }
 
-.combo-box .list-cell
-{
+.combo-box .list-cell {
     -fx-background: white;
     -fx-background-color: transparent;
     -fx-text-fill: black;
@@ -108,12 +107,22 @@
     -fx-cell-size: 1.66667em;
 }
 
-.combo-box-base:showing
-{
+.combo-box-base:showing {
     -fx-color: white;
 }
 
-.combo-box-base
-{
+.combo-box-base {
     -fx-background-color: white;
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+.chart-legend {
+    -fx-background-color: -fx-secondary-color;
+}
+
+.context-menu {
+    -fx-background-color:  -fx-secondary-color;
 }

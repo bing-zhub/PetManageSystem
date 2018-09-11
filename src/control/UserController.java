@@ -83,4 +83,15 @@ public class UserController {
                 .setProjection(Projections.rowCount())
                 .uniqueResult();
     }
+
+    public List<BeanMyUser> search(String text) {
+        Session session = getSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("from BeanMyUser b where b.userName like :text");
+        query.setParameter("text","%"+text+"%");
+        List<BeanMyUser> list = query.list();
+        transaction.commit();
+        session.close();
+        return list;
+    }
 }

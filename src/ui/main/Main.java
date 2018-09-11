@@ -57,12 +57,6 @@ public class Main implements Initializable{
     private AnchorPane rootAnchorPane;
 
     @FXML
-    private JFXTabPane tabPane;
-
-    @FXML
-    private Tab homeTab;
-
-    @FXML
     private Text orderUser;
 
     @FXML
@@ -73,6 +67,12 @@ public class Main implements Initializable{
 
     @FXML
     private Text orderStatus;
+
+    @FXML
+    private JFXComboBox<String> choiceType1;
+
+    @FXML
+    private JFXComboBox<String> choiceType2;
 
     @FXML
     private Text appUser;
@@ -87,7 +87,7 @@ public class Main implements Initializable{
     private Text appStatus;
 
     @FXML
-    private JFXTextField appId;
+    private JFXTextField keyword;
 
     @FXML
     private JFXTextField orderId;
@@ -253,22 +253,24 @@ public class Main implements Initializable{
     private ObservableList<BeanAppointmentDetail> appointmentDetails = null;
     private PieChart orderPie = null;
     private PieChart appointmentPie = null;
+    private String choice1 = "";
+    private String choice2 = "";
 
-    @FXML
-    void loadAppInfo(ActionEvent event) {
-        try{
-            int id = Integer.parseInt(appId.getText());
-            System.out.println(1);
-            BeanAppointment appointment = null;
-            appointment = PetManageSystemUtil.appointmentController.findAppointmentById(id);
-        }catch (Exception exception){
-            System.out.println(exception.getMessage());
-            appUser.setText("");
-            appDate.setText("");
-            appStatus.setText("订单号错误");
-            appPet.setText("");
-        }
-    }
+//    @FXML
+//    void loadAppInfo(ActionEvent event) {
+//        try{
+//            int id = Integer.parseInt(appId.getText());
+//            System.out.println(1);
+//            BeanAppointment appointment = null;
+//            appointment = PetManageSystemUtil.appointmentController.findAppointmentById(id);
+//        }catch (Exception exception){
+//            System.out.println(exception.getMessage());
+//            appUser.setText("");
+//            appDate.setText("");
+//            appStatus.setText("订单号错误");
+//            appPet.setText("");
+//        }
+//    }
 
     @FXML
     void showProductBarcode(ActionEvent event) {
@@ -866,6 +868,16 @@ public class Main implements Initializable{
         showConfirmDialog("预约"+order.getAppId()+"服务全部完成 ?", Arrays.asList(btnCancel, btnOK));
     }
 
+    @FXML
+    void OrderOrAppointmentChoice(ActionEvent event){
+        choice1 = choiceType1.getSelectionModel().getSelectedItem();
+    }
+
+    @FXML
+    void otherChoice(ActionEvent event){
+        choice2 = choiceType2.getSelectionModel().getSelectedItem();
+    }
+
     private void showDialog(String message){
         BoxBlur blur = new BoxBlur(3,3,3);
         JFXDialogLayout dialogLayout = new JFXDialogLayout();
@@ -910,27 +922,154 @@ public class Main implements Initializable{
     }
 
     @FXML
-    void loadOrderInfo(ActionEvent event) {
+    void loadOrderOrAppointmentInfo(ActionEvent event) {
+        if(choice1.isEmpty()){
+            showDialog("没有选择要查询数据类型");
+            return;
+        }
+
         try{
             int id = Integer.parseInt(orderId.getText());
-            BeanMyOrder order = null;
-            order = PetManageSystemUtil.orderController.findOrderById(id);
-            int userId = order.getOrderUser().getUserId();
-            String status = order.getOrderState();
-            int price = order.getOrderPrice();
-            BeanMyUser user = PetManageSystemUtil.userController.findUserById(userId);
-            String tel = user.getUserTel().toString();
-            orderUser.setText(user.getUserName());
-            orderPrice.setText(String.valueOf(price));
-            orderStatus.setText(status);
-            orderTel.setText(tel);
+            if(choice1.equals("预约")){
+                BeanAppointment appointment = null;
+                appointment = PetManageSystemUtil.appointmentController.findAppointmentById(id);
+                orderUser.setText(appointment.getUser().getUserName());
+                orderPrice.setText(appointment.getAppState());
+            }else{
+                BeanMyOrder order = null;
+                order = PetManageSystemUtil.orderController.findOrderById(id);
+                orderUser.setText(order.getOrderUser().getUserName());
+                orderPrice.setText(order.getOrderPrice().toString());
+                orderStatus.setText(order.getOrderState());
+                orderTel.setText(order.getOrderUser().getUserTel().toString());
+            }
         }catch (Exception exception){
-            orderUser.setText("");
-            orderPrice.setText("");
-            orderStatus.setText("订单号错误");
-            orderTel.setText("");
+            showDialog("sorry! nothing found.");
         }
     }
+
+    @FXML
+    void loadOtherInfo(ActionEvent event){
+        if(choice2.isEmpty()){
+            showDialog("没有选择要查询的数据类型");
+            return;
+        }
+        try{
+            if(choice2.equals("管理员")){
+                List<BeanOperator> list = PetManageSystemUtil.operatorController.search(keyword.getText());
+                if(list.size()==0){
+                    showDialog("啥都么找到!");
+                    return;
+                }
+                if(list.size()>1){
+                    String ones = "";
+                    for (BeanOperator b: list){
+                        ones += (b.getOpName()+", ");
+                    }
+                    showDialog("查找到多个结果"+ones+"但仅显示最匹配部分");
+                }
+                BeanOperator b = list.get(0);
+                appUser.setText(b.getOpName());
+                appDate.setText("");
+                appPet.setText(b.getOpLevel().toString());
+                appStatus.setText("");
+            }else if(choice2 .equals("类别")){
+                List<BeanCategory> list = PetManageSystemUtil.categoryController.search(keyword.getText());
+                if(list.size()==0){
+                    showDialog("啥都么找到!");
+                    return;
+                }
+                if(list.size()>1){
+                    String ones = "";
+                    for (BeanCategory b: list){
+                        ones += (b.getCateName()+", ");
+                    }
+                    showDialog("查找到多个结果"+ones+"但仅显示最匹配部分");
+                }
+                BeanCategory b = list.get(0);
+                appUser.setText(b.getCateName());
+                appDate.setText("");
+                appPet.setText(b.getCateDetail());
+                appStatus.setText("");
+            }else if(choice2.equals("宠物")){
+                List<BeanPet> list = PetManageSystemUtil.petController.search(keyword.getText());
+                if(list.size()==0){
+                    showDialog("啥都么找到!");
+                    return;
+                }
+                if(list.size()>1){
+                    String ones = "";
+                    for (BeanPet b: list){
+                        ones += (b.getPetNikename()+", ");
+                    }
+                    showDialog("查找到多个结果"+ones+"但仅显示最匹配部分");
+                }
+                BeanPet b = list.get(0);
+                appUser.setText(b.getPetNikename());
+                appDate.setText(b.getUser().getUserName());
+                appPet.setText(b.getPetAlias());
+                appStatus.setText("");
+            }else if(choice2.equals("商品")){
+                List<BeanProduct> list = PetManageSystemUtil.productController.search(keyword.getText());
+                if(list.size()==0){
+                    showDialog("啥都么找到!");
+                    return;
+                }
+                if(list.size()>1){
+                    String ones = "";
+                    for (BeanProduct b: list){
+                        ones += (b.getProdName()+", ");
+                    }
+                    showDialog("查找到多个结果"+ones+"但仅显示最匹配部分");
+                }
+                BeanProduct b = list.get(0);
+                appUser.setText(b.getProdCategory().getCateName());
+                appDate.setText(b.getProdPrice().toString());
+                appPet.setText(b.getProdName());
+                appStatus.setText(b.getProdBrand());
+            }else if(choice2.equals("服务")){
+                List<BeanService> list = PetManageSystemUtil.serviceController.search(keyword.getText());
+                if(list.size()==0){
+                    showDialog("啥都么找到!");
+                    return;
+                }
+                if(list.size()>1){
+                    String ones = "";
+                    for (BeanService b: list){
+                        ones += (b.getServName()+", ");
+                    }
+                    showDialog("查找到多个结果"+ones+"但仅显示最匹配部分");
+                }
+                BeanService b = list.get(0);
+                appUser.setText(b.getServName());
+                appDate.setText(b.getCategory().getCateName());
+                appPet.setText(b.getServPrice().toString());
+                appStatus.setText("");
+            }else if(choice2.equals("用户")){
+                List<BeanMyUser> list = PetManageSystemUtil.userController.search(keyword.getText());
+                if(list.size()==0){
+                    showDialog("啥都么找到!");
+                    return;
+                }
+                if(list.size()>1){
+                    String ones = "";
+                    for (BeanMyUser b: list){
+                        ones += (b.getUserName()+", ");
+                    }
+                    showDialog("查找到多个结果"+ones+"但仅显示最匹配部分");
+                }
+                BeanMyUser b = list.get(0);
+                appUser.setText(b.getUserName());
+                appDate.setText(b.getUserTel().toString());
+                appPet.setText(b.getUserEmail());
+                appStatus.setText(b.getUserContact());
+            }
+        }catch (Exception e){
+            showDialog("Oops sth bad occur!");
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML
     void selectOrderId(ActionEvent event){
@@ -1119,9 +1258,21 @@ public class Main implements Initializable{
         ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
         int count1 = PetManageSystemUtil.appointmentController.getAppointmentCount("预约创建完成");
         int count2 = PetManageSystemUtil.appointmentController.getAppointmentCount("已完成");
-        data.add(new PieChart.Data("未完成订单 ( "+String.valueOf(count1) +" )",count1));
-        data.add(new PieChart.Data("已完成订单 ( "+String.valueOf(count2) +" )",count2));
+        data.add(new PieChart.Data("未完成预约 ( "+String.valueOf(count1) +" )",count1));
+        data.add(new PieChart.Data("已完成预约 ( "+String.valueOf(count2) +" )",count2));
         return data;
+    }
+
+    private ObservableList<String> getChoice1(){
+        ObservableList<String> choice = FXCollections.observableArrayList();
+        choice.addAll("订单","预约");
+        return choice;
+    }
+
+    private ObservableList<String> getChoice2(){
+        ObservableList<String> choice = FXCollections.observableArrayList();
+        choice.addAll("宠物","产品","类别","用户","服务","管理员");
+        return choice;
     }
 
     private void loadData(){
@@ -1135,6 +1286,8 @@ public class Main implements Initializable{
         this.appointmentDetails = getAppointmentDetail();
         orderBox.setItems(getOrder());
         appointmentBox.setItems(getAppointment());
+        choiceType1.setItems(getChoice1());
+        choiceType2.setItems(getChoice2());
     }
 
     @Override
@@ -1150,17 +1303,7 @@ public class Main implements Initializable{
         }
         numberValidator.setMessage("请输入纯数字");
 
-        appId.getValidators().add(numberValidator);
         orderId.getValidators().add(numberValidator);
-
-        appId.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue){
-                    appId.validate();
-                }
-            }
-        });
 
         orderId.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
@@ -1199,7 +1342,9 @@ public class Main implements Initializable{
 
     private void initChart() {
        orderPie = new PieChart(getOrderPieData());
+       orderPie.autosize();
        appointmentPie = new PieChart(getAppointmentPieData());
+       appointmentPie.autosize();
     }
 
     private void initDrawer() {

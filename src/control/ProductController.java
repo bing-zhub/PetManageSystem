@@ -53,9 +53,15 @@ public class ProductController {
         session.close();
         System.out.println(category.getCateName());
     }
-    public int getProductTotalCount(){
-        return (int)getSession().createCriteria("BeanProduct")
-                .setProjection(Projections.rowCount())
-                .uniqueResult();
+
+    public List<BeanProduct> search(String text) {
+        Session session = getSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("from BeanProduct b where b.prodName like :text");
+        query.setParameter("text","%"+text+"%");
+        List<BeanProduct> list = query.list();
+        transaction.commit();
+        session.close();
+        return list;
     }
 }
