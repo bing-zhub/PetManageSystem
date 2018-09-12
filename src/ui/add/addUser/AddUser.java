@@ -46,7 +46,7 @@ public class AddUser {
     @FXML
     void userAdd(ActionEvent event) {
         String tUsername = username.getText();
-        int tTel = Integer.parseInt(tel.getText());
+        String tTel = tel.getText();
         String tEmail = email.getText();
         String rAddress = address.getText();
         BeanMyUser user = new BeanMyUser();

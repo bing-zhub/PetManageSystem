@@ -122,3 +122,9 @@
 .chart-legend {
     -fx-background-color: -fx-secondary-color;
 }
+
+.context-menu {
+    -fx-background-color:  -fx-secondary-color;
+}
+
+.jfx-dialog-layout .jfx-layout-heading .text { -fx-fill: #2196F3; }

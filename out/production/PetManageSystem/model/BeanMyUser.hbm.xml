@@ -13,7 +13,7 @@
             <column name="user_name" sql-type="varchar(1024)" length="1024" not-null="true"/>
         </property>
         <property name="userTel">
-            <column name="user_tel" sql-type="int(255)" not-null="true"/>
+            <column name="user_tel" sql-type="varchar(1024)" not-null="true"/>
         </property>
         <property name="userEmail">
             <column name="user_email" sql-type="varchar(1024)" length="1024" not-null="true"/>

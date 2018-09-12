@@ -45,7 +45,10 @@
                                                 <Text fx:id="categoryTotal" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="分类总数" textAlignment="CENTER" />
                                              </children>
                                           </VBox>
-                                          <VBox fx:id="charContainer" prefHeight="261.0" prefWidth="421.0" />
+                                          <VBox fx:id="charContainer" prefHeight="261.0" prefWidth="421.0">
+                                             <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </padding></VBox>
                                        </children>
                                     </HBox>
                                  </children>
@@ -53,6 +56,13 @@
                            </children>
                         </AnchorPane>
                      </content>
+                     <contextMenu>
+                        <ContextMenu>
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#refreshHomeTab" text="刷新" />
+                          </items>
+                        </ContextMenu>
+                     </contextMenu>
                   </Tab>
                   <Tab text="检索">
                      <content>
@@ -73,12 +83,12 @@
                                           </VBox>
                                           <VBox alignment="CENTER" prefHeight="275.0" prefWidth="481.0">
                                              <children>
-                                                <Text fx:id="orderUser" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="用户">
+                                                <Text fx:id="orderUser" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text">
                                                    <font>
                                                       <Font size="29.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="orderPrice" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="总价">
+                                                <Text fx:id="orderPrice" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text">
                                                    <VBox.margin>
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
@@ -86,7 +96,7 @@
                                                       <Font size="29.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="orderTel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="联系方式">
+                                                <Text fx:id="orderTel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text">
                                                    <VBox.margin>
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
@@ -94,7 +104,7 @@
                                                       <Font size="29.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="orderStatus" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="状态">
+                                                <Text fx:id="orderStatus" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text">
                                                    <VBox.margin>
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
@@ -103,6 +113,9 @@
                                                    </font>
                                                 </Text>
                                              </children>
+                                             <HBox.margin>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                             </HBox.margin>
                                           </VBox>
                                        </children>
                                        <VBox.margin>
@@ -123,12 +136,12 @@
                                           </VBox>
                                           <VBox alignment="CENTER" prefHeight="275.0" prefWidth="481.0">
                                              <children>
-                                                <Text fx:id="appUser" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="用户">
+                                                <Text fx:id="appUser" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text">
                                                    <font>
                                                       <Font size="29.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="appDate" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="预约时间">
+                                                <Text fx:id="appDate" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text">
                                                    <VBox.margin>
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
@@ -136,7 +149,7 @@
                                                       <Font size="29.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="appPet" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="宠物">
+                                                <Text fx:id="appPet" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text">
                                                    <VBox.margin>
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
@@ -144,7 +157,7 @@
                                                       <Font size="29.0" />
                                                    </font>
                                                 </Text>
-                                                <Text fx:id="appStatus" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text" text="状态">
+                                                <Text fx:id="appStatus" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text">
                                                    <VBox.margin>
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
@@ -168,7 +181,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab text="管理员详情">
+                  <Tab fx:id="adminTab" text="管理员详情">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -197,7 +210,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab text="用户详情">
+                  <Tab fx:id="userTab" text="用户详情">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -226,7 +239,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab text="宠物详情">
+                  <Tab fx:id="petTab" text="宠物详情">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -254,7 +267,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab text="订单详情">
+                  <Tab fx:id="orderTab" text="订单详情">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -270,6 +283,11 @@
                                                 <Insets bottom="5.0" left="20.0" right="10.0" top="10.0" />
                                              </HBox.margin>
                                           </JFXComboBox>
+                                          <Text fx:id="orderSata" fill="WHITE" text="状态">
+                                             <HBox.margin>
+                                                <Insets left="10.0" top="10.0" />
+                                             </HBox.margin>
+                                          </Text>
                                           <JFXButton buttonType="RAISED" onAction="#deleteOrder" text="删除订单">
                                              <HBox.margin>
                                                 <Insets left="20.0" top="10.0" />
@@ -317,7 +335,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab text="预约详情">
+                  <Tab fx:id="appointmentTab" text="预约详情">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -333,14 +351,19 @@
                                                 <Insets top="10.0" />
                                              </HBox.margin>
                                           </JFXComboBox>
+                                          <Text fx:id="appointmentSata" fill="WHITE" text="状态">
+                                             <HBox.margin>
+                                                <Insets left="20.0" right="10.0" top="15.0" />
+                                             </HBox.margin>
+                                          </Text>
                                           <JFXButton buttonType="RAISED" onAction="#deleteAppointment" text="删除预约">
                                              <HBox.margin>
-                                                <Insets left="10.0" />
+                                                <Insets left="10.0" top="10.0" />
                                              </HBox.margin>
                                           </JFXButton>
                                           <JFXButton buttonType="RAISED" onAction="#finishAppointment" text="完成预约">
                                              <HBox.margin>
-                                                <Insets left="20.0" />
+                                                <Insets left="10.0" top="10.0" />
                                              </HBox.margin>
                                           </JFXButton>
                                        </children>
@@ -376,7 +399,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab text="服务详情">
+                  <Tab fx:id="serviceTab" text="服务详情">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -403,7 +426,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab text="产品详情">
+                  <Tab fx:id="productTab" text="产品详情">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -434,7 +457,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab text="分类详情">
+                  <Tab fx:id="categoryTab" text="分类详情">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -463,7 +486,7 @@
                   </Tab>
                </tabs>
             </JFXTabPane>
-            <JFXDrawer fx:id="drawer" direction="RIGHT" layoutX="843.0" overLayVisible="false" prefHeight="585.0" prefWidth="127.0" />
+            <JFXDrawer fx:id="drawer" defaultDrawerSize="0.0" direction="RIGHT" layoutX="843.0" overLayVisible="false" prefHeight="585.0" prefWidth="97.0" AnchorPane.rightAnchor="0.0" />
             <JFXHamburger fx:id="hamburger" styleClass="jfx-hamburger-icon" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="70.0" />
          </children>
       </AnchorPane>

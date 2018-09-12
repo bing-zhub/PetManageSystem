@@ -390,7 +390,6 @@ public class AddAppointment implements Initializable{
         petBox2.setItems(pets);
         petBox3.setItems(pets);
         petBox4.setItems(pets);
-
         RequiredFieldValidator requiredFieldValidator = new RequiredFieldValidator();
         requiredFieldValidator.setMessage("此为必填项");
 
@@ -433,7 +432,7 @@ public class AddAppointment implements Initializable{
 
     }
 
-    public LocalDate convertToLocalDateViaInstant(java.util.Date dateToConvert) {
+    private LocalDate convertToLocalDateViaInstant(java.util.Date dateToConvert) {
         return dateToConvert.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();

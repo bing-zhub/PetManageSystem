@@ -58,6 +58,7 @@ public class Toolbar {
             Stage stage = new Stage(StageStyle.DECORATED);
             stage.getIcons().add(new Image("/ui/icons/icon.png"));
             stage.setTitle(title);
+            stage.setResizable(false);
             stage.setScene(new Scene(parent));
             stage.show();
         } catch (IOException e) {

@@ -3,6 +3,7 @@ package ui.add.addOrder;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.effects.JFXDepthManager;
 import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
 import javafx.beans.value.ChangeListener;
@@ -18,6 +19,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import model.BeanMyOrder;
 import model.BeanMyUser;
@@ -79,6 +81,18 @@ public class AddOrder implements Initializable{
     @FXML
     private JFXComboBox<BeanMyUser> userBox;
 
+    @FXML
+    private HBox hbox1;
+
+    @FXML
+    private HBox hbox2;
+
+    @FXML
+    private HBox hbox3;
+
+    @FXML
+    private HBox hbox4;
+
     private BeanProduct product1 = null;
     private BeanProduct product2 = null;
     private BeanProduct product3 = null;
@@ -98,10 +112,11 @@ public class AddOrder implements Initializable{
     private int detailId3 = 0;
     private int detailId4 = 0;
     private BeanMyOrder order= null;
+    private JFXDepthManager jfxDepthManager = null;
 
-    ObservableList<BeanProduct> products = FXCollections.observableArrayList();
+    private ObservableList<BeanProduct> products = FXCollections.observableArrayList();
 
-    ObservableList<BeanMyUser> users = FXCollections.observableArrayList();
+    private ObservableList<BeanMyUser> users = FXCollections.observableArrayList();
 
     private ObservableList<BeanProduct> getProduct(){
         ObservableList<BeanProduct> products = FXCollections.observableArrayList();
@@ -350,6 +365,13 @@ public class AddOrder implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        jfxDepthManager = new JFXDepthManager();
+        jfxDepthManager.setDepth(hbox1,2);
+        jfxDepthManager.setDepth(hbox2,2);
+        jfxDepthManager.setDepth(hbox3,2);
+        jfxDepthManager.setDepth(hbox4,2);
+
         this.products = getProduct();
         this.users = getUser();
         productBox1.setItems(products);

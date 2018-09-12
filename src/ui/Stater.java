@@ -17,6 +17,7 @@ public class Stater extends Application {
         Scene scene = new Scene(root,350,220);
         primaryStage.getIcons().add(new Image("/ui/icons/icon.png"));
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
         primaryStage.setOnCloseRequest(e->System.exit(0));
     }

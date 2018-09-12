@@ -22,6 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -55,6 +56,42 @@ public class Main implements Initializable{
 
     @FXML
     private AnchorPane rootAnchorPane;
+
+    @FXML
+    private JFXTabPane tabPane;
+
+    @FXML
+    private Tab homeTab;
+
+    @FXML
+    private Tab adminTab;
+
+    @FXML
+    private Tab userTab;
+
+    @FXML
+    private Tab serviceTab;
+
+    @FXML
+    private Tab appointmentTab;
+
+    @FXML
+    private Tab categoryTab;
+
+    @FXML
+    private Tab productTab;
+
+    @FXML
+    private Tab orderTab;
+
+    @FXML
+    private Tab petTab;
+
+    @FXML
+    private Text orderSata;
+
+    @FXML
+    private Text appointmentSata;
 
     @FXML
     private Text orderUser;
@@ -255,22 +292,6 @@ public class Main implements Initializable{
     private PieChart appointmentPie = null;
     private String choice1 = "";
     private String choice2 = "";
-
-//    @FXML
-//    void loadAppInfo(ActionEvent event) {
-//        try{
-//            int id = Integer.parseInt(appId.getText());
-//            System.out.println(1);
-//            BeanAppointment appointment = null;
-//            appointment = PetManageSystemUtil.appointmentController.findAppointmentById(id);
-//        }catch (Exception exception){
-//            System.out.println(exception.getMessage());
-//            appUser.setText("");
-//            appDate.setText("");
-//            appStatus.setText("订单号错误");
-//            appPet.setText("");
-//        }
-//    }
 
     @FXML
     void showProductBarcode(ActionEvent event) {
@@ -883,7 +904,12 @@ public class Main implements Initializable{
         JFXDialogLayout dialogLayout = new JFXDialogLayout();
         JFXButton button = new JFXButton("已知晓");
         JFXDialog dialog = new JFXDialog(rootPane, dialogLayout,JFXDialog.DialogTransition.TOP);
+        dialog.setOnDialogOpened((event -> button.requestFocus()));
         button.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event e)->{
+            dialog.close();
+        });
+        button.addEventHandler(KeyEvent.KEY_PRESSED, (Event e)->{
+            rootAnchorPane.setEffect(null);
             dialog.close();
         });
         dialogLayout.setHeading(new Label(message));
@@ -902,6 +928,12 @@ public class Main implements Initializable{
             rootAnchorPane.setEffect(null);
             dialog.close();
         });
+
+        button.addEventHandler(KeyEvent.KEY_PRESSED, (Event e)->{
+            rootAnchorPane.setEffect(null);
+            dialog.close();
+        });
+        dialog.setOnDialogOpened((event -> button.requestFocus()));
         dialogLayout.setHeading(new Label("取消"+cate+"操作"));
         dialogLayout.setActions(button);
         dialog.show();
@@ -915,6 +947,7 @@ public class Main implements Initializable{
         JFXDialog dialog = new JFXDialog(rootPane, dialogLayout,JFXDialog.DialogTransition.TOP);
         dialogLayout.setHeading(new Label(message));
         buttons.forEach(jfxButton -> {jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent e) -> dialog.close());});
+        dialog.setOnDialogOpened((event -> buttons.get(0).requestFocus()));
         dialogLayout.setActions(buttons);
         dialog.show();
         dialog.setOnDialogClosed((JFXDialogEvent e) -> rootAnchorPane.setEffect(null));
@@ -933,15 +966,15 @@ public class Main implements Initializable{
             if(choice1.equals("预约")){
                 BeanAppointment appointment = null;
                 appointment = PetManageSystemUtil.appointmentController.findAppointmentById(id);
-                orderUser.setText(appointment.getUser().getUserName());
-                orderPrice.setText(appointment.getAppState());
+                orderUser.setText("用户名: "+appointment.getUser().getUserName());
+                orderPrice.setText("价格: "+appointment.getAppState());
             }else{
                 BeanMyOrder order = null;
                 order = PetManageSystemUtil.orderController.findOrderById(id);
-                orderUser.setText(order.getOrderUser().getUserName());
-                orderPrice.setText(order.getOrderPrice().toString());
-                orderStatus.setText(order.getOrderState());
-                orderTel.setText(order.getOrderUser().getUserTel().toString());
+                orderUser.setText("用户名: "+order.getOrderUser().getUserName());
+                orderPrice.setText("价格: "+order.getOrderPrice().toString());
+                orderStatus.setText("状态: "+order.getOrderState());
+                orderTel.setText("联系电话: "+order.getOrderUser().getUserTel().toString());
             }
         }catch (Exception exception){
             showDialog("sorry! nothing found.");
@@ -969,9 +1002,9 @@ public class Main implements Initializable{
                     showDialog("查找到多个结果"+ones+"但仅显示最匹配部分");
                 }
                 BeanOperator b = list.get(0);
-                appUser.setText(b.getOpName());
+                appUser.setText("用户名: "+b.getOpName());
                 appDate.setText("");
-                appPet.setText(b.getOpLevel().toString());
+                appPet.setText("等级: "+b.getOpLevel().toString());
                 appStatus.setText("");
             }else if(choice2 .equals("类别")){
                 List<BeanCategory> list = PetManageSystemUtil.categoryController.search(keyword.getText());
@@ -987,9 +1020,9 @@ public class Main implements Initializable{
                     showDialog("查找到多个结果"+ones+"但仅显示最匹配部分");
                 }
                 BeanCategory b = list.get(0);
-                appUser.setText(b.getCateName());
+                appUser.setText("名称: "+b.getCateName());
                 appDate.setText("");
-                appPet.setText(b.getCateDetail());
+                appPet.setText("详情: "+b.getCateDetail());
                 appStatus.setText("");
             }else if(choice2.equals("宠物")){
                 List<BeanPet> list = PetManageSystemUtil.petController.search(keyword.getText());
@@ -1005,11 +1038,11 @@ public class Main implements Initializable{
                     showDialog("查找到多个结果"+ones+"但仅显示最匹配部分");
                 }
                 BeanPet b = list.get(0);
-                appUser.setText(b.getPetNikename());
-                appDate.setText(b.getUser().getUserName());
-                appPet.setText(b.getPetAlias());
+                appUser.setText("昵称: "+b.getPetNikename());
+                appDate.setText("主人名称: "+b.getUser().getUserName());
+                appPet.setText("宠物别名: "+b.getPetAlias());
                 appStatus.setText("");
-            }else if(choice2.equals("商品")){
+            }else if(choice2.equals("产品")){
                 List<BeanProduct> list = PetManageSystemUtil.productController.search(keyword.getText());
                 if(list.size()==0){
                     showDialog("啥都么找到!");
@@ -1023,10 +1056,10 @@ public class Main implements Initializable{
                     showDialog("查找到多个结果"+ones+"但仅显示最匹配部分");
                 }
                 BeanProduct b = list.get(0);
-                appUser.setText(b.getProdCategory().getCateName());
-                appDate.setText(b.getProdPrice().toString());
-                appPet.setText(b.getProdName());
-                appStatus.setText(b.getProdBrand());
+                appUser.setText("类别: "+b.getProdCategory().getCateName());
+                appDate.setText("价格: "+b.getProdPrice().toString());
+                appPet.setText("名称: "+b.getProdName());
+                appStatus.setText("品牌: "+b.getProdBrand());
             }else if(choice2.equals("服务")){
                 List<BeanService> list = PetManageSystemUtil.serviceController.search(keyword.getText());
                 if(list.size()==0){
@@ -1041,9 +1074,9 @@ public class Main implements Initializable{
                     showDialog("查找到多个结果"+ones+"但仅显示最匹配部分");
                 }
                 BeanService b = list.get(0);
-                appUser.setText(b.getServName());
-                appDate.setText(b.getCategory().getCateName());
-                appPet.setText(b.getServPrice().toString());
+                appUser.setText("名称: "+b.getServName());
+                appDate.setText("类别: "+b.getCategory().getCateName());
+                appPet.setText("价格: "+b.getServPrice().toString());
                 appStatus.setText("");
             }else if(choice2.equals("用户")){
                 List<BeanMyUser> list = PetManageSystemUtil.userController.search(keyword.getText());
@@ -1059,10 +1092,10 @@ public class Main implements Initializable{
                     showDialog("查找到多个结果"+ones+"但仅显示最匹配部分");
                 }
                 BeanMyUser b = list.get(0);
-                appUser.setText(b.getUserName());
-                appDate.setText(b.getUserTel().toString());
-                appPet.setText(b.getUserEmail());
-                appStatus.setText(b.getUserContact());
+                appUser.setText("用户名: "+b.getUserName());
+                appDate.setText("联系方式: "+b.getUserTel().toString());
+                appPet.setText("电子邮件: "+b.getUserEmail());
+                appStatus.setText("其他联系方式: "+b.getUserContact());
             }
         }catch (Exception e){
             showDialog("Oops sth bad occur!");
@@ -1070,6 +1103,11 @@ public class Main implements Initializable{
         }
     }
 
+    @FXML
+    void refreshHomeTab(ActionEvent e){
+        initChart();
+        initStatics();
+    }
 
     @FXML
     void selectOrderId(ActionEvent event){
@@ -1079,6 +1117,7 @@ public class Main implements Initializable{
             orderDetails.clear();
             orderTbl.setItems(orderDetails);
         }else {
+            orderSata.setText(order.getOrderState());
             orderDetails = getOrderDetail(order.getOrderId());
             orderTbl.setItems(orderDetails);
         }
@@ -1090,6 +1129,7 @@ public class Main implements Initializable{
         appointmentDetails.clear();
         appointmentDetails = getAppointmentDetail(appointment.getAppId());
         appointmentTbl.setItems(appointmentDetails);
+        appointmentSata.setText(appointment.getAppState());
     }
 
     private void initCol() {
@@ -1314,6 +1354,42 @@ public class Main implements Initializable{
             }
         });
 
+        tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
+            @Override
+            public void changed(ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue) {
+                if(newValue.equals(homeTab)){
+                    initChart();
+                    initStatics();
+                    charContainer.getChildren().clear();
+                    charContainer.getChildren().add(orderPie);
+                    charContainer.getChildren().add(appointmentPie);
+                }else if(newValue.equals(appointmentTab)){
+                    refreshAppointment(new ActionEvent());
+                }else if(newValue.equals(adminTab)){
+                    refreshOperator(new ActionEvent());
+
+                }else if(newValue.equals(categoryTab)){
+                    refreshCategory(new ActionEvent());
+
+                }else if(newValue.equals(orderTab)){
+                    refreshOrder(new ActionEvent());
+
+                }else if(newValue.equals(petTab)){
+                    refreshPet(new ActionEvent());
+
+                }else if(newValue.equals(productTab)){
+                    refreshProduct(new ActionEvent());
+
+                }else if (newValue.equals(serviceTab)){
+                    refreshService(new ActionEvent());
+
+                }else if(newValue.equals(userTab)) {
+                    refreshService(new ActionEvent());
+
+                }
+            }
+        });
+
         loadData();
 
         initCol();
@@ -1326,7 +1402,6 @@ public class Main implements Initializable{
 
         charContainer.getChildren().add(orderPie);
         charContainer.getChildren().add(appointmentPie);
-
     }
 
     private void initStatics() {
@@ -1351,7 +1426,7 @@ public class Main implements Initializable{
         try {
             VBox toolbar = FXMLLoader.load(getClass().getResource("/ui/main/toolbar/toolbar.fxml"));
             drawer.setSidePane(toolbar);
-            drawer.setDefaultDrawerSize(175);
+            drawer.setDefaultDrawerSize(150);
             HamburgerSlideCloseTransition task = new HamburgerSlideCloseTransition(hamburger);
             task.setRate(-1);
             hamburger.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (Event event) -> {

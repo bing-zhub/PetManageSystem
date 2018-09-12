@@ -61,6 +61,7 @@ public class Login {
             Stage stage = new Stage(StageStyle.DECORATED);
             stage.setTitle("宠物服务管理系统");
             stage.setScene(new Scene(parent));
+            stage.setResizable(false);
             stage.show();
             stage.setOnCloseRequest(e->System.exit(0));
         } catch (IOException e) {
