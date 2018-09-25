@@ -26,12 +26,12 @@
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.38.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.46-bin.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.46.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/jfoenix-8.0.7.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/commons-codec-1.10.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/QR_Generator_Libs/qrgen-1.0.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/QR_Generator_Libs/zxing-core-1.7.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/QR_Generator_Libs/zxing-j2se-1.7.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/fontawesomefx-8.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/qrgen-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/zxing-core-1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/zxing-j2se-1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jfoenix-8.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-codec-1.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/fontawesomefx-8.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
